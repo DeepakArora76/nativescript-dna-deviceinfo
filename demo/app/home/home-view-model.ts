@@ -21,9 +21,11 @@ export class HomeViewModel extends Observable {
         console.log("App bundle id: ", DeviceInfo.bundleId());
         console.log("App bundle number: ", DeviceInfo.bundleNumber());
         console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
+        console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
+        console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
         }, 5000);
         super();
     }

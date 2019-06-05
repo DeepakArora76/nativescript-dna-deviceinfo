@@ -233,6 +233,13 @@ export class DeviceInfo {
     return "Apple";
   }
 
+  static batteryLevel(): number {
+    UIDevice.currentDevice.batteryMonitoringEnabled = true;
+    const level = UIDevice.currentDevice.batteryLevel * 100;
+    UIDevice.currentDevice.batteryMonitoringEnabled = false;
+    return level;
+  }
+
   static isTablet(): boolean {
     return UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Pad;
   }
@@ -244,6 +251,13 @@ export class DeviceInfo {
 
   static isEmulator(): boolean {
     return DeviceInfo.deviceId() === "i386" || DeviceInfo.deviceId() === "x86_64";
+  }
+
+  static isBatteryCharging(): boolean {
+    UIDevice.currentDevice.batteryMonitoringEnabled = true;
+    const batteryStatus = UIDevice.currentDevice.batteryState;
+    UIDevice.currentDevice.batteryMonitoringEnabled = false;
+    return batteryStatus === UIDeviceBatteryState.Charging;
   }
 
   private static fileSystemAttributes() {

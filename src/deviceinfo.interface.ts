@@ -14,7 +14,9 @@ export interface DeviceInfoInterface {
   bundleId(): string;
   bundleNumber(): string;
   systemManufacturer(): string;
+  batteryLevel(): number;
   isTablet(): boolean;
   is24Hour(): boolean;
   isEmulator(): boolean;
+  isBatteryCharging(): boolean;
 }

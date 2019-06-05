@@ -15,7 +15,9 @@ export declare class DeviceInfo {
     static bundleId(): string;
     static bundleNumber(): string;
     static systemManufacturer(): string;
+    static batteryLevel(): number;
     static isTablet(): boolean;
     static is24Hour(): boolean;
     static isEmulator(): boolean;
+    static isBatteryCharging(): boolean;
 }

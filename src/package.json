@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-dna-deviceinfo",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "NativeScript plugin to acquire device information.",
 	"main": "deviceinfo",
 	"typings": "index.d.ts",
@@ -45,7 +45,9 @@
 		"Memory",
 		"RAM",
 		"Locale",
-		"CPU"
+    "CPU",
+    "Battery",
+    "Charging"
 	],
 	"author": {
 		"name": "Deepak Arora",

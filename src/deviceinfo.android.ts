@@ -110,6 +110,17 @@ export class DeviceInfo {
     return android.os.Build.MANUFACTURER;
   }
 
+  static batteryLevel(): number {
+    const BM = android.os.BatteryManager;
+    const iFilter = new android.content.IntentFilter(
+      android.content.Intent.ACTION_BATTERY_CHANGED);
+    const ctx = <android.content.Context>Android.context;
+    const batteryStatus = ctx.registerReceiver(null, iFilter);
+    const level = batteryStatus.getIntExtra(BM.EXTRA_LEVEL, -1);
+    const scale = batteryStatus.getIntExtra(BM.EXTRA_SCALE, -1);
+    return (level * 100) / scale;
+  }
+
   static isTablet(): boolean {
     const Configuration = android.content.res.Configuration;
     const ctx = <android.content.Context>Android.context;
@@ -139,6 +150,16 @@ export class DeviceInfo {
       || Build.MODEL.includes("Android SDK built for x86") || Build.MANUFACTURER.includes("Genymotion")
       || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
       || "google_sdk" === Build.PRODUCT;
+  }
+
+  static isBatteryCharging(): boolean {
+    const BM = android.os.BatteryManager;
+    const iFilter = new android.content.IntentFilter(
+      android.content.Intent.ACTION_BATTERY_CHANGED);
+    const ctx = <android.content.Context>Android.context;
+    const batteryStatus = ctx.registerReceiver(null, iFilter);
+    const chargingStatus = batteryStatus.getIntExtra(BM.EXTRA_STATUS, -1);
+    return chargingStatus === BM.BATTERY_STATUS_CHARGING;
   }
 
   private static memoryInfo() {

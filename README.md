@@ -98,6 +98,10 @@ Retrieves the app bundle number.
 
 Retrieves the device manufacturer.
 
+### - batteryLevel
+
+Returns the current battery charge level of the device.
+
 ### - isTablet
 
 Returns 'true' if the device is tablet, otherwise 'false'.
@@ -109,6 +113,10 @@ Returns 'true' if the device configured to 24-hour clock, otherwise 'false'.
 ### - isEmulator
 
 Returns 'true' if the app is running on emulator, otherwise 'false'.
+
+### - isBatteryCharging
+
+Returns 'true' if the device is plugged in and charging, otherwise  'false'.
 
 
 ## APIs in Action
@@ -147,6 +155,12 @@ Returns 'true' if the app is running on emulator, otherwise 'false'.
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
   }
 ```
+
+## Changelogs:
+- 1.0.0: First release
+- 1.0.1: Minor document correction
+- 1.1.0: New APIs related to battery charging status and its charge level.
+
 
 ## License
 
