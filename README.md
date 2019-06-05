@@ -138,9 +138,11 @@ Returns 'true' if the device is plugged in and charging, otherwise  'false'.
     console.log("App bundle id: ", DeviceInfo.bundleId());
     console.log("App bundle number: ", DeviceInfo.bundleNumber());
     console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
+    console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
+    console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
   }
 
   formatBytes(bytes, decimals) {
@@ -157,9 +159,10 @@ Returns 'true' if the device is plugged in and charging, otherwise  'false'.
 ```
 
 ## Changelogs:
-- 1.0.0: First release
-- 1.0.1: Minor document correction
+- 1.0.0: First release.
+- 1.0.1: Minor document correction.
 - 1.1.0: New APIs related to battery charging status and its charge level.
+- 1.1.1: Updated document.
 
 
 ## License
