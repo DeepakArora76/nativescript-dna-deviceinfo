@@ -1,5 +1,38 @@
+import { Carrier } from './deviceinfo.interface';
+
+export const enum RadioAccessTechnology {
+    UNKNOWN,
+    CDMA,
+    CDMAEVDORev0,
+    CDMAEVDORevA,
+    CDMAEVDORevB,
+    EDGE,
+    EHRPD,
+    GPRS,
+    HSPA,
+    HSDPA,
+    HSPAP,
+    HSUPA,
+    NR,
+    IDEN,
+    IWLAN,
+    UMTS,
+    LTE,
+    WCDMA,
+}
+
+export const enum WCTGeneration {
+    _UNKNOWN = "UnKnown",
+    _2G = "2G",
+    _3G = "3G",
+    _4G = "4G",
+    _5G = "5G"
+}
+
 export declare function staticDecorator<T>(): (constructor: T) => void;
 export declare class DeviceInfo {
+    private static radioAccessTechnology;
+    private static deviceNameByCode;
     static totalMemory(): number;
     static freeMemory(): number;
     static totalStorageSpace(): number;
@@ -16,8 +49,11 @@ export declare class DeviceInfo {
     static bundleNumber(): string;
     static systemManufacturer(): string;
     static batteryLevel(): number;
+    static cellularServiceProvider(): Carrier[];
     static isTablet(): boolean;
     static is24Hour(): boolean;
     static isEmulator(): boolean;
     static isBatteryCharging(): boolean;
+    private static fileSystemAttributes;
+    private static prepareCarrier;
 }

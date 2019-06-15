@@ -1,12 +1,13 @@
-<Page class="page"
-    navigatingTo="onNavigatingTo" 
-    xmlns="http://schemas.nativescript.org/tns.xsd">
-    
-    <ActionBar class="action-bar">
-        <Label class="action-bar-title" text="Home"></Label>
-    </ActionBar>
+<Page class="page" navigatingTo="onNavigatingTo"
+  xmlns="http://schemas.nativescript.org/tns.xsd">
 
-    <GridLayout>
-        <!-- Add your page content here -->
-    </GridLayout>
+  <ActionBar class="action-bar">
+    <Label class="action-bar-title" text="Home 1"></Label>
+  </ActionBar>
+
+  <StackLayout>
+    <Button text="Console Output Device Info"
+            class="btn btn-outline btn-active"
+            tap="{{showDeviceInfo}}"/>
+  </StackLayout>
 </Page>

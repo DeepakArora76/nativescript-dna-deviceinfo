@@ -1,17 +1,21 @@
-const nativescript_dna_deviceinfo = require("nativescript-dna-deviceinfo");
-const DeviceInfo = nativescript_dna_deviceinfo.DeviceInfo;
+
+import { EventData } from "tns-core-modules/data/observable";
+import { requestPermissions, hasPermission } from 'nativescript-permissions';
+import { DeviceInfo } from "nativescript-dna-deviceinfo"
 
 import { Observable } from 'tns-core-modules/data/observable';
 
 export class HomeViewModel extends Observable {
     constructor() {
-        setTimeout(()=> {
+        super();
+    }
+    showDeviceInfo(args: EventData) {
         console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
         console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
         console.log("Total storage space: ", this.getSize(DeviceInfo.totalStorageSpace()));
-        console.log("Free storage space: ",this.getSize(DeviceInfo.freeStorageSpace()));
+        console.log("Free storage space: ", this.getSize(DeviceInfo.freeStorageSpace()));
         console.log("Device id: ", DeviceInfo.deviceId());
-        console.log("Device name: ",  DeviceInfo.deviceName());
+        console.log("Device name: ", DeviceInfo.deviceName());
         console.log("Device locale: ", DeviceInfo.deviceLocale());
         console.log("Device country: ", DeviceInfo.deviceCountry());
         console.log("Device timezone: ", DeviceInfo.timezone());
@@ -20,17 +24,32 @@ export class HomeViewModel extends Observable {
         console.log("App version: ", DeviceInfo.appVersion());
         console.log("App bundle id: ", DeviceInfo.bundleId());
         console.log("App bundle number: ", DeviceInfo.bundleNumber());
-        console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
-        console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
+        console.log("System manufacturer: ", DeviceInfo.systemManufacturer());
+        console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
-        console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
-        }, 5000);
-        super();
+        console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
+
+        if (DeviceInfo.systemManufacturer() !== "Apple") {
+            if (hasPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) &&
+                hasPermission(android.Manifest.permission.READ_PHONE_STATE)) {
+                const provider = DeviceInfo.cellularServiceProvider();
+                console.log(provider);
+            }
+
+            else {
+                requestPermissions([android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.READ_PHONE_STATE], "I need permission").then(
+                    () => {
+                        const provider = DeviceInfo.cellularServiceProvider();
+                        console.log(provider);
+                    }
+                );
+            }
+        }
     }
 
-    formatBytes (bytes, decimals) {
+    formatBytes(bytes, decimals) {
         if (bytes === 0) return '0 GB'
         if (isNaN(parseInt(bytes))) return bytes
         if (typeof bytes === 'string') bytes = parseInt(bytes)

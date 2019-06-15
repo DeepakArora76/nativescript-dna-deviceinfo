@@ -1,4 +1,11 @@
-import { DeviceInfoInterface } from './deviceinfo.interface';
+import {
+  Carrier,
+  DeviceInfoInterface,
+  RadioAccessTechnology,
+  wirelessCellularGenerator
+} from './deviceinfo.interface';
+
+import { networkProviderByMccMnc } from './network-provider';
 
 export function staticDecorator<T>() {
   return (constructor: T) => { };
@@ -6,6 +13,20 @@ export function staticDecorator<T>() {
 
 @staticDecorator<DeviceInfoInterface>()
 export class DeviceInfo {
+  private static radioAccessTechnology = new Map([
+    [CTRadioAccessTechnologyGPRS, RadioAccessTechnology.GPRS],
+    [CTRadioAccessTechnologyEdge, RadioAccessTechnology.EDGE],
+    [CTRadioAccessTechnologyWCDMA, RadioAccessTechnology.WCDMA],
+    [CTRadioAccessTechnologyHSDPA, RadioAccessTechnology.HSDPA],
+    [CTRadioAccessTechnologyHSUPA, RadioAccessTechnology.HSUPA],
+    [CTRadioAccessTechnologyCDMA1x, RadioAccessTechnology.CDMA],
+    [CTRadioAccessTechnologyCDMAEVDORev0, RadioAccessTechnology.CDMAEVDORev0],
+    [CTRadioAccessTechnologyCDMAEVDORevA, RadioAccessTechnology.CDMAEVDORevA],
+    [CTRadioAccessTechnologyCDMAEVDORevB, RadioAccessTechnology.CDMAEVDORevB],
+    [CTRadioAccessTechnologyeHRPD, RadioAccessTechnology.EHRPD],
+    [CTRadioAccessTechnologyLTE, RadioAccessTechnology.LTE],
+  ]);
+
   private static deviceNameByCode = {
     "i386": "iPhone Simulator",
     "x86_64": "iPhone Simulator",
@@ -240,6 +261,40 @@ export class DeviceInfo {
     return level;
   }
 
+  static cellularServiceProvider(): Carrier[] {
+    let carriers = [] as Carrier[];
+    const telephonyInfo = CTTelephonyNetworkInfo.alloc().init();
+    const sysVer = Number.parseInt(UIDevice.currentDevice.systemVersion);
+    const sysName = UIDevice.currentDevice.systemName.toLocaleLowerCase();
+    if (sysName === "ios" && sysVer >= 12) {
+      const cellularProviders = telephonyInfo.serviceSubscriberCellularProviders.allValues;
+      for (let i = 0; i < cellularProviders.count; i++) {
+        let carrier = DeviceInfo.prepareCarrier(cellularProviders[i]);
+        const ratValues = telephonyInfo.serviceCurrentRadioAccessTechnology.allValues;
+        if (ratValues.count) {
+          const rat = DeviceInfo.radioAccessTechnology.get(ratValues.objectAtIndex(0));
+          carrier.networkType = rat ? rat : RadioAccessTechnology.UNKNOWN;
+          carrier.generation = wirelessCellularGenerator(rat);
+        }
+        carriers.push(carrier);
+      }
+    } else {
+      const cellularProvider = telephonyInfo.subscriberCellularProvider;
+      if (cellularProvider) {
+        let carrier = DeviceInfo.prepareCarrier(cellularProvider);
+        const ratValues = telephonyInfo.serviceCurrentRadioAccessTechnology.allValues;
+        if (ratValues.count) {
+          const rat = DeviceInfo.radioAccessTechnology.get(ratValues.objectAtIndex(0));
+          carrier.networkType = rat ? rat : RadioAccessTechnology.UNKNOWN;
+          carrier.generation = wirelessCellularGenerator(rat);
+        }
+        carriers.push(carrier);
+      }
+    }
+
+    return carriers;
+  }
+
   static isTablet(): boolean {
     return UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Pad;
   }
@@ -268,5 +323,20 @@ export class DeviceInfo {
 
     return NSFileManager.defaultManager.
       attributesOfFileSystemForPathError(path.lastObject);
+  }
+
+  private static prepareCarrier(cellularProvider: CTCarrier) {
+    let carrier = {} as Carrier;
+    carrier.isoCountryCode = cellularProvider.isoCountryCode;
+    carrier.mobileCountryCode = cellularProvider.mobileCountryCode;
+    carrier.mobileNetworkCode = cellularProvider.mobileNetworkCode;
+
+    const provider = networkProviderByMccMnc(carrier.mobileCountryCode,
+      carrier.mobileNetworkCode);
+    carrier.country = provider ? provider.country : "";
+    carrier.countryCode = provider ? provider.country_code : "";
+    carrier.displayName = provider ? provider.network : cellularProvider.carrierName;
+    carrier.carrierName = cellularProvider.carrierName;
+    return carrier;
   }
 }

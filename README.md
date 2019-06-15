@@ -3,12 +3,22 @@
 
 ![nativescript-dna-deviceinfo](https://raw.githubusercontent.com/DeepakArora76/nativescript-dna-deviceinfo/master/dna-deviceinfo.png)
 
-NativeScript plugin to acquire device info. 
+NativeScript plugin to acquire device info.
 
-### Features
+
+## Features
 
 - Cross-platform APIs for Android and iOS.
 - Offers APIs to obtain device related info.
+
+
+## Changelogs:
+- 1.0.0: First release.
+- 1.0.1: Minor document correction.
+- 1.1.0: New APIs related to battery charging status and its charge level.
+- 1.1.1: Updated document.
+- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
+- 1.2.1: Removed unwanted dependencies.
 
 
 ## Installation
@@ -40,83 +50,178 @@ const DeviceInfo = nativescript_dna_deviceinfo.DeviceInfo;
 
 ### - totalMemory
 
-Retrieves total memory(RAM) size in bytes.
+Returns total memory(RAM) size of a device in bytes.
+
+```javascript
+DeviceInfo.totalMemory();
+```
 
 ### - freeMemory
 
-Retrieves available free memory(RAM) size in bytes.
+Returns free memory(RAM) size of a device in bytes.
+
+```javascript
+DeviceInfo.freeMemory();
+```
 
 ### - totalStorageSpace
 
-Retrieves total storage(internal) space in bytes.
+Returns total storage(internal) space of a device in bytes.
+
+```javascript
+DeviceInfo.totalStorageSpace();
+```
 
 ### - freeStorageSpace
 
-Retrieves free storage(internal) space in bytes.
+Returns free storage(internal) space of a device in bytes.
+
+```javascript
+DeviceInfo.freeStorageSpace();
+```
 
 ### - deviceId
 
-Retrieves device ID.
+Returns a device ID.
+
+```javascript
+DeviceInfo.deviceId();
+```
 
 ### - deviceName
 
-Retrieves the device name.
+Returns a device name.
+
+```javascript
+DeviceInfo.deviceName();
+```
 
 ### - deviceLocale
 
-Retrieves the device configured locale.
+Returns the locale of a device.
+
+```javascript
+DeviceInfo.deviceLocale();
+```
 
 ### - deviceCountry
 
-Retrieves the device country.
+Returns the device country.
+
+```javascript
+DeviceInfo.deviceCountry();
+```
 
 ### - timezone
 
-Retrieves the device time zone.
+Returns the time zone of a device.
+
+```javascript
+DeviceInfo.timezone();
+```
 
 ### - userAgent
 
-Retrieves the device user agent.
+Returns the user agent string of a device.
+
+```javascript
+DeviceInfo.userAgent();
+```
 
 ### - appName
 
-Retrieves the app name.
+Returns an app name.
+
+```javascript
+DeviceInfo.appName();
+```
 
 ### - appVersion
 
-Retrieves the app version.
+Returns an app version.
+
+```javascript
+DeviceInfo.appVersion();
+```
 
 ### - bundleId
 
-Retrieves the app bundle id.
+Returns an app bundle id.
+
+```javascript
+DeviceInfo.bundleId();
+```
 
 ### - bundleNumber
 
-Retrieves the app bundle number.
+Returns an app bundle number.
+
+```javascript
+DeviceInfo.bundleNumber();
+```
 
 ### - systemManufacturer
 
-Retrieves the device manufacturer.
+Returns a device manufacturer.
+
+```javascript
+DeviceInfo.systemManufacturer();
+```
 
 ### - batteryLevel
 
-Returns the current battery charge level of the device.
+Returns the charge level of a device battery.
+
+```javascript
+DeviceInfo.batteryLevel();
+```
 
 ### - isTablet
 
-Returns 'true' if the device is tablet, otherwise 'false'.
+Returns 'true' if a device is a tablet, otherwise 'false'.
+
+```javascript
+DeviceInfo.isTablet();
+```
 
 ### - is24Hour
 
-Returns 'true' if the device configured to 24-hour clock, otherwise 'false'.
+Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
+
+```javascript
+DeviceInfo.is24Hour();
+```
 
 ### - isEmulator
 
-Returns 'true' if the app is running on emulator, otherwise 'false'.
+Returns 'true' if an app is running on an emulator, otherwise 'false'.
+
+```javascript
+DeviceInfo.isEmulator();
+```
 
 ### - isBatteryCharging
 
-Returns 'true' if the device is plugged in and charging, otherwise  'false'.
+Returns 'true' if a device is plugged in and charging, otherwise  'false'.
+
+```javascript
+DeviceInfo.isBatteryCharging();
+```
+
+### - cellularServiceProvider
+
+Returns a list of GSM network providers, carriers, of a device is equipped with.
+
+```javascript
+DeviceInfo.cellularServiceProvider();
+```
+
+Besides other helpful information returned from the API, it can be used to know whether the device has a fast internet connection or not.
+
+- Note for Android users: 
+  * If the **targetSdkVersion is 17**, a device with dual sim, the API returns an "active" carrier. Permission ACCESS_COARSE_LOCATION is needed.
+  * If the **targetSdkVersion is >= 22**, a device with dual sim, the API returns both the carriers. Permission READ_PHONE_STATE is needed. To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
+
 
 
 ## APIs in Action
@@ -157,12 +262,6 @@ Returns 'true' if the device is plugged in and charging, otherwise  'false'.
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
   }
 ```
-
-## Changelogs:
-- 1.0.0: First release.
-- 1.0.1: Minor document correction.
-- 1.1.0: New APIs related to battery charging status and its charge level.
-- 1.1.1: Updated document.
 
 
 ## License
