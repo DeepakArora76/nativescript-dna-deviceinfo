@@ -1,6 +1,6 @@
-import {RadioAccessTechnology, WCTGeneration} from "./index.d";
+import { RadioAccessTechnology, WCTGeneration } from "./index.d";
 
-export {RadioAccessTechnology, WCTGeneration};
+export { RadioAccessTechnology, WCTGeneration };
 
 export interface Carrier {
   carrierName: string;
@@ -15,26 +15,70 @@ export interface Carrier {
 }
 
 export interface DeviceInfoInterface {
+  // Returns total memory(RAM) size of a device in bytes.
   totalMemory(): number;
+
+  // Returns free memory(RAM) size of a device in bytes.
   freeMemory(): number;
+
+  // Returns total storage(internal) space of a device in bytes.
   totalStorageSpace(): number;
+
+  // Returns free storage(internal) space of a device in bytes.
   freeStorageSpace(): number;
+
+  // Returns a device ID.
   deviceId(): string;
+
+  // Returns a device name.
   deviceName(): string;
+
+  // Returns the locale of a device.
   deviceLocale(): string;
+
+  // Returns the device country.
   deviceCountry(): string;
+
+  // Returns the time zone of a device.
   timezone(): string;
+
+  // Returns the user agent string of a device.
   userAgent(): string;
+
+  // Returns an app name.
   appName(): string;
+
+  // Returns an app version.
   appVersion(): string;
+
+  // Returns an app bundle id.
   bundleId(): string;
+
+  // Returns an app bundle number.
   bundleNumber(): string;
+
+  // Returns a device manufacturer.
   systemManufacturer(): string;
+
+  // Returns the charge level of a device battery.
   batteryLevel(): number;
+
+  // Returns a list of GSM network providers, carriers, of a device is equipped with.
   cellularServiceProvider(): Carrier[];
+
+  // Returns list of paths for all mountable volumes
+  externalStoragePaths(): string[];
+
+  // Returns 'true' if a device is a tablet, otherwise 'false'.
   isTablet(): boolean;
+
+  // Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
   is24Hour(): boolean;
+
+  // Returns 'true' if an app is running on an emulator, otherwise 'false'.
   isEmulator(): boolean;
+
+  // Returns 'true' if a device is plugged in and charging, otherwise 'false'.
   isBatteryCharging(): boolean;
 }
 

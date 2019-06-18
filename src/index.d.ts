@@ -31,8 +31,6 @@ export const enum WCTGeneration {
 
 export declare function staticDecorator<T>(): (constructor: T) => void;
 export declare class DeviceInfo {
-    private static radioAccessTechnology;
-    private static deviceNameByCode;
     static totalMemory(): number;
     static freeMemory(): number;
     static totalStorageSpace(): number;
@@ -50,10 +48,9 @@ export declare class DeviceInfo {
     static systemManufacturer(): string;
     static batteryLevel(): number;
     static cellularServiceProvider(): Carrier[];
+    static externalStoragePaths(): string[];
     static isTablet(): boolean;
     static is24Hour(): boolean;
     static isEmulator(): boolean;
     static isBatteryCharging(): boolean;
-    private static fileSystemAttributes;
-    private static prepareCarrier;
 }

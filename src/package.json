@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-dna-deviceinfo",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"description": "NativeScript plugin to acquire device information.",
 	"main": "deviceinfo",
 	"typings": "index.d.ts",
@@ -59,7 +59,12 @@
 		"LTE",
 		"4G",
 		"3G",
-		"5G"
+		"5G",
+		"SD Card",
+		"SDCard",
+		"USB OTG",
+		"USB On The Go",
+		"External Storage Card"
 	],
 	"author": {
 		"name": "Deepak Arora",

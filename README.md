@@ -19,7 +19,7 @@ NativeScript plugin to acquire device info.
 - 1.1.1: Updated document.
 - 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
 - 1.2.1: Removed unwanted dependencies.
-
+- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
 
 ## Installation
 
@@ -95,6 +95,9 @@ Returns a device name.
 ```javascript
 DeviceInfo.deviceName();
 ```
+
+- Notes for Android users:
+* Permission BLUETOOTH is needed.
 
 ### - deviceLocale
 
@@ -218,10 +221,17 @@ DeviceInfo.cellularServiceProvider();
 
 Besides other helpful information returned from the API, it can be used to know whether the device has a fast internet connection or not.
 
-- Note for Android users: 
+- Notes for Android users: 
   * If the **targetSdkVersion is 17**, a device with dual sim, the API returns an "active" carrier. Permission ACCESS_COARSE_LOCATION is needed.
   * If the **targetSdkVersion is >= 22**, a device with dual sim, the API returns both the carriers. Permission READ_PHONE_STATE is needed. To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
 
+### - externalStoragePaths
+
+Returns a list of paths for all mountable volumes (external storage cards, USB O-T-G). The empty list means that no mountable volumes found.
+
+```javascript
+DeviceInfo.externalStoragePaths();
+```
 
 
 ## APIs in Action
@@ -244,6 +254,7 @@ Besides other helpful information returned from the API, it can be used to know 
     console.log("App bundle number: ", DeviceInfo.bundleNumber());
     console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
     console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
+    console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());

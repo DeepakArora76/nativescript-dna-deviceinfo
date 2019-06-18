@@ -4,25 +4,59 @@ import {
   Carrier,
   DeviceInfoInterface,
   RadioAccessTechnology,
-  WCTGeneration,
   wirelessCellularGenerator,
 } from './deviceinfo.interface';
 
 import { networkProviderByMcc, networkProviderByMccMnc } from './network-provider';
 
-interface NetworkProviderInfo {
-  mcc: number;
-  mnc: number;
-  generation: WCTGeneration;
-}
-
 export function staticDecorator<T>() {
   return (constructor: T) => { };
 }
 
-type TelephonyManager = android.telephony.TelephonyManager;
+const JELLY_BEAN_MR1 = 17;
+const JELLY_BEAN_MR2 = 18;
+const LOLLIPOP = 21;
+const LOLLIPOP_MR1 = 22;
+
+/** Current network is GPRS */
+const NETWORK_TYPE_GPRS = 1;
+/** Current network is EDGE */
+const NETWORK_TYPE_EDGE = 2;
+/** Current network is UMTS */
+const NETWORK_TYPE_UMTS = 3;
+/** Current network is CDMA: Either IS95A or IS95B*/
+const NETWORK_TYPE_CDMA = 4;
+/** Current network is EVDO revision 0*/
+const NETWORK_TYPE_EVDO_0 = 5;
+/** Current network is EVDO revision A*/
+const NETWORK_TYPE_EVDO_A = 6;
+/** Current network is HSDPA */
+const NETWORK_TYPE_HSDPA = 8;
+/** Current network is HSUPA */
+const NETWORK_TYPE_HSUPA = 9;
+/** Current network is HSPA */
+const NETWORK_TYPE_HSPA = 10;
+/** Current network is iDen */
+const NETWORK_TYPE_IDEN = 11;
+/** Current network is EVDO revision B*/
+const NETWORK_TYPE_EVDO_B = 12;
+/** Current network is LTE */
+const NETWORK_TYPE_LTE = 13;
+/** Current network is eHRPD */
+const NETWORK_TYPE_EHRPD = 14;
+/** Current network is HSPA+ */
+const NETWORK_TYPE_HSPAP = 15;
+/** Current network is IWLAN */
+const NETWORK_TYPE_IWLAN = 18;
+
+const Context = android.content.Context;
+const StorageManager = android.os.storage.StorageManager;
+
+type ContextType = android.content.Context;
 type SubscriptionManager = android.telephony.SubscriptionManager;
 type SubscriptionInfo = android.telephony.SubscriptionInfo;
+type StorageManagerType = android.os.storage.StorageManager;
+type TelephonyManager = android.telephony.TelephonyManager;
 
 @staticDecorator<DeviceInfoInterface>()
 export class DeviceInfo {
@@ -51,6 +85,14 @@ export class DeviceInfo {
     return -1;
   }
 
+  static totalExternalStorageSpace(): number {
+    return null;
+  }
+
+  static freeExternalStorageSpace(): number {
+    return null;
+  }
+
   static deviceId(): string {
     const deviceId = android.os.Build.BOARD;
     if (deviceId) {
@@ -63,7 +105,7 @@ export class DeviceInfo {
 
   static deviceName(): string {
     let deviceName = "Unknown";
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH");
     if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
       try {
@@ -78,9 +120,9 @@ export class DeviceInfo {
   }
 
   static deviceLocale(): string {
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const current = ctx.getResources().getConfiguration().locale;
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+    if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
       return current.toLanguageTag();
     } else {
       return String().concat(current.getLanguage(), "-", current.getCountry());
@@ -88,7 +130,7 @@ export class DeviceInfo {
   }
 
   static deviceCountry(): string {
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const current = ctx.getResources().getConfiguration().locale;
     return current.getCountry();
   }
@@ -102,19 +144,19 @@ export class DeviceInfo {
   }
 
   static appName(): string {
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     return ctx.getApplicationInfo().loadLabel(ctx.getPackageManager());
   }
 
   static appVersion(): string {
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const pckMgr = ctx.getPackageManager();
     const pckInfo = pckMgr.getPackageInfo(ctx.getPackageName(), 0);
     return pckInfo.versionName;
   }
 
   static bundleId(): string {
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     return ctx.getPackageName();
   }
 
@@ -130,7 +172,7 @@ export class DeviceInfo {
     const BM = android.os.BatteryManager;
     const iFilter = new android.content.IntentFilter(
       android.content.Intent.ACTION_BATTERY_CHANGED);
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const batteryStatus = ctx.registerReceiver(null, iFilter);
     const level = batteryStatus.getIntExtra(BM.EXTRA_LEVEL, -1);
     const scale = batteryStatus.getIntExtra(BM.EXTRA_SCALE, -1);
@@ -180,13 +222,33 @@ export class DeviceInfo {
         carriers.push(carrier);
       }
     }
-
     return carriers;
+  }
+
+  static externalStoragePaths(): string[] {
+    let paths = [] as string[];
+    const ctx = <ContextType>Android.context;
+    const sm = <StorageManager>ctx.getSystemService(Context.STORAGE_SERVICE);
+    try {
+      const method = StorageManager.class.getMethod("getVolumePaths", []);
+      method.setAccessible(true);
+      const invoke = method.invoke(sm, []);
+      const externalPaths = invoke as string[];
+      for (let i = 0; i < externalPaths.length; i++) {
+        const path = externalPaths[i];
+        if (DeviceInfo.checkStorageMountState(path)) {
+          paths.push(path);
+        }
+      }
+    } catch (error) {
+      console.log((<Error>error).message);
+    }
+    return paths;
   }
 
   static isTablet(): boolean {
     const Configuration = android.content.res.Configuration;
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const layout = ctx.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
     if (layout !== Configuration.SCREENLAYOUT_SIZE_LARGE && layout !== Configuration.SCREENLAYOUT_SIZE_XLARGE) {
       return false;
@@ -219,15 +281,19 @@ export class DeviceInfo {
     const BM = android.os.BatteryManager;
     const iFilter = new android.content.IntentFilter(
       android.content.Intent.ACTION_BATTERY_CHANGED);
-    const ctx = <android.content.Context>Android.context;
+    const ctx = <ContextType>Android.context;
     const batteryStatus = ctx.registerReceiver(null, iFilter);
     const chargingStatus = batteryStatus.getIntExtra(BM.EXTRA_STATUS, -1);
     return chargingStatus === BM.BATTERY_STATUS_CHARGING;
   }
 
+  static isExternalStorageAvailable(): boolean {
+    return false;
+  }
+
   private static memoryInfo() {
     const actMgr = <android.app.ActivityManager>(getNativeApplication()
-      .getSystemService(android.content.Context.ACTIVITY_SERVICE));
+      .getSystemService(Context.ACTIVITY_SERVICE));
 
     const memInfo = new android.app.ActivityManager.MemoryInfo();
     actMgr.getMemoryInfo(memInfo);
@@ -236,7 +302,7 @@ export class DeviceInfo {
 
   private static totalSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+    if (android.os.Build.VERSION.SDK_INT >= JELLY_BEAN_MR2) {
       return statFs.getBlockCountLong() * statFs.getBlockSizeLong();
     }
     return statFs.getBlockCount() * statFs.getBlockSize();
@@ -244,7 +310,7 @@ export class DeviceInfo {
 
   private static freeSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR2) {
+    if (android.os.Build.VERSION.SDK_INT >= JELLY_BEAN_MR2) {
       return statFs.getAvailableBlocksLong() * statFs.getBlockSizeLong();
     }
     return statFs.getAvailableBlocks() * statFs.getBlockSize();
@@ -274,7 +340,6 @@ export class DeviceInfo {
   }
 
   private static activeProviderRadioAccessTechnology(): RadioAccessTechnology {
-    const TelephonyManager = android.telephony.TelephonyManager;
     const tm = DeviceInfo.telephonyManager();
     if (tm == null) {
       return RadioAccessTechnology.UNKNOWN;
@@ -282,21 +347,21 @@ export class DeviceInfo {
 
     const NETWORK_TYPE_NR = 20; // Added in API level 29
     switch (tm.getNetworkType()) {
-      case TelephonyManager.NETWORK_TYPE_CDMA: return RadioAccessTechnology.CDMA;
-      case TelephonyManager.NETWORK_TYPE_EDGE: return RadioAccessTechnology.EDGE;
-      case TelephonyManager.NETWORK_TYPE_EVDO_0: return RadioAccessTechnology.CDMAEVDORev0;
-      case TelephonyManager.NETWORK_TYPE_EVDO_A: return RadioAccessTechnology.CDMAEVDORevA;
-      case TelephonyManager.NETWORK_TYPE_EVDO_B: return RadioAccessTechnology.CDMAEVDORevB;
-      case TelephonyManager.NETWORK_TYPE_GPRS: return RadioAccessTechnology.GPRS;
-      case TelephonyManager.NETWORK_TYPE_HSDPA: return RadioAccessTechnology.HSDPA;
-      case TelephonyManager.NETWORK_TYPE_HSPA: return RadioAccessTechnology.HSPA;
-      case TelephonyManager.NETWORK_TYPE_HSUPA: return RadioAccessTechnology.HSUPA;
-      case TelephonyManager.NETWORK_TYPE_HSPAP: return RadioAccessTechnology.HSPAP;
-      case TelephonyManager.NETWORK_TYPE_UMTS: return RadioAccessTechnology.UMTS;
-      case TelephonyManager.NETWORK_TYPE_EHRPD: return RadioAccessTechnology.EHRPD;
-      case TelephonyManager.NETWORK_TYPE_IDEN: return RadioAccessTechnology.IDEN;
-      case TelephonyManager.NETWORK_TYPE_LTE: return RadioAccessTechnology.LTE;
-      case TelephonyManager.NETWORK_TYPE_IWLAN: return RadioAccessTechnology.IWLAN;
+      case NETWORK_TYPE_CDMA: return RadioAccessTechnology.CDMA;
+      case NETWORK_TYPE_EDGE: return RadioAccessTechnology.EDGE;
+      case NETWORK_TYPE_EVDO_0: return RadioAccessTechnology.CDMAEVDORev0;
+      case NETWORK_TYPE_EVDO_A: return RadioAccessTechnology.CDMAEVDORevA;
+      case NETWORK_TYPE_EVDO_B: return RadioAccessTechnology.CDMAEVDORevB;
+      case NETWORK_TYPE_GPRS: return RadioAccessTechnology.GPRS;
+      case NETWORK_TYPE_HSDPA: return RadioAccessTechnology.HSDPA;
+      case NETWORK_TYPE_HSPA: return RadioAccessTechnology.HSPA;
+      case NETWORK_TYPE_HSUPA: return RadioAccessTechnology.HSUPA;
+      case NETWORK_TYPE_HSPAP: return RadioAccessTechnology.HSPAP;
+      case NETWORK_TYPE_UMTS: return RadioAccessTechnology.UMTS;
+      case NETWORK_TYPE_EHRPD: return RadioAccessTechnology.EHRPD;
+      case NETWORK_TYPE_IDEN: return RadioAccessTechnology.IDEN;
+      case NETWORK_TYPE_LTE: return RadioAccessTechnology.LTE;
+      case NETWORK_TYPE_IWLAN: return RadioAccessTechnology.IWLAN;
       case NETWORK_TYPE_NR: return RadioAccessTechnology.NR;
       default: return RadioAccessTechnology.UNKNOWN;
     }
@@ -324,63 +389,10 @@ export class DeviceInfo {
     return "";
   }
 
-  private static activeProviderName(): string {
-    const tm = DeviceInfo.telephonyManager();
-    if (tm) {
-      const operator = tm.getSimOperatorName();
-      if (operator !== "") {
-        return operator.substring(3);
-      }
-    }
-    return "";
-  }
-
-  private static networkProviderInfos(): NetworkProviderInfo[] {
-    const tm = DeviceInfo.telephonyManager();
-    if (tm == null) {
-      return [];
-    }
-
-    let networkProviderList = [] as NetworkProviderInfo[];
-    const allCellInfo = tm.getAllCellInfo();
-    for (let i = 0; i < allCellInfo.size(); i++) {
-      let carrier = {} as Carrier;
-      if (allCellInfo.get(i) instanceof android.telephony.CellInfoCdma) {
-        networkProviderList.push({
-          mcc: 0,
-          mnc: 0,
-          generation: WCTGeneration._UNKNOWN
-        });
-      } else if (allCellInfo.get(i) instanceof android.telephony.CellInfoGsm) {
-        const ci = allCellInfo.get(i) as android.telephony.CellInfoGsm;
-        networkProviderList.push({
-          mcc: ci.getCellIdentity().getMcc(),
-          mnc: ci.getCellIdentity().getMnc(),
-          generation: WCTGeneration._2G
-        });
-      } else if (allCellInfo.get(i) instanceof android.telephony.CellInfoWcdma) {
-        const ci = allCellInfo.get(i) as android.telephony.CellInfoWcdma;
-        networkProviderList.push({
-          mcc: ci.getCellIdentity().getMcc(),
-          mnc: ci.getCellIdentity().getMnc(),
-          generation: WCTGeneration._3G
-        });
-      } else if (allCellInfo.get(i) instanceof android.telephony.CellInfoLte) {
-        const ci = allCellInfo.get(i) as android.telephony.CellInfoLte;
-        networkProviderList.push({
-          mcc: ci.getCellIdentity().getMcc(),
-          mnc: ci.getCellIdentity().getMnc(),
-          generation: WCTGeneration._4G
-        });
-      }
-    }
-    return networkProviderList;
-  }
-
   private static subscriptionManager(): SubscriptionManager | null {
     const Build = android.os.Build;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-      const ctx = <android.content.Context>Android.context;
+    if (Build.VERSION.SDK_INT >= LOLLIPOP_MR1) {
+      const ctx = <ContextType>Android.context;
       const permission = android.Manifest.permission.READ_PHONE_STATE;
       const contextCompat = android.support.v4.content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
@@ -393,15 +405,36 @@ export class DeviceInfo {
 
   private static telephonyManager(): TelephonyManager | null {
     const Build = android.os.Build;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      const ctx = <android.content.Context>Android.context;
+    if (Build.VERSION.SDK_INT >= JELLY_BEAN_MR1) {
+      const ctx = <ContextType>Android.context;
       const permission = android.Manifest.permission.ACCESS_COARSE_LOCATION;
       const contextCompat = android.support.v4.content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
       if (permissionStatus === android.content.pm.PackageManager.PERMISSION_GRANTED) {
-        return ctx.getSystemService(android.content.Context.TELEPHONY_SERVICE) as TelephonyManager;
+        return ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager;
       }
     }
     return null;
+  }
+
+  private static checkStorageMountState(mountPoint: string): boolean {
+    if (mountPoint == null) {
+      return false;
+    }
+
+    const context = <ContextType>Android.context;
+    const storageManager = <StorageManagerType>context.getSystemService(Context.STORAGE_SERVICE);
+    try {
+      const method = StorageManager.class.getDeclaredMethod(
+        "getVolumeState",
+        [java.lang.String.class]);
+      method.setAccessible(true);
+
+      const mountStatus = method.invoke(storageManager, [mountPoint]) as string;
+      return android.os.Environment.MEDIA_MOUNTED === mountStatus;
+    } catch (error) {
+      console.log((<Error>error).message);
+    }
+    return false;
   }
 }

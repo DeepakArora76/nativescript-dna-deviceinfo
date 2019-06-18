@@ -191,6 +191,14 @@ export class DeviceInfo {
     return freeStorageSpace;
   }
 
+  static totalExternalStorageSpace(): number {
+    return null;
+  }
+
+  static freeExternalStorageSpace(): number {
+    return null;
+  }
+
   static deviceId(): string {
     let systemInfo = new interop.Reference<utsname>();
     uname(systemInfo);
@@ -291,8 +299,11 @@ export class DeviceInfo {
         carriers.push(carrier);
       }
     }
-
     return carriers;
+  }
+
+  static externalStoragePaths(): string[] {
+    return [];
   }
 
   static isTablet(): boolean {

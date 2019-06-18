@@ -9,6 +9,7 @@ export class HomeViewModel extends Observable {
     constructor() {
         super();
     }
+
     showDeviceInfo(args: EventData) {
         console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
         console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
@@ -26,6 +27,7 @@ export class HomeViewModel extends Observable {
         console.log("App bundle number: ", DeviceInfo.bundleNumber());
         console.log("System manufacturer: ", DeviceInfo.systemManufacturer());
         console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
+        console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
