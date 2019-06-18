@@ -97,7 +97,7 @@ DeviceInfo.deviceName();
 ```
 
 - Notes for Android users:
-* Permission BLUETOOTH is needed.
+  * Permission BLUETOOTH is needed.
 
 ### - deviceLocale
 
