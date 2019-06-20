@@ -14,6 +14,39 @@ export interface Carrier {
   networkType: RadioAccessTechnology;
 }
 
+export interface StorageVolume {
+  // Path of the mountable volume
+  path: string;
+
+  // Total size of the mountable volume in bytes.
+  totalSize: number;
+
+  // Available size of the mountable volume in bytes.
+  availableSize: number;
+
+  // The number of available bytes at which the given path is considered.
+  // running low on storage.
+  lowBytesLimit: number;
+
+  // The number of available bytes at which the given path is considered full.
+  fullBytesLimit: number;
+
+  // A user-visible description of the volume.
+  description: string;
+
+  // True if the volume is removable.
+  isRemovableStorage: boolean;
+
+  // True if this volume can be shared via USB mass storage.
+  isAllowMassStorage: boolean;
+
+  // True if the volume is emulated.
+  isEmulated: boolean;
+
+  // True if the volume is the primary shared/external storage
+  isPrimary: boolean;
+}
+
 export interface DeviceInfoInterface {
   // Returns total memory(RAM) size of a device in bytes.
   totalMemory(): number;
@@ -66,8 +99,11 @@ export interface DeviceInfoInterface {
   // Returns a list of GSM network providers, carriers, of a device is equipped with.
   cellularServiceProvider(): Carrier[];
 
-  // Returns list of paths for all mountable volumes
+  // Returns list of paths for all mountable volumes.
   externalStoragePaths(): string[];
+
+  // Returns a list of Storage
+  storageVolumeInfo(): StorageVolume[];
 
   // Returns 'true' if a device is a tablet, otherwise 'false'.
   isTablet(): boolean;

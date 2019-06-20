@@ -2,6 +2,7 @@ import {
   Carrier,
   DeviceInfoInterface,
   RadioAccessTechnology,
+  StorageVolume,
   wirelessCellularGenerator
 } from './deviceinfo.interface';
 
@@ -303,6 +304,10 @@ export class DeviceInfo {
   }
 
   static externalStoragePaths(): string[] {
+    return [];
+  }
+
+  static storageVolumeInfo(): StorageVolume[] {
     return [];
   }
 

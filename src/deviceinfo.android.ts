@@ -4,6 +4,7 @@ import {
   Carrier,
   DeviceInfoInterface,
   RadioAccessTechnology,
+  StorageVolume,
   wirelessCellularGenerator,
 } from './deviceinfo.interface';
 
@@ -140,7 +141,12 @@ export class DeviceInfo {
   }
 
   static userAgent(): string {
-    return android.webkit.WebSettings.getDefaultUserAgent(Android.context);
+    try {
+      return android.webkit.WebSettings.getDefaultUserAgent(Android.context);
+    } catch (error) {
+      console.log(<Error>error.message);
+    }
+    return "";
   }
 
   static appName(): string {
@@ -232,8 +238,7 @@ export class DeviceInfo {
     try {
       const method = StorageManager.class.getMethod("getVolumePaths", []);
       method.setAccessible(true);
-      const invoke = method.invoke(sm, []);
-      const externalPaths = invoke as string[];
+      const externalPaths = method.invoke(sm, []) as string[];
       for (let i = 0; i < externalPaths.length; i++) {
         const path = externalPaths[i];
         if (DeviceInfo.checkStorageMountState(path)) {
@@ -244,6 +249,65 @@ export class DeviceInfo {
       console.log((<Error>error).message);
     }
     return paths;
+  }
+
+  static storageVolumeInfo(): StorageVolume[] {
+    let storageVolumesCollection = [] as StorageVolume[];
+    const ctx = <ContextType>Android.context;
+    const sm = <StorageManager>ctx.getSystemService(Context.STORAGE_SERVICE);
+    try {
+      const method = StorageManager.class.getMethod("getVolumeList", []);
+      const storageVolumes = method.invoke(sm, []) as android.os.storage.StorageVolume[];
+      if (storageVolumes == null || storageVolumes.length <= 0) {
+        return [];
+      }
+
+      for (let i = 0; i < storageVolumes.length; i++) {
+        try {
+          const getStateMethod = storageVolumes[i].getClass().getMethod("getState", []);
+          const mountState = getStateMethod.invoke(storageVolumes[i], []) as string;
+          if (android.os.Environment.MEDIA_MOUNTED === mountState) {
+            let sv = {} as StorageVolume;
+
+            let method = storageVolumes[i].getClass().getMethod("getPath", []);
+            sv.path = method.invoke(storageVolumes[i], []);
+
+            method = storageVolumes[i].getClass().getMethod("getDescription", [Context.class]);
+            sv.description = method.invoke(storageVolumes[i], [ctx]);
+
+            method = storageVolumes[i].getClass().getMethod("isRemovable", []);
+            sv.isRemovableStorage = method.invoke(storageVolumes[i], []).booleanValue();
+
+            method = storageVolumes[i].getClass().getMethod("allowMassStorage", []);
+            sv.isAllowMassStorage = (method.invoke(storageVolumes[i], []));
+
+            method = storageVolumes[i].getClass().getMethod("isEmulated", []);
+            sv.isEmulated = method.invoke(storageVolumes[i], []).booleanValue();
+
+            method = storageVolumes[i].getClass().getMethod("isPrimary", []);
+            sv.isPrimary = method.invoke(storageVolumes[i], []).booleanValue();
+
+            const file = new java.io.File(sv.path);
+            method = StorageManager.class.getMethod("getStorageLowBytes", [java.io.File.class]);
+            sv.lowBytesLimit = method.invoke(sm, [file]).longValue();
+
+            method = StorageManager.class.getMethod("getStorageFullBytes", [java.io.File.class]);
+            sv.fullBytesLimit = method.invoke(sm, [file]).longValue();
+
+            sv.totalSize = DeviceInfo.totalSpace(file);
+            sv.availableSize = DeviceInfo.freeSpace(file);
+
+            storageVolumesCollection.push(sv);
+          }
+        } catch (error) {
+          console.log(<Error>error.message);
+        }
+      }
+    } catch (error) {
+      console.log(<Error>error.message);
+    }
+
+    return storageVolumesCollection;
   }
 
   static isTablet(): boolean {
@@ -430,10 +494,10 @@ export class DeviceInfo {
         [java.lang.String.class]);
       method.setAccessible(true);
 
-      const mountStatus = method.invoke(storageManager, [mountPoint]) as string;
-      return android.os.Environment.MEDIA_MOUNTED === mountStatus;
+      const mountState = method.invoke(storageManager, [mountPoint]) as string;
+      return android.os.Environment.MEDIA_MOUNTED === mountState;
     } catch (error) {
-      console.log((<Error>error).message);
+      console.log(<Error>error.message);
     }
     return false;
   }
