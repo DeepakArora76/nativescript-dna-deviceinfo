@@ -97,13 +97,13 @@ export interface DeviceInfoInterface {
   batteryLevel(): number;
 
   // Returns a list of GSM network providers, carriers, of a device is equipped with.
-  cellularServiceProvider(): Carrier[];
+  cellularServiceProviders(): Carrier[];
 
   // Returns list of paths for all mountable volumes.
   externalStoragePaths(): string[];
 
   // Returns a list of Storage
-  storageVolumeInfo(): StorageVolume[];
+  storageVolumes(): StorageVolume[];
 
   // Returns 'true' if a device is a tablet, otherwise 'false'.
   isTablet(): boolean;

@@ -185,7 +185,7 @@ export class DeviceInfo {
     return (level * 100) / scale;
   }
 
-  static cellularServiceProvider(): Carrier[] {
+  static cellularServiceProviders(): Carrier[] {
     let carriers = [] as Carrier[];
 
     const sm = DeviceInfo.subscriptionManager();
@@ -251,7 +251,7 @@ export class DeviceInfo {
     return paths;
   }
 
-  static storageVolumeInfo(): StorageVolume[] {
+  static storageVolumes(): StorageVolume[] {
     let storageVolumesCollection = [] as StorageVolume[];
     const ctx = <ContextType>Android.context;
     const sm = <StorageManager>ctx.getSystemService(Context.STORAGE_SERVICE);

@@ -270,7 +270,7 @@ export class DeviceInfo {
     return level;
   }
 
-  static cellularServiceProvider(): Carrier[] {
+  static cellularServiceProviders(): Carrier[] {
     let carriers = [] as Carrier[];
     const telephonyInfo = CTTelephonyNetworkInfo.alloc().init();
     const sysVer = Number.parseInt(UIDevice.currentDevice.systemVersion);
@@ -307,7 +307,7 @@ export class DeviceInfo {
     return [];
   }
 
-  static storageVolumeInfo(): StorageVolume[] {
+  static storageVolumes(): StorageVolume[] {
     return [];
   }
 

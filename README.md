@@ -21,7 +21,7 @@ NativeScript plugin to acquire device info.
 - 1.2.1: Removed unwanted dependencies.
 - 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
 - 1.4.0: Added storageVolumeInfo API.
-
+- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
 
 ## Installation
 
@@ -213,12 +213,12 @@ Returns 'true' if a device is plugged in and charging, otherwise  'false'.
 DeviceInfo.isBatteryCharging();
 ```
 
-### - cellularServiceProvider
+### - cellularServiceProviders
 
 Returns a list of GSM network providers, *Carrier*, of a device is equipped with.
 
 ```javascript
-let carriers = DeviceInfo.cellularServiceProvider();
+let carriers = DeviceInfo.cellularServiceProviders();
 console.log(carriers);
 ```
 
@@ -252,12 +252,12 @@ Returns a list of paths for all mountable volumes (external storage cards, USB O
 DeviceInfo.externalStoragePaths();
 ```
 
-### - storageVolumeInfo
+### - storageVolumes
 
 Returns a list of *StorageVolume*. An empty list means that no mountable volumes found.
 
 ```javascript
-let storageVolumes = DeviceInfo.storageVolumeInfo();
+let storageVolumes = DeviceInfo.storageVolumes();
 console.log(storageVolumes);
 ```
 
@@ -300,6 +300,7 @@ interface StorageVolume {
     console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
     console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
     console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
+    console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());

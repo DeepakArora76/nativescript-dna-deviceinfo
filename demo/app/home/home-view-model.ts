@@ -28,7 +28,7 @@ export class HomeViewModel extends Observable {
         console.log("System manufacturer: ", DeviceInfo.systemManufacturer());
         console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
         console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
-        console.log("Storage Volume Info: ", DeviceInfo.storageVolumeInfo());
+        console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
@@ -37,14 +37,14 @@ export class HomeViewModel extends Observable {
         if (DeviceInfo.systemManufacturer() !== "Apple") {
             if (hasPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) &&
                 hasPermission(android.Manifest.permission.READ_PHONE_STATE)) {
-                const provider = DeviceInfo.cellularServiceProvider();
+                const provider = DeviceInfo.cellularServiceProviders();
                 console.log(provider);
             }
 
             else {
                 requestPermissions([android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.READ_PHONE_STATE], "I need permission").then(
                     () => {
-                        const provider = DeviceInfo.cellularServiceProvider();
+                        const provider = DeviceInfo.cellularServiceProviders();
                         console.log(provider);
                     }
                 );

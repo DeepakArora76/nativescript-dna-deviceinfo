@@ -47,9 +47,9 @@ export declare class DeviceInfo {
   static bundleNumber(): string;
   static systemManufacturer(): string;
   static batteryLevel(): number;
-  static cellularServiceProvider(): Carrier[];
+  static cellularServiceProviders(): Carrier[];
   static externalStoragePaths(): string[];
-  static storageVolumeInfo(): StorageVolume[];
+  static storageVolumes(): StorageVolume[];
   static isTablet(): boolean;
   static is24Hour(): boolean;
   static isEmulator(): boolean;
