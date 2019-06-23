@@ -22,6 +22,11 @@ NativeScript plugin to acquire device info.
 - 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
 - 1.4.0: Added storageVolumeInfo API.
 - 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
+- 2.1.0: Added API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.1.1: The documentation is updated.
+- 2.1.2: Added nativescript-custom-entitlements to dev dependencies to demo app.
+- 2.1.3: Adjusted license from Apache-2.0 to MIT.
+
 
 ## Installation
 
@@ -262,27 +267,27 @@ DeviceInfo.wifiSSID();
 - Notes for iOS users:
   * To use this API on iOS 12 and later, enable the Access WiFi Information.
   * To use this API on iOS 13 and later, enable the Access WiFi Information, and 
-    * must also meet at least one of criteria below
-      * Apps with permission to access location
-      * Currently enabled VPN app
-      * NEHotspotConfiguration (only Wi-Fi networks that the app configured)
-  * Kindly visit the link [Access WiFi Information] (https://developer.apple.com/account/ios/identifier/bundle) to enable it for your app with the id "nativescript.id" in package.json.
-  * Also, add this to your App_Resources/iOS/app.entitlements (mind the name!) file:
-  ```xml
-    <key>com.apple.developer.networking.wifi-info</key>
-    <true/>
-  ```
-  * The demo app has this:
-   ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/  PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
+      * must also meet at least one of criteria below
+        * Apps with permission to access location
+        * Currently enabled VPN app
+        * NEHotspotConfiguration (only Wi-Fi networks that the app configured)
+  * Kindly visit the link [Access WiFi Information](https://developer.apple.com/account/ios/identifier/bundle) to enable it for your app with the id "nativescript.id" in package.json.
+  * Also, add this to your App_Resources/iOS/app.entitlements (mind the name!)  file:
+    ```xml
       <key>com.apple.developer.networking.wifi-info</key>
       <true/>
-    </dict>
-    </plist>
-  ```
+    ```
+  * The demo app has this:
+    ```xml
+     <?xml version="1.0" encoding="UTF-8"?>
+     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/  PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>com.apple.developer.networking.wifi-info</key>
+            <true/>
+          </dict>
+      </plist>
+    ```
 
 ### - isTablet
 
@@ -339,6 +344,7 @@ DeviceInfo.isBatteryCharging();
     console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
     console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
     console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
+    console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
