@@ -105,6 +105,9 @@ export interface DeviceInfoInterface {
   // Returns a list of Storage
   storageVolumes(): StorageVolume[];
 
+  // Returns WiFi SSID
+  wifiSSID(): string;
+
   // Returns 'true' if a device is a tablet, otherwise 'false'.
   isTablet(): boolean;
 

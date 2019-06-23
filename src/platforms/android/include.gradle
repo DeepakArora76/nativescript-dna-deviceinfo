@@ -1,7 +1,10 @@
 /* Include.gradle configuration: http://docs.nativescript.org/plugins/plugins#includegradle-specification */
 
 android {
-	
+	    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 17
+    }
 }
 
 dependencies {

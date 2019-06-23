@@ -311,6 +311,18 @@ export class DeviceInfo {
     return [];
   }
 
+  static wifiSSID(): string {
+    const interfaces = CNCopySupportedInterfaces();
+    if (interfaces.count) {
+      const interfaceName = CFArrayGetValueAtIndex(interfaces, 0);
+      const dict = CNCopyCurrentNetworkInfo(interfaceName as unknown as string);
+      if (dict !== null && dict.count) {
+        return dict.objectForKey(kCNNetworkInfoKeySSID);
+      }
+    }
+    return "";
+  }
+
   static isTablet(): boolean {
     return UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Pad;
   }

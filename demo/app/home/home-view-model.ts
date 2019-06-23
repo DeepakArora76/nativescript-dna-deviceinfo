@@ -29,6 +29,7 @@ export class HomeViewModel extends Observable {
         console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
         console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
         console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
+        console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());

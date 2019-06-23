@@ -306,8 +306,36 @@ export class DeviceInfo {
     } catch (error) {
       console.log(<Error>error.message);
     }
-
     return storageVolumesCollection;
+  }
+
+  static wifiSSID(): string {
+    const ctx = <ContextType>Android.context;
+    const permission = android.Manifest.permission;
+    const contextCompat = android.support.v4.content.ContextCompat;
+    const PackageManager = android.content.pm.PackageManager;
+
+    const permissionCL = permission.ACCESS_COARSE_LOCATION;
+    const permissionStatusCL = contextCompat.checkSelfPermission(ctx, permissionCL);
+    const permissionPresentForCL = permissionStatusCL === PackageManager.PERMISSION_GRANTED;
+
+    const permissionFL = permission.ACCESS_FINE_LOCATION;
+    const permissionStatusFL = contextCompat.checkSelfPermission(ctx, permissionFL);
+    const permissionPresentForFL = permissionStatusFL === PackageManager.PERMISSION_GRANTED;
+
+    const permissionWS = permission.ACCESS_WIFI_STATE;
+    const permissionStatusWS = contextCompat.checkSelfPermission(ctx, permissionWS);
+    const permissionPresentForWS = permissionStatusWS === PackageManager.PERMISSION_GRANTED;
+
+    const permissionPresent = ((permissionPresentForCL || permissionPresentForFL) && permissionPresentForWS);
+    if (permissionPresent) {
+      const ws = <android.net.wifi.WifiManager>ctx.getSystemService(Context.WIFI_SERVICE);
+      const wifiInfo = ws.getConnectionInfo();
+      if (wifiInfo.getSupplicantState() === android.net.wifi.SupplicantState.COMPLETED) {
+        return wifiInfo.getSSID();
+      }
+    }
+    return "";
   }
 
   static isTablet(): boolean {

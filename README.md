@@ -8,7 +8,7 @@ NativeScript plugin to acquire device info.
 
 ## Features
 
-- Cross-platform APIs for Android and iOS.
+- Cross-platform APIs for Android and iOS to retrieve or query device related information.
 - Offers APIs to obtain device related info.
 
 
@@ -22,6 +22,11 @@ NativeScript plugin to acquire device info.
 - 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
 - 1.4.0: Added storageVolumeInfo API.
 - 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
+- 2.1.0: Added API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.1.1: The documentation is updated.
+- 2.1.2: Added nativescript-custom-entitlements to dev dependencies to demo app.
+- 2.1.3: Adjusted license from Apache-2.0 to MIT.
+
 
 ## Installation
 
@@ -98,7 +103,7 @@ Returns a device name.
 DeviceInfo.deviceName();
 ```
 
-- Note for Android users:
+- Notes for Android users:
   * Permission BLUETOOTH is needed.
 
 ### - deviceLocale
@@ -181,38 +186,6 @@ Returns the charge level of a device battery.
 DeviceInfo.batteryLevel();
 ```
 
-### - isTablet
-
-Returns 'true' if a device is a tablet, otherwise 'false'.
-
-```javascript
-DeviceInfo.isTablet();
-```
-
-### - is24Hour
-
-Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
-
-```javascript
-DeviceInfo.is24Hour();
-```
-
-### - isEmulator
-
-Returns 'true' if an app is running on an emulator, otherwise 'false'.
-
-```javascript
-DeviceInfo.isEmulator();
-```
-
-### - isBatteryCharging
-
-Returns 'true' if a device is plugged in and charging, otherwise  'false'.
-
-```javascript
-DeviceInfo.isBatteryCharging();
-```
-
 ### - cellularServiceProviders
 
 Returns a list of GSM network providers, *Carrier*, of a device is equipped with.
@@ -240,7 +213,7 @@ interface Carrier {
 
 Besides other helpful information returned from the API, it can be used to know whether the device has a fast internet connection or not.
 
-- Note for Android users: 
+- Notes for Android users: 
   * If the **targetSdkVersion is 17**, a device with dual sim, the API returns an "active" carrier. Permission ACCESS_COARSE_LOCATION is needed.
   * If the **targetSdkVersion is >= 22**, a device with dual sim, the API returns both the carriers. Permission READ_PHONE_STATE is needed. To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
 
@@ -278,6 +251,76 @@ interface StorageVolume {
 }
 ```
 
+### - wifiSSID
+
+Returns service set identifier(SSID) of a wireless local area network (WLAN). In the absence of right permissions, returns an empty string.
+
+```javascript
+DeviceInfo.wifiSSID();
+```
+
+- Notes for Android users:
+  * Permissions ACCESS_WIFI_STATE and ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION are required.
+  * Android version 9 (Pie) requires location service in enabled(ON) state alongside above-said permissions.
+  * To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
+
+- Notes for iOS users:
+  * To use this API on iOS 12 and later, enable the Access WiFi Information.
+  * To use this API on iOS 13 and later, enable the Access WiFi Information, and 
+      * must also meet at least one of criteria below
+        * Apps with permission to access location
+        * Currently enabled VPN app
+        * NEHotspotConfiguration (only Wi-Fi networks that the app configured)
+  * Kindly visit the link [Access WiFi Information](https://developer.apple.com/account/ios/identifier/bundle) to enable it for your app with the id "nativescript.id" in package.json.
+  * Also, add this to your App_Resources/iOS/app.entitlements (mind the name!)  file:
+    ```xml
+      <key>com.apple.developer.networking.wifi-info</key>
+      <true/>
+    ```
+  * The demo app has this:
+    ```xml
+     <?xml version="1.0" encoding="UTF-8"?>
+     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/  PropertyList-1.0.dtd">
+      <plist version="1.0">
+        <dict>
+          <key>com.apple.developer.networking.wifi-info</key>
+            <true/>
+          </dict>
+      </plist>
+    ```
+
+### - isTablet
+
+Returns 'true' if a device is a tablet, otherwise 'false'.
+
+```javascript
+DeviceInfo.isTablet();
+```
+
+### - is24Hour
+
+Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
+
+```javascript
+DeviceInfo.is24Hour();
+```
+
+### - isEmulator
+
+Returns 'true' if an app is running on an emulator, otherwise 'false'.
+
+```javascript
+DeviceInfo.isEmulator();
+```
+
+### - isBatteryCharging
+
+Returns 'true' if a device is plugged in and charging, otherwise  'false'.
+
+```javascript
+DeviceInfo.isBatteryCharging();
+```
+
 
 ## APIs in Action
 
@@ -301,6 +344,7 @@ interface StorageVolume {
     console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
     console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
     console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
+    console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());

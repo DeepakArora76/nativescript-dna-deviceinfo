@@ -50,6 +50,7 @@ export declare class DeviceInfo {
   static cellularServiceProviders(): Carrier[];
   static externalStoragePaths(): string[];
   static storageVolumes(): StorageVolume[];
+  static wifiSSID(): string;
   static isTablet(): boolean;
   static is24Hour(): boolean;
   static isEmulator(): boolean;
