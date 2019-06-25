@@ -343,6 +343,18 @@ export class DeviceInfo {
     return batteryStatus === UIDeviceBatteryState.Charging;
   }
 
+  static isBluetoothEnabled() {
+    return new Promise<boolean>((resolv) => {
+      let bmDelegate = BluetoothManagerDelegate.new();
+      CBCentralManager.alloc().initWithDelegateQueueOptions(
+        bmDelegate.initWithResolverCallback(resolv),
+        null,
+        NSDictionary.dictionaryWithObjectForKey(
+          NSNumber.numberWithInt(0),
+          CBCentralManagerOptionShowPowerAlertKey));
+    });
+  }
+
   private static fileSystemAttributes() {
     const path = NSSearchPathForDirectoriesInDomains(
       NSSearchPathDirectory.DocumentDirectory,
@@ -366,5 +378,25 @@ export class DeviceInfo {
     carrier.displayName = provider ? provider.network : cellularProvider.carrierName;
     carrier.carrierName = cellularProvider.carrierName;
     return carrier;
+  }
+}
+
+class BluetoothManagerDelegate extends NSObject implements CBCentralManagerDelegate {
+  // Note: This ObjCProtocols is needed.
+  public static ObjCProtocols = [CBCentralManagerDelegate];
+
+  private resolve: any;
+
+  static new(): BluetoothManagerDelegate {
+    return <BluetoothManagerDelegate>super.new();
+  }
+
+  initWithResolverCallback(resolve: any) {
+    this.resolve = resolve;
+    return this;
+  }
+
+  centralManagerDidUpdateState(central: CBCentralManager): void {
+    this.resolve(central.state === CBManagerState.PoweredOn);
   }
 }

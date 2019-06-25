@@ -379,8 +379,33 @@ export class DeviceInfo {
     return chargingStatus === BM.BATTERY_STATUS_CHARGING;
   }
 
-  static isExternalStorageAvailable(): boolean {
-    return false;
+  static isBluetoothEnabled(): Promise<boolean> {
+    type BluetoothManagerType = android.bluetooth.BluetoothManager;
+    type BluetoothAdapterType = android.bluetooth.BluetoothAdapter;
+    const Build = android.os.Build;
+    const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
+    const ctx = <ContextType>Android.context;
+    let btAdapter: BluetoothAdapterType = null;
+    if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
+      const btm = <BluetoothManagerType>ctx.getSystemService(Context.BLUETOOTH_SERVICE);
+      btAdapter = btm.getAdapter();
+    }
+    else {
+      btAdapter = BluetoothAdapter.getDefaultAdapter();
+    }
+    return new Promise<boolean>((resolve, reject) => {
+      const permission = android.Manifest.permission;
+      const contextCompat = android.support.v4.content.ContextCompat;
+      const PackageManager = android.content.pm.PackageManager;
+
+      const permissionStatus = contextCompat.checkSelfPermission(ctx, permission.BLUETOOTH);
+      if (permissionStatus === PackageManager.PERMISSION_GRANTED) {
+        resolve(btAdapter && btAdapter.getState() === BluetoothAdapter.STATE_ON);
+      }
+      else {
+        reject(new Error("Missing bluetooth permission."));
+      }
+    });
   }
 
   private static memoryInfo() {

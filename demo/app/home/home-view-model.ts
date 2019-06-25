@@ -10,7 +10,7 @@ export class HomeViewModel extends Observable {
         super();
     }
 
-    showDeviceInfo(args: EventData) {
+    async showDeviceInfo(args: EventData) {
         console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
         console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
         console.log("Total storage space: ", this.getSize(DeviceInfo.totalStorageSpace()));
@@ -34,6 +34,7 @@ export class HomeViewModel extends Observable {
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
         console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
+        console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
 
         if (DeviceInfo.systemManufacturer() !== "Apple") {
             if (hasPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) &&

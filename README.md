@@ -22,10 +22,11 @@ NativeScript plugin to acquire device info.
 - 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
 - 1.4.0: Added storageVolumeInfo API.
 - 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
-- 2.1.0: Added API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
 - 2.1.1: The documentation is updated.
-- 2.1.2: Added nativescript-custom-entitlements to dev dependencies to demo app.
-- 2.1.3: Adjusted license from Apache-2.0 to MIT.
+- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
+- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
+- 2.2.0: Added an API to get a status of Bluetooth.
 
 
 ## Installation
@@ -321,6 +322,26 @@ Returns 'true' if a device is plugged in and charging, otherwise  'false'.
 DeviceInfo.isBatteryCharging();
 ```
 
+### - isBluetoothEnabled
+
+Returns Promise that resolves to 'true' if Bluetooth is enabled, otherwise false.
+
+```javascript
+DeviceInfo.isBluetoothEnabled().then(value => console.log(value))
+                               .catch(error => console.log(error));
+```
+
+```javascript
+async PrintBluetoothStatus() {
+  const status = await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error));
+  console.log(status);
+}
+```
+
+- Note for Android users:
+  * Permission BLUETOOTH is needed.
+
+
 
 ## APIs in Action
 
@@ -349,6 +370,8 @@ DeviceInfo.isBatteryCharging();
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
     console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
+    console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled()
+                                                          .catch(error => console.log(error)));
   }
 
   formatBytes(bytes, decimals) {
