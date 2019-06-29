@@ -401,7 +401,8 @@ async PrintBluetoothStatus() {
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
     console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
-    console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled()                                                             .catch(error => console.log(error)));
+    console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled()
+                                                                 .catch(error => console.log(error)));
     console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled()
                                                           .catch(error => console.log(error)));
   }
@@ -438,7 +439,7 @@ async PrintBluetoothStatus() {
 - 2.3.0: Added APIs to get device orientation and display metrics.
 - 2.3.1: Updated Mobile Country Code and Mobile Network Code.
 - 2.4.0: Added an API to get location service state.
-
+- 2.4.1: Updated documentation.
 
 ## License
 
