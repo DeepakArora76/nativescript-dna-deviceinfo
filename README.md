@@ -5,28 +5,7 @@
 
 NativeScript plugin to acquire device info.
 
-
-## Features
-
-- Cross-platform APIs for Android and iOS to retrieve or query device related information.
-- Offers APIs to obtain device related info.
-
-
-## Changelogs:
-- 1.0.0: First release.
-- 1.0.1: Minor document correction.
-- 1.1.0: New APIs related to battery charging status and its charge level.
-- 1.1.1: Updated document.
-- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
-- 1.2.1: Removed unwanted dependencies.
-- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
-- 1.4.0: Added storageVolumeInfo API.
-- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
-- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
-- 2.1.1: The documentation is updated.
-- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
-- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
-- 2.2.0: Added an API to get a status of Bluetooth.
+The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms. 
 
 
 ## Installation
@@ -235,7 +214,7 @@ let storageVolumes = DeviceInfo.storageVolumes();
 console.log(storageVolumes);
 ```
 
-Below is **StorageVolume** interface:
+Below is the **StorageVolume** interface:
 
 ```javascript
 interface StorageVolume {
@@ -289,6 +268,36 @@ DeviceInfo.wifiSSID();
           </dict>
       </plist>
     ```
+
+### - displayMetrics
+
+Returns *DisplayMetrics* of a device.
+
+```javascript
+DeviceInfo.displayMetrics();
+```
+
+Below is the **DisplayMetrics** interface:
+
+```javascript
+export interface DisplayMetrics {
+  scale: number;
+  pixelPerInch: number;
+  widthInPixels: number;
+  heightInPixels: number;
+  diagonalInInches: number;
+}
+```
+
+- Notes for Android users:
+  * A word of caution: *pixelPerInch* and *diagonalInInches* may be inaccurate and not matches to the device specs. 
+
+### - isPortrait
+Returns  'true' if a device is in portrait mode, otherwise 'false'.
+
+```javascript
+DeviceInfo.isPortrait();
+```
 
 ### - isTablet
 
@@ -364,8 +373,10 @@ async PrintBluetoothStatus() {
     console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
     console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
     console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
-    console.log("Storage Volume Info: ", DeviceInfo.storageVolumes());
+    console.log("Storage volume info: ", DeviceInfo.storageVolumes());
     console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
+    console.log("Display metrics: ", DeviceInfo.displayMetrics());
+    console.log("Is portrait orientation: ", DeviceInfo.isPortrait());
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
@@ -386,6 +397,25 @@ async PrintBluetoothStatus() {
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
   }
 ```
+
+
+## Changelogs:
+- 1.0.0: First release.
+- 1.0.1: Minor document correction.
+- 1.1.0: New APIs related to battery charging status and its charge level.
+- 1.1.1: Updated document.
+- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
+- 1.2.1: Removed unwanted dependencies.
+- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
+- 1.4.0: Added storageVolumeInfo API.
+- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
+- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.1.1: The documentation is updated.
+- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
+- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
+- 2.2.0: Added an API to get a status of Bluetooth.
+- 2.3.0: Added APIs to get device orientation and display metrics.
+
 
 
 ## License

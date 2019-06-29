@@ -14,6 +14,14 @@ export interface Carrier {
   networkType: RadioAccessTechnology;
 }
 
+export interface DisplayMetrics {
+  scale: number;
+  pixelPerInch: number;
+  widthInPixels: number;
+  heightInPixels: number;
+  diagonalInInches: number;
+}
+
 export interface StorageVolume {
   // Path of the mountable volume
   path: string;
@@ -107,6 +115,12 @@ export interface DeviceInfoInterface {
 
   // Returns WiFi SSID
   wifiSSID(): string;
+
+  // Returns display metrics of a device.
+  displayMetrics(): DisplayMetrics;
+
+  // Returns  'true' if a device is in portrait mode, otherwise 'false'.
+  isPortrait(): boolean;
 
   // Returns 'true' if a device is a tablet, otherwise 'false'.
   isTablet(): boolean;

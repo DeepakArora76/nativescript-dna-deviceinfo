@@ -3,17 +3,20 @@ import { android as Android, getNativeApplication } from 'tns-core-modules/appli
 import {
   Carrier,
   DeviceInfoInterface,
+  DisplayMetrics,
   RadioAccessTechnology,
   StorageVolume,
   wirelessCellularGenerator,
 } from './deviceinfo.interface';
 
 import { networkProviderByMcc, networkProviderByMccMnc } from './network-provider';
+import { round } from "./utility";
 
 export function staticDecorator<T>() {
   return (constructor: T) => { };
 }
 
+const ICE_CREAM_SANDWICH = 14;
 const JELLY_BEAN_MR1 = 17;
 const JELLY_BEAN_MR2 = 18;
 const LOLLIPOP = 21;
@@ -336,6 +339,52 @@ export class DeviceInfo {
       }
     }
     return "";
+  }
+
+  static displayMetrics(): DisplayMetrics {
+    const ctx = <ContextType>Android.context;
+    const wm = ctx.getSystemService(Context.WINDOW_SERVICE) as android.view.WindowManager;
+    let point = new android.graphics.Point();
+
+    if (android.os.Build.VERSION.SDK_INT >= JELLY_BEAN_MR1) {
+      wm.getDefaultDisplay().getRealSize(point);
+    }
+    else if (android.os.Build.VERSION.SDK_INT >= ICE_CREAM_SANDWICH) {
+      try {
+        const getRawWidth = android.view.Display.class.getMethod("getRawWidth", []);
+        point.x = getRawWidth.invoke(wm.getDefaultDisplay(), []);
+
+        const getRawHeight = android.view.Display.class.getMethod("getRawHeight", []);
+        point.y = getRawHeight.invoke(wm.getDefaultDisplay(), []);
+      } catch (e) {
+        wm.getDefaultDisplay().getSize(point);
+      }
+    }
+    else {
+      wm.getDefaultDisplay().getSize(point);
+    }
+
+    // const displayMetrics = ctx.getResources().getDisplayMetrics();
+    let displayMetrics = new android.util.DisplayMetrics();
+    wm.getDefaultDisplay().getRealMetrics(displayMetrics);
+    const horizontal = Math.pow(point.x / displayMetrics.xdpi, 2);
+    const vertical = Math.pow(point.y / displayMetrics.ydpi, 2);
+    const diagonalInInches = Math.sqrt(horizontal + vertical);
+    const pixelPerInch = Math.sqrt(Math.pow(point.x, 2) + Math.pow(point.y, 2)) / diagonalInInches;
+
+    let dm = {} as DisplayMetrics;
+    dm.scale = round(displayMetrics.scaledDensity, 0);
+    dm.widthInPixels = point.x;
+    dm.heightInPixels = point.y;
+    dm.diagonalInInches = round(diagonalInInches, 1);
+    dm.pixelPerInch = round(pixelPerInch, 0);
+    return dm;
+  }
+
+  static isPortrait(): boolean {
+    const Configuration = android.content.res.Configuration;
+    const ctx = <ContextType>Android.context;
+    return ctx.getResources().getConfiguration().orientation === Configuration.ORIENTATION_PORTRAIT;
   }
 
   static isTablet(): boolean {

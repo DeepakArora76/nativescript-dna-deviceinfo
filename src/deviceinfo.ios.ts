@@ -1,12 +1,14 @@
 import {
   Carrier,
   DeviceInfoInterface,
+  DisplayMetrics,
   RadioAccessTechnology,
   StorageVolume,
   wirelessCellularGenerator
 } from './deviceinfo.interface';
 
 import { networkProviderByMccMnc } from './network-provider';
+import { round } from "./utility";
 
 export function staticDecorator<T>() {
   return (constructor: T) => { };
@@ -313,7 +315,7 @@ export class DeviceInfo {
 
   static wifiSSID(): string {
     const interfaces = CNCopySupportedInterfaces();
-    if (interfaces.count) {
+    if (interfaces && interfaces.count) {
       const interfaceName = CFArrayGetValueAtIndex(interfaces, 0);
       const dict = CNCopyCurrentNetworkInfo(interfaceName as unknown as string);
       if (dict !== null && dict.count) {
@@ -321,6 +323,36 @@ export class DeviceInfo {
       }
     }
     return "";
+  }
+
+  static displayMetrics(): DisplayMetrics {
+    const nativeScale = UIScreen.mainScreen.nativeScale;
+    let pixelPerInch = 0.0;
+    if (UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Phone) {
+      pixelPerInch = 163 * nativeScale;
+    }
+    else if (UIDevice.currentDevice.userInterfaceIdiom === UIUserInterfaceIdiom.Pad) {
+      pixelPerInch = 132 * nativeScale;
+    }
+    else {
+      pixelPerInch = 160 * nativeScale;
+    }
+
+    let dm = {} as DisplayMetrics;
+    dm.scale = nativeScale;
+    dm.pixelPerInch = pixelPerInch;
+    dm.widthInPixels = UIScreen.mainScreen.bounds.size.width * nativeScale;
+    dm.heightInPixels = UIScreen.mainScreen.bounds.size.height * nativeScale;
+    const vertical = dm.heightInPixels / pixelPerInch;
+    const horizontal = dm.widthInPixels / pixelPerInch;
+    const diagnoalInInches = Math.sqrt(Math.pow(horizontal, 2) + Math.pow(vertical, 2));
+    dm.diagonalInInches = round(diagnoalInInches, 1);
+    return dm;
+  }
+
+  static isPortrait(): boolean {
+    return UIDevice.currentDevice.orientation === UIDeviceOrientation.Portrait ||
+    UIDevice.currentDevice.orientation === UIDeviceOrientation.PortraitUpsideDown;
   }
 
   static isTablet(): boolean {

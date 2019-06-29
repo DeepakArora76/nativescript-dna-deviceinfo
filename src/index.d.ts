@@ -1,4 +1,4 @@
-import { Carrier, StorageVolume } from './deviceinfo.interface';
+import { Carrier, StorageVolume, DisplayMetrics } from './deviceinfo.interface';
 
 export const enum RadioAccessTechnology {
   UNKNOWN,
@@ -51,6 +51,8 @@ export declare class DeviceInfo {
   static externalStoragePaths(): string[];
   static storageVolumes(): StorageVolume[];
   static wifiSSID(): string;
+  static displayMetrics(): DisplayMetrics;
+  static isPortrait(): boolean;
   static isTablet(): boolean;
   static is24Hour(): boolean;
   static isEmulator(): boolean;
