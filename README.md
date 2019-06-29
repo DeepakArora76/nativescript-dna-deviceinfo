@@ -280,7 +280,7 @@ DeviceInfo.displayMetrics();
 Below is the **DisplayMetrics** interface:
 
 ```javascript
-export interface DisplayMetrics {
+interface DisplayMetrics {
   scale: number;
   pixelPerInch: number;
   widthInPixels: number;
@@ -331,9 +331,29 @@ Returns 'true' if a device is plugged in and charging, otherwise  'false'.
 DeviceInfo.isBatteryCharging();
 ```
 
+### - isLocationEnabled
+
+Returns Promise which resolves to 'true' if Location Service is enabled and the app has permission to access it, otherwise false.
+
+```javascript
+DeviceInfo.isLocationEnabled().then(value => console.log(value))
+                              .catch(error => console.log(error));
+```
+
+```javascript
+async LocationServiceStatus() {
+  const status = await DeviceInfo.isLocationEnabled().catch(error => console.log(error));
+  console.log(status);
+}
+```
+
+- Notes for Android users:
+  * Permission ACCESS_FINE_LOCATION is required.
+
+
 ### - isBluetoothEnabled
 
-Returns Promise that resolves to 'true' if Bluetooth is enabled, otherwise false.
+Returns Promise which resolves to 'true' if Bluetooth is enabled, otherwise false.
 
 ```javascript
 DeviceInfo.isBluetoothEnabled().then(value => console.log(value))
@@ -381,6 +401,7 @@ async PrintBluetoothStatus() {
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
     console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
+    console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled()                                                             .catch(error => console.log(error)));
     console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled()
                                                           .catch(error => console.log(error)));
   }
@@ -416,7 +437,7 @@ async PrintBluetoothStatus() {
 - 2.2.0: Added an API to get a status of Bluetooth.
 - 2.3.0: Added APIs to get device orientation and display metrics.
 - 2.3.1: Updated Mobile Country Code and Mobile Network Code.
-
+- 2.4.0: Added an API to get location service state.
 
 
 ## License

@@ -375,7 +375,21 @@ export class DeviceInfo {
     return batteryStatus === UIDeviceBatteryState.Charging;
   }
 
-  static isBluetoothEnabled() {
+  static isLocationEnabled(): Promise<boolean> {
+    return new Promise<boolean>((resolv) => {
+      if (CLLocationManager.locationServicesEnabled()) {
+        switch (CLLocationManager.authorizationStatus()) {
+          case CLAuthorizationStatus.kCLAuthorizationStatusAuthorizedWhenInUse:
+          case CLAuthorizationStatus.kCLAuthorizationStatusAuthorizedAlways:
+          case CLAuthorizationStatus.kCLAuthorizationStatusAuthorized:
+            return resolv(true);
+        }
+      }
+      resolv(false);
+    });
+  }
+
+  static isBluetoothEnabled(): Promise<boolean> {
     return new Promise<boolean>((resolv) => {
       let bmDelegate = BluetoothManagerDelegate.new();
       CBCentralManager.alloc().initWithDelegateQueueOptions(

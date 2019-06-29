@@ -57,5 +57,6 @@ export declare class DeviceInfo {
   static is24Hour(): boolean;
   static isEmulator(): boolean;
   static isBatteryCharging(): boolean;
+  static isLocationEnabled(): Promise<boolean>
   static isBluetoothEnabled(): Promise<boolean>;
 }

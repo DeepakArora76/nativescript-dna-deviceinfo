@@ -134,7 +134,10 @@ export interface DeviceInfoInterface {
   // Returns 'true' if a device is plugged in and charging, otherwise 'false'.
   isBatteryCharging(): boolean;
 
-  // Returns Promise that resolves to 'true' if Bluetooth is the ON state, otherwise false.
+  // Returns Promise which resolves to 'true' if location service is enabled, otherwise 'false'.
+  isLocationEnabled(): Promise<boolean>;
+
+  // Returns Promise which resolves to 'true' if Bluetooth is the ON state, otherwise false.
   isBluetoothEnabled(): Promise<boolean>;
 }
 

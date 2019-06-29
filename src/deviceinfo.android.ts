@@ -428,6 +428,40 @@ export class DeviceInfo {
     return chargingStatus === BM.BATTERY_STATUS_CHARGING;
   }
 
+  static isLocationEnabled(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      const ctx = <ContextType>Android.context;
+      const permission = android.Manifest.permission;
+      const contextCompat = android.support.v4.content.ContextCompat;
+      const PackageManager = android.content.pm.PackageManager;
+
+      const permissionFL = permission.ACCESS_FINE_LOCATION;
+      const permissionStatusFL = contextCompat.checkSelfPermission(ctx, permissionFL);
+      if (permissionStatusFL === PackageManager.PERMISSION_GRANTED) {
+        reject(new Error("Missing ACCESS_FINE_LOCATION permission."));
+      }
+      else {
+        type LocationManagerType = android.location.LocationManager;
+        const LocationManager = android.location.LocationManager;
+        const lm = ctx.getSystemService(Context.LOCATION_SERVICE) as LocationManagerType;
+
+        let gpsEnabled = false;
+        try {
+          gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (error) {
+        }
+
+        let networkEnabled = false;
+        try {
+          networkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (error) {
+        }
+
+        resolve(gpsEnabled && networkEnabled);
+      }
+    });
+  }
+
   static isBluetoothEnabled(): Promise<boolean> {
     type BluetoothManagerType = android.bluetooth.BluetoothManager;
     type BluetoothAdapterType = android.bluetooth.BluetoothAdapter;

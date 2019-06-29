@@ -11,6 +11,13 @@ export class HomeViewModel extends Observable {
     }
 
     async showDeviceInfo(args: EventData) {
+        // Ask for permission for iOS.
+        if (DeviceInfo.systemManufacturer() === "Apple") {
+            let lm = CLLocationManager.alloc().init();
+            lm.requestWhenInUseAuthorization();
+            lm.startUpdatingLocation();
+        }
+
         console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
         console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
         console.log("Total storage space: ", this.getSize(DeviceInfo.totalStorageSpace()));
@@ -36,6 +43,7 @@ export class HomeViewModel extends Observable {
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
         console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
+        console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled().catch(error => console.log(error)));
         console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
 
         if (DeviceInfo.systemManufacturer() !== "Apple") {
