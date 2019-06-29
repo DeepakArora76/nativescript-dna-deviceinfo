@@ -54,6 +54,10 @@ export class HomeViewModel extends Observable {
                 );
             }
         }
+        else {
+            const provider = DeviceInfo.cellularServiceProviders();
+            console.log(provider);
+        }
     }
 
     formatBytes(bytes, decimals) {

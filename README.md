@@ -415,6 +415,7 @@ async PrintBluetoothStatus() {
 - 2.1.3: Adjusted the license from Apache-2.0 to MIT.
 - 2.2.0: Added an API to get a status of Bluetooth.
 - 2.3.0: Added APIs to get device orientation and display metrics.
+- 2.3.1: Updated Mobile Country Code and Mobile Network Code.
 
 
 

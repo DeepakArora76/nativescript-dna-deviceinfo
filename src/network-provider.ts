@@ -255,7 +255,7 @@ export const jsonMccMnc = [
     "mcc": "722",
     "iso": "ar",
     "country_code": "54",
-    "mnc": "330"
+    "mnc": "320"
   },
   {
     "network": "Claro/ CTI/AMX",
@@ -263,7 +263,7 @@ export const jsonMccMnc = [
     "mcc": "722",
     "iso": "ar",
     "country_code": "54",
-    "mnc": "320"
+    "mnc": "330"
   },
   {
     "network": "Compania De Radiocomunicaciones Moviles SA",
@@ -343,7 +343,7 @@ export const jsonMccMnc = [
     "mcc": "363",
     "iso": "aw",
     "country_code": "297",
-    "mnc": "02"
+    "mnc": "20"
   },
   {
     "network": "Digicel",
@@ -351,7 +351,7 @@ export const jsonMccMnc = [
     "mcc": "363",
     "iso": "aw",
     "country_code": "297",
-    "mnc": "20"
+    "mnc": "02"
   },
   {
     "network": "Setar GSM",
@@ -439,7 +439,7 @@ export const jsonMccMnc = [
     "mcc": "505",
     "iso": "au",
     "country_code": "61",
-    "mnc": "08"
+    "mnc": "99"
   },
   {
     "network": "Railcorp/Vodafone",
@@ -447,7 +447,7 @@ export const jsonMccMnc = [
     "mcc": "505",
     "iso": "au",
     "country_code": "61",
-    "mnc": "99"
+    "mnc": "08"
   },
   {
     "network": "Railcorp/Vodafone",
@@ -479,7 +479,7 @@ export const jsonMccMnc = [
     "mcc": "505",
     "iso": "au",
     "country_code": "61",
-    "mnc": "01"
+    "mnc": "11"
   },
   {
     "network": "Telstra Corp. Ltd.",
@@ -487,7 +487,7 @@ export const jsonMccMnc = [
     "mcc": "505",
     "iso": "au",
     "country_code": "61",
-    "mnc": "11"
+    "mnc": "72"
   },
   {
     "network": "Telstra Corp. Ltd.",
@@ -503,7 +503,7 @@ export const jsonMccMnc = [
     "mcc": "505",
     "iso": "au",
     "country_code": "61",
-    "mnc": "72"
+    "mnc": "01"
   },
   {
     "network": "The Ozitel Network Pty.",
@@ -543,6 +543,14 @@ export const jsonMccMnc = [
     "mcc": "232",
     "iso": "at",
     "country_code": "43",
+    "mnc": "02"
+  },
+  {
+    "network": "A1 MobilKom",
+    "country": "Austria",
+    "mcc": "232",
+    "iso": "at",
+    "country_code": "43",
     "mnc": "11"
   },
   {
@@ -552,14 +560,6 @@ export const jsonMccMnc = [
     "iso": "at",
     "country_code": "43",
     "mnc": "09"
-  },
-  {
-    "network": "A1 MobilKom",
-    "country": "Austria",
-    "mcc": "232",
-    "iso": "at",
-    "country_code": "43",
-    "mnc": "02"
   },
   {
     "network": "A1 MobilKom",
@@ -599,6 +599,14 @@ export const jsonMccMnc = [
     "mcc": "232",
     "iso": "at",
     "country_code": "43",
+    "mnc": "12"
+  },
+  {
+    "network": "3/Orange/One Connect",
+    "country": "Austria",
+    "mcc": "232",
+    "iso": "at",
+    "country_code": "43",
     "mnc": "06"
   },
   {
@@ -610,20 +618,20 @@ export const jsonMccMnc = [
     "mnc": "05"
   },
   {
-    "network": "3/Orange/One Connect",
-    "country": "Austria",
-    "mcc": "232",
-    "iso": "at",
-    "country_code": "43",
-    "mnc": "12"
-  },
-  {
     "network": "Spusu/Mass Response",
     "country": "Austria",
     "mcc": "232",
     "iso": "at",
     "country_code": "43",
     "mnc": "17"
+  },
+  {
+    "network": "T-Mobile/Telering",
+    "country": "Austria",
+    "mcc": "232",
+    "iso": "at",
+    "country_code": "43",
+    "mnc": "03"
   },
   {
     "network": "T-Mobile/Telering",
@@ -640,14 +648,6 @@ export const jsonMccMnc = [
     "iso": "at",
     "country_code": "43",
     "mnc": "04"
-  },
-  {
-    "network": "T-Mobile/Telering",
-    "country": "Austria",
-    "mcc": "232",
-    "iso": "at",
-    "country_code": "43",
-    "mnc": "03"
   },
   {
     "network": "Tele2",
@@ -711,6 +711,14 @@ export const jsonMccMnc = [
     "mcc": "364",
     "iso": "bs",
     "country_code": "1242",
+    "mnc": "390"
+  },
+  {
+    "network": "Bahamas Telco. Comp.",
+    "country": "Bahamas",
+    "mcc": "364",
+    "iso": "bs",
+    "country_code": "1242",
     "mnc": "39"
   },
   {
@@ -720,14 +728,6 @@ export const jsonMccMnc = [
     "iso": "bs",
     "country_code": "1242",
     "mnc": "30"
-  },
-  {
-    "network": "Bahamas Telco. Comp.",
-    "country": "Bahamas",
-    "mcc": "364",
-    "iso": "bs",
-    "country_code": "1242",
-    "mnc": "390"
   },
   {
     "network": "Smart Communications",
@@ -775,7 +775,7 @@ export const jsonMccMnc = [
     "mcc": "470",
     "iso": "bd",
     "country_code": "880",
-    "mnc": "05"
+    "mnc": "06"
   },
   {
     "network": "Citycell",
@@ -783,7 +783,7 @@ export const jsonMccMnc = [
     "mcc": "470",
     "iso": "bd",
     "country_code": "880",
-    "mnc": "06"
+    "mnc": "05"
   },
   {
     "network": "GrameenPhone",
@@ -1143,7 +1143,7 @@ export const jsonMccMnc = [
     "mcc": "724",
     "iso": "br",
     "country_code": "55",
-    "mnc": "38"
+    "mnc": "05"
   },
   {
     "network": "Claro/Albra/America Movil",
@@ -1151,7 +1151,7 @@ export const jsonMccMnc = [
     "mcc": "724",
     "iso": "br",
     "country_code": "55",
-    "mnc": "05"
+    "mnc": "38"
   },
   {
     "network": "Vivo S.A./Telemig ",
@@ -1160,6 +1160,14 @@ export const jsonMccMnc = [
     "iso": "br",
     "country_code": "55",
     "mnc": "01"
+  },
+  {
+    "network": "CTBC Celular SA (CTBC)",
+    "country": "Brazil",
+    "mcc": "724",
+    "iso": "br",
+    "country_code": "55",
+    "mnc": "34"
   },
   {
     "network": "CTBC Celular SA (CTBC)",
@@ -1176,14 +1184,6 @@ export const jsonMccMnc = [
     "iso": "br",
     "country_code": "55",
     "mnc": "32"
-  },
-  {
-    "network": "CTBC Celular SA (CTBC)",
-    "country": "Brazil",
-    "mcc": "724",
-    "iso": "br",
-    "country_code": "55",
-    "mnc": "34"
   },
   {
     "network": "TIM",
@@ -1279,6 +1279,14 @@ export const jsonMccMnc = [
     "mcc": "724",
     "iso": "br",
     "country_code": "55",
+    "mnc": "04"
+  },
+  {
+    "network": "TIM",
+    "country": "Brazil",
+    "mcc": "724",
+    "iso": "br",
+    "country_code": "55",
     "mnc": "03"
   },
   {
@@ -1288,14 +1296,6 @@ export const jsonMccMnc = [
     "iso": "br",
     "country_code": "55",
     "mnc": "02"
-  },
-  {
-    "network": "TIM",
-    "country": "Brazil",
-    "mcc": "724",
-    "iso": "br",
-    "country_code": "55",
-    "mnc": "04"
   },
   {
     "network": "Unicel do Brasil Telecomunicacoes Ltda",
@@ -1479,7 +1479,7 @@ export const jsonMccMnc = [
     "mcc": "642",
     "iso": "bi",
     "country_code": "257",
-    "mnc": "82"
+    "mnc": "01"
   },
   {
     "network": "Spacetel / Econet / Leo ",
@@ -1487,7 +1487,7 @@ export const jsonMccMnc = [
     "mcc": "642",
     "iso": "bi",
     "country_code": "257",
-    "mnc": "01"
+    "mnc": "82"
   },
   {
     "network": "Cambodia Advance Communications Co. Ltd (CADCOMMS)",
@@ -1607,7 +1607,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "610"
+    "mnc": "651"
   },
   {
     "network": "Bell Mobility",
@@ -1615,7 +1615,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "651"
+    "mnc": "610"
   },
   {
     "network": "CityWest Mobility",
@@ -1695,7 +1695,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "655"
+    "mnc": "660"
   },
   {
     "network": "MTS Mobility",
@@ -1703,7 +1703,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "660"
+    "mnc": "655"
   },
   {
     "network": "NB Tel Mobility",
@@ -1751,7 +1751,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "780"
+    "mnc": "680"
   },
   {
     "network": "Sask Tel Mobility",
@@ -1767,7 +1767,7 @@ export const jsonMccMnc = [
     "mcc": "302",
     "iso": "ca",
     "country_code": "1",
-    "mnc": "680"
+    "mnc": "780"
   },
   {
     "network": "Tbay Mobility",
@@ -1975,6 +1975,14 @@ export const jsonMccMnc = [
     "mcc": "730",
     "iso": "cl",
     "country_code": "56",
+    "mnc": "09"
+  },
+  {
+    "network": "Nextel SA",
+    "country": "Chile",
+    "mcc": "730",
+    "iso": "cl",
+    "country_code": "56",
     "mnc": "05"
   },
   {
@@ -1984,14 +1992,6 @@ export const jsonMccMnc = [
     "iso": "cl",
     "country_code": "56",
     "mnc": "04"
-  },
-  {
-    "network": "Nextel SA",
-    "country": "Chile",
-    "mcc": "730",
-    "iso": "cl",
-    "country_code": "56",
-    "mnc": "09"
   },
   {
     "network": "Sociedad Falabella Movil SPA",
@@ -2063,7 +2063,7 @@ export const jsonMccMnc = [
     "mcc": "460",
     "iso": "cn",
     "country_code": "86",
-    "mnc": "00"
+    "mnc": "02"
   },
   {
     "network": "China Mobile GSM",
@@ -2071,7 +2071,7 @@ export const jsonMccMnc = [
     "mcc": "460",
     "iso": "cn",
     "country_code": "86",
-    "mnc": "02"
+    "mnc": "00"
   },
   {
     "network": "China Space Mobile Satellite Telecommunications Co. Ltd (China Spacecom)",
@@ -2087,7 +2087,7 @@ export const jsonMccMnc = [
     "mcc": "460",
     "iso": "cn",
     "country_code": "86",
-    "mnc": "05"
+    "mnc": "03"
   },
   {
     "network": "China Telecom",
@@ -2095,7 +2095,7 @@ export const jsonMccMnc = [
     "mcc": "460",
     "iso": "cn",
     "country_code": "86",
-    "mnc": "03"
+    "mnc": "05"
   },
   {
     "network": "China Unicom",
@@ -2191,7 +2191,7 @@ export const jsonMccMnc = [
     "mcc": "732",
     "iso": "co",
     "country_code": "57",
-    "mnc": "142"
+    "mnc": "020"
   },
   {
     "network": "UNE EPM Telecomunicaciones SA ESP",
@@ -2199,7 +2199,7 @@ export const jsonMccMnc = [
     "mcc": "732",
     "iso": "co",
     "country_code": "57",
-    "mnc": "020"
+    "mnc": "142"
   },
   {
     "network": "Virgin Mobile Colombia SAS",
@@ -2879,23 +2879,7 @@ export const jsonMccMnc = [
     "mcc": "244",
     "iso": "fi",
     "country_code": "358",
-    "mnc": "03"
-  },
-  {
-    "network": "DNA/Finnet",
-    "country": "Finland",
-    "mcc": "244",
-    "iso": "fi",
-    "country_code": "358",
     "mnc": "12"
-  },
-  {
-    "network": "DNA/Finnet",
-    "country": "Finland",
-    "mcc": "244",
-    "iso": "fi",
-    "country_code": "358",
-    "mnc": "13"
   },
   {
     "network": "DNA/Finnet",
@@ -2906,12 +2890,20 @@ export const jsonMccMnc = [
     "mnc": "04"
   },
   {
-    "network": "Elisa/Saunalahti",
+    "network": "DNA/Finnet",
     "country": "Finland",
     "mcc": "244",
     "iso": "fi",
     "country_code": "358",
-    "mnc": "21"
+    "mnc": "03"
+  },
+  {
+    "network": "DNA/Finnet",
+    "country": "Finland",
+    "mcc": "244",
+    "iso": "fi",
+    "country_code": "358",
+    "mnc": "13"
   },
   {
     "network": "Elisa/Saunalahti",
@@ -2920,6 +2912,14 @@ export const jsonMccMnc = [
     "iso": "fi",
     "country_code": "358",
     "mnc": "05"
+  },
+  {
+    "network": "Elisa/Saunalahti",
+    "country": "Finland",
+    "mcc": "244",
+    "iso": "fi",
+    "country_code": "358",
+    "mnc": "21"
   },
   {
     "network": "ID-Mobile",
@@ -2991,14 +2991,6 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "88"
-  },
-  {
-    "network": "Bouygues Telecom",
-    "country": "France",
-    "mcc": "208",
-    "iso": "fr",
-    "country_code": "33",
     "mnc": "21"
   },
   {
@@ -3010,20 +3002,20 @@ export const jsonMccMnc = [
     "mnc": "20"
   },
   {
+    "network": "Bouygues Telecom",
+    "country": "France",
+    "mcc": "208",
+    "iso": "fr",
+    "country_code": "33",
+    "mnc": "88"
+  },
+  {
     "network": "Lliad/FREE Mobile",
     "country": "France",
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
     "mnc": "14"
-  },
-  {
-    "network": "GlobalStar",
-    "country": "France",
-    "mcc": "208",
-    "iso": "fr",
-    "country_code": "33",
-    "mnc": "05"
   },
   {
     "network": "GlobalStar",
@@ -3040,6 +3032,14 @@ export const jsonMccMnc = [
     "iso": "fr",
     "country_code": "33",
     "mnc": "06"
+  },
+  {
+    "network": "GlobalStar",
+    "country": "France",
+    "mcc": "208",
+    "iso": "fr",
+    "country_code": "33",
+    "mnc": "05"
   },
   {
     "network": "Orange",
@@ -3063,7 +3063,7 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "16"
+    "mnc": "15"
   },
   {
     "network": "Lliad/FREE Mobile",
@@ -3071,7 +3071,7 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "15"
+    "mnc": "16"
   },
   {
     "network": "Lycamobile SARL",
@@ -3159,14 +3159,6 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "09"
-  },
-  {
-    "network": "S.F.R.",
-    "country": "France",
-    "mcc": "208",
-    "iso": "fr",
-    "country_code": "33",
     "mnc": "13"
   },
   {
@@ -3175,7 +3167,7 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "11"
+    "mnc": "10"
   },
   {
     "network": "S.F.R.",
@@ -3183,7 +3175,15 @@ export const jsonMccMnc = [
     "mcc": "208",
     "iso": "fr",
     "country_code": "33",
-    "mnc": "10"
+    "mnc": "09"
+  },
+  {
+    "network": "S.F.R.",
+    "country": "France",
+    "mcc": "208",
+    "iso": "fr",
+    "country_code": "33",
+    "mnc": "11"
   },
   {
     "network": "SISTEER",
@@ -3399,6 +3399,14 @@ export const jsonMccMnc = [
     "mcc": "262",
     "iso": "de",
     "country_code": "49",
+    "mnc": "03"
+  },
+  {
+    "network": "E-Plus",
+    "country": "Germany",
+    "mcc": "262",
+    "iso": "de",
+    "country_code": "49",
     "mnc": "05"
   },
   {
@@ -3415,7 +3423,7 @@ export const jsonMccMnc = [
     "mcc": "262",
     "iso": "de",
     "country_code": "49",
-    "mnc": "03"
+    "mnc": "12"
   },
   {
     "network": "E-Plus",
@@ -3424,14 +3432,6 @@ export const jsonMccMnc = [
     "iso": "de",
     "country_code": "49",
     "mnc": "20"
-  },
-  {
-    "network": "E-Plus",
-    "country": "Germany",
-    "mcc": "262",
-    "iso": "de",
-    "country_code": "49",
-    "mnc": "12"
   },
   {
     "network": "Group 3G UMTS",
@@ -3519,22 +3519,6 @@ export const jsonMccMnc = [
     "mcc": "262",
     "iso": "de",
     "country_code": "49",
-    "mnc": "09"
-  },
-  {
-    "network": "Vodafone D2",
-    "country": "Germany",
-    "mcc": "262",
-    "iso": "de",
-    "country_code": "49",
-    "mnc": "04"
-  },
-  {
-    "network": "Vodafone D2",
-    "country": "Germany",
-    "mcc": "262",
-    "iso": "de",
-    "country_code": "49",
     "mnc": "02"
   },
   {
@@ -3544,6 +3528,22 @@ export const jsonMccMnc = [
     "iso": "de",
     "country_code": "49",
     "mnc": "42"
+  },
+  {
+    "network": "Vodafone D2",
+    "country": "Germany",
+    "mcc": "262",
+    "iso": "de",
+    "country_code": "49",
+    "mnc": "09"
+  },
+  {
+    "network": "Vodafone D2",
+    "country": "Germany",
+    "mcc": "262",
+    "iso": "de",
+    "country_code": "49",
+    "mnc": "04"
   },
   {
     "network": "Expresso Ghana Ltd",
@@ -3743,7 +3743,7 @@ export const jsonMccMnc = [
     "mcc": "310",
     "iso": "gu",
     "country_code": "1671",
-    "mnc": "470"
+    "mnc": "370"
   },
   {
     "network": "Docomo",
@@ -3751,7 +3751,7 @@ export const jsonMccMnc = [
     "mcc": "310",
     "iso": "gu",
     "country_code": "1671",
-    "mnc": "370"
+    "mnc": "470"
   },
   {
     "network": "GTA Wireless",
@@ -4039,6 +4039,22 @@ export const jsonMccMnc = [
     "mcc": "454",
     "iso": "hk",
     "country_code": "852",
+    "mnc": "03"
+  },
+  {
+    "network": "H3G/Hutchinson",
+    "country": "Hongkong, China",
+    "mcc": "454",
+    "iso": "hk",
+    "country_code": "852",
+    "mnc": "14"
+  },
+  {
+    "network": "H3G/Hutchinson",
+    "country": "Hongkong, China",
+    "mcc": "454",
+    "iso": "hk",
+    "country_code": "852",
     "mnc": "05"
   },
   {
@@ -4050,20 +4066,12 @@ export const jsonMccMnc = [
     "mnc": "04"
   },
   {
-    "network": "H3G/Hutchinson",
+    "network": "HKT/PCCW",
     "country": "Hongkong, China",
     "mcc": "454",
     "iso": "hk",
     "country_code": "852",
-    "mnc": "03"
-  },
-  {
-    "network": "H3G/Hutchinson",
-    "country": "Hongkong, China",
-    "mcc": "454",
-    "iso": "hk",
-    "country_code": "852",
-    "mnc": "14"
+    "mnc": "19"
   },
   {
     "network": "HKT/PCCW",
@@ -4088,14 +4096,6 @@ export const jsonMccMnc = [
     "iso": "hk",
     "country_code": "852",
     "mnc": "16"
-  },
-  {
-    "network": "HKT/PCCW",
-    "country": "Hongkong, China",
-    "mcc": "454",
-    "iso": "hk",
-    "country_code": "852",
-    "mnc": "19"
   },
   {
     "network": "shared by private TETRA systems",
@@ -4231,14 +4231,6 @@ export const jsonMccMnc = [
     "mcc": "274",
     "iso": "is",
     "country_code": "354",
-    "mnc": "02"
-  },
-  {
-    "network": "Vodafone/Tal hf",
-    "country": "Iceland",
-    "mcc": "274",
-    "iso": "is",
-    "country_code": "354",
     "mnc": "05"
   },
   {
@@ -4248,6 +4240,14 @@ export const jsonMccMnc = [
     "iso": "is",
     "country_code": "354",
     "mnc": "03"
+  },
+  {
+    "network": "Vodafone/Tal hf",
+    "country": "Iceland",
+    "mcc": "274",
+    "iso": "is",
+    "country_code": "354",
+    "mnc": "02"
   },
   {
     "network": "Aircel",
@@ -4303,6 +4303,14 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
+    "mnc": "15"
+  },
+  {
+    "network": "Aircel Digilink India",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
     "mnc": "60"
   },
   {
@@ -4312,14 +4320,6 @@ export const jsonMccMnc = [
     "iso": "in",
     "country_code": "91",
     "mnc": "01"
-  },
-  {
-    "network": "Aircel Digilink India",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "15"
   },
   {
     "network": "AirTel",
@@ -4351,6 +4351,30 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
+    "mnc": "76"
+  },
+  {
+    "network": "BSNL",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
+    "mnc": "53"
+  },
+  {
+    "network": "BSNL",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
+    "mnc": "62"
+  },
+  {
+    "network": "BSNL",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
     "mnc": "59"
   },
   {
@@ -4375,7 +4399,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "58"
+    "mnc": "81"
   },
   {
     "network": "BSNL",
@@ -4383,7 +4407,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "81"
+    "mnc": "58"
   },
   {
     "network": "BSNL",
@@ -4407,7 +4431,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "57"
+    "mnc": "80"
   },
   {
     "network": "BSNL",
@@ -4415,7 +4439,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "80"
+    "mnc": "57"
   },
   {
     "network": "BSNL",
@@ -4439,7 +4463,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "66"
+    "mnc": "55"
   },
   {
     "network": "BSNL",
@@ -4447,7 +4471,7 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "55"
+    "mnc": "66"
   },
   {
     "network": "BSNL",
@@ -4471,14 +4495,6 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
-    "mnc": "64"
-  },
-  {
-    "network": "BSNL",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
     "mnc": "54"
   },
   {
@@ -4487,31 +4503,15 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
+    "mnc": "64"
+  },
+  {
+    "network": "BSNL",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
     "mnc": "71"
-  },
-  {
-    "network": "BSNL",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "76"
-  },
-  {
-    "network": "BSNL",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "62"
-  },
-  {
-    "network": "BSNL",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "53"
   },
   {
     "network": "Bharti Airtel Limited (Delhi)",
@@ -4575,6 +4575,14 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
+    "mnc": "56"
+  },
+  {
+    "network": "Escotel Mobile Communications",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
     "mnc": "12"
   },
   {
@@ -4584,14 +4592,6 @@ export const jsonMccMnc = [
     "iso": "in",
     "country_code": "91",
     "mnc": "19"
-  },
-  {
-    "network": "Escotel Mobile Communications",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "56"
   },
   {
     "network": "Fascel Limited",
@@ -4631,6 +4631,14 @@ export const jsonMccMnc = [
     "mcc": "404",
     "iso": "in",
     "country_code": "91",
+    "mnc": "78"
+  },
+  {
+    "network": "Idea Cellular Ltd.",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
     "mnc": "07"
   },
   {
@@ -4658,14 +4666,6 @@ export const jsonMccMnc = [
     "mnc": "22"
   },
   {
-    "network": "Idea Cellular Ltd.",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "78"
-  },
-  {
     "network": "Mahanagar Telephone Nigam",
     "country": "India",
     "mcc": "404",
@@ -4688,6 +4688,22 @@ export const jsonMccMnc = [
     "iso": "in",
     "country_code": "91",
     "mnc": "83"
+  },
+  {
+    "network": "Reliance Telecom Private",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
+    "mnc": "50"
+  },
+  {
+    "network": "Reliance Telecom Private",
+    "country": "India",
+    "mcc": "404",
+    "iso": "in",
+    "country_code": "91",
+    "mnc": "67"
   },
   {
     "network": "Reliance Telecom Private",
@@ -4728,22 +4744,6 @@ export const jsonMccMnc = [
     "iso": "in",
     "country_code": "91",
     "mnc": "52"
-  },
-  {
-    "network": "Reliance Telecom Private",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "50"
-  },
-  {
-    "network": "Reliance Telecom Private",
-    "country": "India",
-    "mcc": "404",
-    "iso": "in",
-    "country_code": "91",
-    "mnc": "67"
   },
   {
     "network": "RPG Cellular",
@@ -4975,7 +4975,7 @@ export const jsonMccMnc = [
     "mcc": "418",
     "iso": "iq",
     "country_code": "964",
-    "mnc": "40"
+    "mnc": "82"
   },
   {
     "network": "Korek",
@@ -4983,7 +4983,7 @@ export const jsonMccMnc = [
     "mcc": "418",
     "iso": "iq",
     "country_code": "964",
-    "mnc": "82"
+    "mnc": "40"
   },
   {
     "network": "Mobitel (Iraq-Kurdistan) and Moutiny",
@@ -5127,7 +5127,7 @@ export const jsonMccMnc = [
     "mcc": "425",
     "iso": "il",
     "country_code": "972",
-    "mnc": "07"
+    "mnc": "77"
   },
   {
     "network": "Hot Mobile/Mirs",
@@ -5135,7 +5135,7 @@ export const jsonMccMnc = [
     "mcc": "425",
     "iso": "il",
     "country_code": "972",
-    "mnc": "77"
+    "mnc": "07"
   },
   {
     "network": "Orange/Partner Co. Ltd.",
@@ -5271,14 +5271,6 @@ export const jsonMccMnc = [
     "mcc": "222",
     "iso": "it",
     "country_code": "39",
-    "mnc": "48"
-  },
-  {
-    "network": "Telecom Italia Mobile SpA",
-    "country": "Italy",
-    "mcc": "222",
-    "iso": "it",
-    "country_code": "39",
     "mnc": "43"
   },
   {
@@ -5288,6 +5280,14 @@ export const jsonMccMnc = [
     "iso": "it",
     "country_code": "39",
     "mnc": "01"
+  },
+  {
+    "network": "Telecom Italia Mobile SpA",
+    "country": "Italy",
+    "mcc": "222",
+    "iso": "it",
+    "country_code": "39",
+    "mnc": "48"
   },
   {
     "network": "Vodafone",
@@ -5431,6 +5431,110 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
+    "mnc": "76"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "71"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "53"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "77"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "08"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "72"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "54"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "79"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "07"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "73"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "55"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "88"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "50"
+  },
+  {
+    "network": "KDDI Corporation",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
     "mnc": "74"
   },
   {
@@ -5447,7 +5551,7 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "51"
+    "mnc": "89"
   },
   {
     "network": "KDDI Corporation",
@@ -5455,7 +5559,7 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "89"
+    "mnc": "51"
   },
   {
     "network": "KDDI Corporation",
@@ -5490,108 +5594,124 @@ export const jsonMccMnc = [
     "mnc": "70"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "76"
+    "mnc": "02"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "71"
+    "mnc": "22"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
-    "mcc": "440",
+    "mcc": "441",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "53"
+    "mnc": "43"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "08"
+    "mnc": "27"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "77"
+    "mnc": "87"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "72"
+    "mnc": "17"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "54"
+    "mnc": "31"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "07"
+    "mnc": "65"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "79"
+    "mnc": "36"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
-    "mcc": "440",
+    "mcc": "441",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "73"
+    "mnc": "92"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "55"
+    "mnc": "03"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "50"
+    "mnc": "12"
   },
   {
-    "network": "KDDI Corporation",
+    "network": "NTT Docomo",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "88"
+    "mnc": "58"
+  },
+  {
+    "network": "NTT Docomo",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "28"
+  },
+  {
+    "network": "NTT Docomo",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "61"
   },
   {
     "network": "NTT Docomo",
@@ -5616,14 +5736,6 @@ export const jsonMccMnc = [
     "iso": "jp",
     "country_code": "81",
     "mnc": "32"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "61"
   },
   {
     "network": "NTT Docomo",
@@ -5663,6 +5775,14 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
+    "mnc": "09"
+  },
+  {
+    "network": "NTT Docomo",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
     "mnc": "49"
   },
   {
@@ -5679,7 +5799,7 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "09"
+    "mnc": "60"
   },
   {
     "network": "NTT Docomo",
@@ -5704,14 +5824,6 @@ export const jsonMccMnc = [
     "iso": "jp",
     "country_code": "81",
     "mnc": "33"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "60"
   },
   {
     "network": "NTT Docomo",
@@ -5863,6 +5975,22 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
+    "mnc": "23"
+  },
+  {
+    "network": "NTT Docomo",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "01"
+  },
+  {
+    "network": "NTT Docomo",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
     "mnc": "21"
   },
   {
@@ -5880,22 +6008,6 @@ export const jsonMccMnc = [
     "iso": "jp",
     "country_code": "81",
     "mnc": "13"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "23"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "01"
   },
   {
     "network": "NTT Docomo",
@@ -5959,118 +6071,6 @@ export const jsonMccMnc = [
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "22"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "441",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "43"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "27"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "02"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "87"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "17"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "31"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "65"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "36"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "441",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "92"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "12"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "58"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "28"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "03"
-  },
-  {
-    "network": "NTT Docomo",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
     "mnc": "99"
   },
   {
@@ -6080,6 +6080,62 @@ export const jsonMccMnc = [
     "iso": "jp",
     "country_code": "81",
     "mnc": "78"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "46"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "97"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "42"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "441",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "65"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "90"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "92"
+  },
+  {
+    "network": "SoftBank Mobile Corp",
+    "country": "Japan",
+    "mcc": "440",
+    "iso": "jp",
+    "country_code": "81",
+    "mnc": "98"
   },
   {
     "network": "SoftBank Mobile Corp",
@@ -6226,60 +6282,12 @@ export const jsonMccMnc = [
     "mnc": "64"
   },
   {
-    "network": "SoftBank Mobile Corp",
+    "network": "KDDI Corporation",
     "country": "Japan",
     "mcc": "440",
     "iso": "jp",
     "country_code": "81",
-    "mnc": "46"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "97"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "42"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "441",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "65"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "90"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "92"
-  },
-  {
-    "network": "SoftBank Mobile Corp",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "98"
+    "mnc": "83"
   },
   {
     "network": "KDDI Corporation",
@@ -6288,14 +6296,6 @@ export const jsonMccMnc = [
     "iso": "jp",
     "country_code": "81",
     "mnc": "85"
-  },
-  {
-    "network": "KDDI Corporation",
-    "country": "Japan",
-    "mcc": "440",
-    "iso": "jp",
-    "country_code": "81",
-    "mnc": "83"
   },
   {
     "network": "KDDI Corporation",
@@ -6655,6 +6655,14 @@ export const jsonMccMnc = [
     "mcc": "415",
     "iso": "lb",
     "country_code": "961",
+    "mnc": "32"
+  },
+  {
+    "network": "Cellis",
+    "country": "Lebanon",
+    "mcc": "415",
+    "iso": "lb",
+    "country_code": "961",
     "mnc": "35"
   },
   {
@@ -6666,20 +6674,20 @@ export const jsonMccMnc = [
     "mnc": "33"
   },
   {
-    "network": "Cellis",
-    "country": "Lebanon",
-    "mcc": "415",
-    "iso": "lb",
-    "country_code": "961",
-    "mnc": "32"
-  },
-  {
     "network": "FTML Cellis",
     "country": "Lebanon",
     "mcc": "415",
     "iso": "lb",
     "country_code": "961",
     "mnc": "34"
+  },
+  {
+    "network": "MIC2/LibanCell/MTC",
+    "country": "Lebanon",
+    "mcc": "415",
+    "iso": "lb",
+    "country_code": "961",
+    "mnc": "38"
   },
   {
     "network": "MIC2/LibanCell/MTC",
@@ -6696,14 +6704,6 @@ export const jsonMccMnc = [
     "iso": "lb",
     "country_code": "961",
     "mnc": "39"
-  },
-  {
-    "network": "MIC2/LibanCell/MTC",
-    "country": "Lebanon",
-    "mcc": "415",
-    "iso": "lb",
-    "country_code": "961",
-    "mnc": "38"
   },
   {
     "network": "MIC1 (Alfa)",
@@ -7079,14 +7079,6 @@ export const jsonMccMnc = [
     "mcc": "502",
     "iso": "my",
     "country_code": "60",
-    "mnc": "19"
-  },
-  {
-    "network": "CelCom",
-    "country": "Malaysia",
-    "mcc": "502",
-    "iso": "my",
-    "country_code": "60",
     "mnc": "13"
   },
   {
@@ -7096,6 +7088,14 @@ export const jsonMccMnc = [
     "iso": "my",
     "country_code": "60",
     "mnc": "198"
+  },
+  {
+    "network": "CelCom",
+    "country": "Malaysia",
+    "mcc": "502",
+    "iso": "my",
+    "country_code": "60",
+    "mnc": "19"
   },
   {
     "network": "Digi Telecommunications",
@@ -7127,7 +7127,7 @@ export const jsonMccMnc = [
     "mcc": "502",
     "iso": "my",
     "country_code": "60",
-    "mnc": "12"
+    "mnc": "17"
   },
   {
     "network": "Maxis",
@@ -7135,7 +7135,7 @@ export const jsonMccMnc = [
     "mcc": "502",
     "iso": "my",
     "country_code": "60",
-    "mnc": "17"
+    "mnc": "12"
   },
   {
     "network": "MTX Utara",
@@ -7295,7 +7295,7 @@ export const jsonMccMnc = [
     "mcc": "617",
     "iso": "mu",
     "country_code": "230",
-    "mnc": "03"
+    "mnc": "02"
   },
   {
     "network": "Mahanagar Telephone",
@@ -7303,7 +7303,7 @@ export const jsonMccMnc = [
     "mcc": "617",
     "iso": "mu",
     "country_code": "230",
-    "mnc": "02"
+    "mnc": "03"
   },
   {
     "network": "Orange/Cellplus",
@@ -7312,14 +7312,6 @@ export const jsonMccMnc = [
     "iso": "mu",
     "country_code": "230",
     "mnc": "01"
-  },
-  {
-    "network": "AT&T/IUSACell",
-    "country": "Mexico",
-    "mcc": "334",
-    "iso": "mx",
-    "country_code": "52",
-    "mnc": "04"
   },
   {
     "network": "AT&T/IUSACell",
@@ -7346,12 +7338,12 @@ export const jsonMccMnc = [
     "mnc": "040"
   },
   {
-    "network": "Movistar/Pegaso",
+    "network": "AT&T/IUSACell",
     "country": "Mexico",
     "mcc": "334",
     "iso": "mx",
     "country_code": "52",
-    "mnc": "030"
+    "mnc": "04"
   },
   {
     "network": "Movistar/Pegaso",
@@ -7360,6 +7352,22 @@ export const jsonMccMnc = [
     "iso": "mx",
     "country_code": "52",
     "mnc": "03"
+  },
+  {
+    "network": "Movistar/Pegaso",
+    "country": "Mexico",
+    "mcc": "334",
+    "iso": "mx",
+    "country_code": "52",
+    "mnc": "030"
+  },
+  {
+    "network": "NEXTEL",
+    "country": "Mexico",
+    "mcc": "334",
+    "iso": "mx",
+    "country_code": "52",
+    "mnc": "090"
   },
   {
     "network": "NEXTEL",
@@ -7384,14 +7392,6 @@ export const jsonMccMnc = [
     "iso": "mx",
     "country_code": "52",
     "mnc": "01"
-  },
-  {
-    "network": "NEXTEL",
-    "country": "Mexico",
-    "mcc": "334",
-    "iso": "mx",
-    "country_code": "52",
-    "mnc": "090"
   },
   {
     "network": "Operadora Unefon SA de CV",
@@ -7423,7 +7423,7 @@ export const jsonMccMnc = [
     "mcc": "334",
     "iso": "mx",
     "country_code": "52",
-    "mnc": "020"
+    "mnc": "02"
   },
   {
     "network": "TelCel/America Movil",
@@ -7431,7 +7431,7 @@ export const jsonMccMnc = [
     "mcc": "334",
     "iso": "mx",
     "country_code": "52",
-    "mnc": "02"
+    "mnc": "020"
   },
   {
     "network": "FSM Telecom",
@@ -7463,7 +7463,7 @@ export const jsonMccMnc = [
     "mcc": "259",
     "iso": "md",
     "country_code": "373",
-    "mnc": "03"
+    "mnc": "99"
   },
   {
     "network": "IDC/Unite ",
@@ -7471,7 +7471,7 @@ export const jsonMccMnc = [
     "mcc": "259",
     "iso": "md",
     "country_code": "373",
-    "mnc": "99"
+    "mnc": "03"
   },
   {
     "network": "Moldcell",
@@ -7527,7 +7527,7 @@ export const jsonMccMnc = [
     "mcc": "428",
     "iso": "mn",
     "country_code": "976",
-    "mnc": "00"
+    "mnc": "91"
   },
   {
     "network": "Skytel Co. Ltd",
@@ -7535,7 +7535,7 @@ export const jsonMccMnc = [
     "mcc": "428",
     "iso": "mn",
     "country_code": "976",
-    "mnc": "91"
+    "mnc": "00"
   },
   {
     "network": "Unitel",
@@ -7735,6 +7735,14 @@ export const jsonMccMnc = [
     "mcc": "204",
     "iso": "nl",
     "country_code": "31",
+    "mnc": "69"
+  },
+  {
+    "network": "KPN Telecom B.V.",
+    "country": "Netherlands",
+    "mcc": "204",
+    "iso": "nl",
+    "country_code": "31",
     "mnc": "10"
   },
   {
@@ -7744,14 +7752,6 @@ export const jsonMccMnc = [
     "iso": "nl",
     "country_code": "31",
     "mnc": "08"
-  },
-  {
-    "network": "KPN Telecom B.V.",
-    "country": "Netherlands",
-    "mcc": "204",
-    "iso": "nl",
-    "country_code": "31",
-    "mnc": "69"
   },
   {
     "network": "KPN/Telfort",
@@ -8087,7 +8087,7 @@ export const jsonMccMnc = [
     "mcc": "621",
     "iso": "ng",
     "country_code": "234",
-    "mnc": "01"
+    "mnc": "25"
   },
   {
     "network": "Visafone",
@@ -8095,7 +8095,7 @@ export const jsonMccMnc = [
     "mcc": "621",
     "iso": "ng",
     "country_code": "234",
-    "mnc": "25"
+    "mnc": "01"
   },
   {
     "network": "Niue Telecom",
@@ -8159,7 +8159,7 @@ export const jsonMccMnc = [
     "mcc": "242",
     "iso": "no",
     "country_code": "47",
-    "mnc": "05"
+    "mnc": "22"
   },
   {
     "network": "Network Norway AS",
@@ -8167,7 +8167,7 @@ export const jsonMccMnc = [
     "mcc": "242",
     "iso": "no",
     "country_code": "47",
-    "mnc": "22"
+    "mnc": "05"
   },
   {
     "network": "ICE Nordisk Mobiltelefon AS",
@@ -8223,7 +8223,7 @@ export const jsonMccMnc = [
     "mcc": "242",
     "iso": "no",
     "country_code": "47",
-    "mnc": "017"
+    "mnc": "07"
   },
   {
     "network": "Ventelo AS",
@@ -8231,7 +8231,7 @@ export const jsonMccMnc = [
     "mcc": "242",
     "iso": "no",
     "country_code": "47",
-    "mnc": "07"
+    "mnc": "017"
   },
   {
     "network": "Nawras",
@@ -8439,7 +8439,7 @@ export const jsonMccMnc = [
     "mcc": "716",
     "iso": "pe",
     "country_code": "51",
-    "mnc": "10"
+    "mnc": "20"
   },
   {
     "network": "Claro /Amer.Mov./TIM",
@@ -8447,7 +8447,7 @@ export const jsonMccMnc = [
     "mcc": "716",
     "iso": "pe",
     "country_code": "51",
-    "mnc": "20"
+    "mnc": "10"
   },
   {
     "network": "GlobalStar",
@@ -8639,7 +8639,7 @@ export const jsonMccMnc = [
     "mcc": "260",
     "iso": "pl",
     "country_code": "48",
-    "mnc": "03"
+    "mnc": "05"
   },
   {
     "network": "Orange/IDEA/Centertel",
@@ -8647,7 +8647,7 @@ export const jsonMccMnc = [
     "mcc": "260",
     "iso": "pl",
     "country_code": "48",
-    "mnc": "05"
+    "mnc": "03"
   },
   {
     "network": "PKP Polskie Linie Kolejowe S.A.",
@@ -8695,7 +8695,7 @@ export const jsonMccMnc = [
     "mcc": "260",
     "iso": "pl",
     "country_code": "48",
-    "mnc": "14"
+    "mnc": "10"
   },
   {
     "network": "Sferia",
@@ -8703,15 +8703,7 @@ export const jsonMccMnc = [
     "mcc": "260",
     "iso": "pl",
     "country_code": "48",
-    "mnc": "10"
-  },
-  {
-    "network": "T-Mobile/ERA",
-    "country": "Poland",
-    "mcc": "260",
-    "iso": "pl",
-    "country_code": "48",
-    "mnc": "34"
+    "mnc": "14"
   },
   {
     "network": "T-Mobile/ERA",
@@ -8722,12 +8714,12 @@ export const jsonMccMnc = [
     "mnc": "02"
   },
   {
-    "network": "Tele2",
+    "network": "T-Mobile/ERA",
     "country": "Poland",
     "mcc": "260",
     "iso": "pl",
     "country_code": "48",
-    "mnc": "15"
+    "mnc": "34"
   },
   {
     "network": "Tele2",
@@ -8736,6 +8728,14 @@ export const jsonMccMnc = [
     "iso": "pl",
     "country_code": "48",
     "mnc": "04"
+  },
+  {
+    "network": "Tele2",
+    "country": "Poland",
+    "mcc": "260",
+    "iso": "pl",
+    "country_code": "48",
+    "mnc": "15"
   },
   {
     "network": "Lycamobile",
@@ -8783,7 +8783,7 @@ export const jsonMccMnc = [
     "mcc": "330",
     "iso": "pr",
     "country_code": "",
-    "mnc": "11"
+    "mnc": "110"
   },
   {
     "network": "Puerto Rico Telephone Company Inc. (PRTC)",
@@ -8791,7 +8791,7 @@ export const jsonMccMnc = [
     "mcc": "330",
     "iso": "pr",
     "country_code": "",
-    "mnc": "110"
+    "mnc": "11"
   },
   {
     "network": "Ooredoo/Qtel",
@@ -9303,7 +9303,7 @@ export const jsonMccMnc = [
     "mcc": "220",
     "iso": "rs",
     "country_code": "381",
-    "mnc": "02"
+    "mnc": "01"
   },
   {
     "network": "Telenor/Mobtel",
@@ -9311,7 +9311,7 @@ export const jsonMccMnc = [
     "mcc": "220",
     "iso": "rs",
     "country_code": "381",
-    "mnc": "01"
+    "mnc": "02"
   },
   {
     "network": "VIP Mobile",
@@ -9415,6 +9415,14 @@ export const jsonMccMnc = [
     "mcc": "525",
     "iso": "sg",
     "country_code": "65",
+    "mnc": "02"
+  },
+  {
+    "network": "Singtel",
+    "country": "Singapore",
+    "mcc": "525",
+    "iso": "sg",
+    "country_code": "65",
     "mnc": "01"
   },
   {
@@ -9426,12 +9434,12 @@ export const jsonMccMnc = [
     "mnc": "07"
   },
   {
-    "network": "Singtel",
+    "network": "Starhub",
     "country": "Singapore",
     "mcc": "525",
     "iso": "sg",
     "country_code": "65",
-    "mnc": "02"
+    "mnc": "05"
   },
   {
     "network": "Starhub",
@@ -9440,14 +9448,6 @@ export const jsonMccMnc = [
     "iso": "sg",
     "country_code": "65",
     "mnc": "06"
-  },
-  {
-    "network": "Starhub",
-    "country": "Singapore",
-    "mcc": "525",
-    "iso": "sg",
-    "country_code": "65",
-    "mnc": "05"
   },
   {
     "network": "4Ka",
@@ -9599,7 +9599,7 @@ export const jsonMccMnc = [
     "mcc": "637",
     "iso": "so",
     "country_code": "252",
-    "mnc": "10"
+    "mnc": "60"
   },
   {
     "network": "Nationlink",
@@ -9607,7 +9607,7 @@ export const jsonMccMnc = [
     "mcc": "637",
     "iso": "so",
     "country_code": "252",
-    "mnc": "60"
+    "mnc": "10"
   },
   {
     "network": "Somafone",
@@ -9623,7 +9623,7 @@ export const jsonMccMnc = [
     "mcc": "637",
     "iso": "so",
     "country_code": "252",
-    "mnc": "82"
+    "mnc": "71"
   },
   {
     "network": "Somtel",
@@ -9631,7 +9631,7 @@ export const jsonMccMnc = [
     "mcc": "637",
     "iso": "so",
     "country_code": "252",
-    "mnc": "71"
+    "mnc": "82"
   },
   {
     "network": "Telesom ",
@@ -9671,7 +9671,7 @@ export const jsonMccMnc = [
     "mcc": "655",
     "iso": "za",
     "country_code": "27",
-    "mnc": "12"
+    "mnc": "10"
   },
   {
     "network": "MTN",
@@ -9679,7 +9679,7 @@ export const jsonMccMnc = [
     "mcc": "655",
     "iso": "za",
     "country_code": "27",
-    "mnc": "10"
+    "mnc": "12"
   },
   {
     "network": "Sentech",
@@ -9839,14 +9839,6 @@ export const jsonMccMnc = [
     "mcc": "214",
     "iso": "es",
     "country_code": "34",
-    "mnc": "11"
-  },
-  {
-    "network": "Orange",
-    "country": "Spain",
-    "mcc": "214",
-    "iso": "es",
-    "country_code": "34",
     "mnc": "09"
   },
   {
@@ -9856,6 +9848,14 @@ export const jsonMccMnc = [
     "iso": "es",
     "country_code": "34",
     "mnc": "03"
+  },
+  {
+    "network": "Orange",
+    "country": "Spain",
+    "mcc": "214",
+    "iso": "es",
+    "country_code": "34",
+    "mnc": "11"
   },
   {
     "network": "R Cable y Telec. Galicia SA",
@@ -9975,7 +9975,7 @@ export const jsonMccMnc = [
     "mcc": "360",
     "iso": "vc",
     "country_code": "1784",
-    "mnc": "100"
+    "mnc": "10"
   },
   {
     "network": "Cingular",
@@ -9983,7 +9983,7 @@ export const jsonMccMnc = [
     "mcc": "360",
     "iso": "vc",
     "country_code": "1784",
-    "mnc": "10"
+    "mnc": "100"
   },
   {
     "network": "Digicel",
@@ -10031,7 +10031,7 @@ export const jsonMccMnc = [
     "mcc": "634",
     "iso": "sd",
     "country_code": "249",
-    "mnc": "07"
+    "mnc": "15"
   },
   {
     "network": "Sudani One",
@@ -10039,15 +10039,7 @@ export const jsonMccMnc = [
     "mcc": "634",
     "iso": "sd",
     "country_code": "249",
-    "mnc": "15"
-  },
-  {
-    "network": "Vivacell",
-    "country": "Sudan",
-    "mcc": "634",
-    "iso": "sd",
-    "country_code": "249",
-    "mnc": "05"
+    "mnc": "07"
   },
   {
     "network": "Vivacell",
@@ -10056,6 +10048,14 @@ export const jsonMccMnc = [
     "iso": "sd",
     "country_code": "249",
     "mnc": "08"
+  },
+  {
+    "network": "Vivacell",
+    "country": "Sudan",
+    "mcc": "634",
+    "iso": "sd",
+    "country_code": "249",
+    "mnc": "05"
   },
   {
     "network": "ZAIN/Mobitel",
@@ -10207,7 +10207,7 @@ export const jsonMccMnc = [
     "mcc": "240",
     "iso": "se",
     "country_code": "46",
-    "mnc": "04"
+    "mnc": "02"
   },
   {
     "network": "H3G Access AB",
@@ -10215,7 +10215,7 @@ export const jsonMccMnc = [
     "mcc": "240",
     "iso": "se",
     "country_code": "46",
-    "mnc": "02"
+    "mnc": "04"
   },
   {
     "network": "ID Mobile",
@@ -10303,6 +10303,14 @@ export const jsonMccMnc = [
     "mcc": "240",
     "iso": "se",
     "country_code": "46",
+    "mnc": "24"
+  },
+  {
+    "network": "Telenor (Vodafone)",
+    "country": "Sweden",
+    "mcc": "240",
+    "iso": "se",
+    "country_code": "46",
     "mnc": "08"
   },
   {
@@ -10312,14 +10320,6 @@ export const jsonMccMnc = [
     "iso": "se",
     "country_code": "46",
     "mnc": "06"
-  },
-  {
-    "network": "Telenor (Vodafone)",
-    "country": "Sweden",
-    "mcc": "240",
-    "iso": "se",
-    "country_code": "46",
-    "mnc": "24"
   },
   {
     "network": "Telia Mobile",
@@ -10367,7 +10367,7 @@ export const jsonMccMnc = [
     "mcc": "228",
     "iso": "ch",
     "country_code": "41",
-    "mnc": "09"
+    "mnc": "05"
   },
   {
     "network": "Comfone AG",
@@ -10375,7 +10375,7 @@ export const jsonMccMnc = [
     "mcc": "228",
     "iso": "ch",
     "country_code": "41",
-    "mnc": "05"
+    "mnc": "09"
   },
   {
     "network": "TDC Sunrise",
@@ -10423,7 +10423,7 @@ export const jsonMccMnc = [
     "mcc": "228",
     "iso": "ch",
     "country_code": "41",
-    "mnc": "02"
+    "mnc": "12"
   },
   {
     "network": "TDC Sunrise",
@@ -10431,7 +10431,7 @@ export const jsonMccMnc = [
     "mcc": "228",
     "iso": "ch",
     "country_code": "41",
-    "mnc": "12"
+    "mnc": "02"
   },
   {
     "network": "TDC Sunrise",
@@ -10511,7 +10511,7 @@ export const jsonMccMnc = [
     "mcc": "466",
     "iso": "tw",
     "country_code": "886",
-    "mnc": "02"
+    "mnc": "01"
   },
   {
     "network": "Far EasTone",
@@ -10535,7 +10535,7 @@ export const jsonMccMnc = [
     "mcc": "466",
     "iso": "tw",
     "country_code": "886",
-    "mnc": "01"
+    "mnc": "02"
   },
   {
     "network": "Far EasTone",
@@ -10570,14 +10570,6 @@ export const jsonMccMnc = [
     "mnc": "88"
   },
   {
-    "network": "TransAsia",
-    "country": "Taiwan",
-    "mcc": "466",
-    "iso": "tw",
-    "country_code": "886",
-    "mnc": "99"
-  },
-  {
     "network": "Taiwan Cellular",
     "country": "Taiwan",
     "mcc": "466",
@@ -10592,6 +10584,14 @@ export const jsonMccMnc = [
     "iso": "tw",
     "country_code": "886",
     "mnc": "93"
+  },
+  {
+    "network": "TransAsia",
+    "country": "Taiwan",
+    "mcc": "466",
+    "iso": "tw",
+    "country_code": "886",
+    "mnc": "99"
   },
   {
     "network": "T-Star/VIBO",
@@ -10791,7 +10791,7 @@ export const jsonMccMnc = [
     "mcc": "520",
     "iso": "th",
     "country_code": "66",
-    "mnc": "18"
+    "mnc": "05"
   },
   {
     "network": "Total Access (DTAC)",
@@ -10799,15 +10799,7 @@ export const jsonMccMnc = [
     "mcc": "520",
     "iso": "th",
     "country_code": "66",
-    "mnc": "05"
-  },
-  {
-    "network": "True Move/Orange",
-    "country": "Thailand",
-    "mcc": "520",
-    "iso": "th",
-    "country_code": "66",
-    "mnc": "04"
+    "mnc": "18"
   },
   {
     "network": "True Move/Orange",
@@ -10816,6 +10808,14 @@ export const jsonMccMnc = [
     "iso": "th",
     "country_code": "66",
     "mnc": "99"
+  },
+  {
+    "network": "True Move/Orange",
+    "country": "Thailand",
+    "mcc": "520",
+    "iso": "th",
+    "country_code": "66",
+    "mnc": "04"
   },
   {
     "network": "Telin/ Telkomcel",
@@ -10879,7 +10879,7 @@ export const jsonMccMnc = [
     "mcc": "374",
     "iso": "tt",
     "country_code": "1868",
-    "mnc": "12"
+    "mnc": "120"
   },
   {
     "network": "Bmobile/TSTT",
@@ -10887,7 +10887,7 @@ export const jsonMccMnc = [
     "mcc": "374",
     "iso": "tt",
     "country_code": "1868",
-    "mnc": "120"
+    "mnc": "12"
   },
   {
     "network": "Digicel",
@@ -10943,7 +10943,7 @@ export const jsonMccMnc = [
     "mcc": "286",
     "iso": "tr",
     "country_code": "90",
-    "mnc": "03"
+    "mnc": "04"
   },
   {
     "network": "AVEA/Aria",
@@ -10951,7 +10951,7 @@ export const jsonMccMnc = [
     "mcc": "286",
     "iso": "tr",
     "country_code": "90",
-    "mnc": "04"
+    "mnc": "03"
   },
   {
     "network": "Turkcell",
@@ -11196,7 +11196,7 @@ export const jsonMccMnc = [
   {
     "network": "Etisalat",
     "country": "United Arab Emirates",
-    "mcc": "431",
+    "mcc": "424",
     "iso": "ae",
     "country_code": "971",
     "mnc": "02"
@@ -11212,7 +11212,7 @@ export const jsonMccMnc = [
   {
     "network": "Etisalat",
     "country": "United Arab Emirates",
-    "mcc": "424",
+    "mcc": "431",
     "iso": "ae",
     "country_code": "971",
     "mnc": "02"
@@ -11247,7 +11247,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "92"
+    "mnc": "07"
   },
   {
     "network": "Cable and Wireless ",
@@ -11255,7 +11255,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "07"
+    "mnc": "92"
   },
   {
     "network": "Cable and Wireless Isle of Man",
@@ -11311,7 +11311,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "20"
+    "mnc": "94"
   },
   {
     "network": "H3G Hutchinson",
@@ -11319,7 +11319,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "94"
+    "mnc": "20"
   },
   {
     "network": "Inquam Telecom Ltd",
@@ -11423,7 +11423,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "33"
+    "mnc": "34"
   },
   {
     "network": "Everyth. Ev.wh./Orange",
@@ -11431,7 +11431,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "34"
+    "mnc": "33"
   },
   {
     "network": "PMN/Teleware",
@@ -11551,7 +11551,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "15"
+    "mnc": "91"
   },
   {
     "network": "Vodafone",
@@ -11559,7 +11559,7 @@ export const jsonMccMnc = [
     "mcc": "234",
     "iso": "gb",
     "country_code": "44",
-    "mnc": "91"
+    "mnc": "15"
   },
   {
     "network": "Wave Telecom Ltd",
@@ -11647,30 +11647,6 @@ export const jsonMccMnc = [
     "mcc": "310",
     "iso": "us",
     "country_code": "1",
-    "mnc": "150"
-  },
-  {
-    "network": "AT&T Wireless Inc.",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "680"
-  },
-  {
-    "network": "AT&T Wireless Inc.",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "070"
-  },
-  {
-    "network": "AT&T Wireless Inc.",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
     "mnc": "560"
   },
   {
@@ -11696,6 +11672,30 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "170"
+  },
+  {
+    "network": "AT&T Wireless Inc.",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "150"
+  },
+  {
+    "network": "AT&T Wireless Inc.",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "680"
+  },
+  {
+    "network": "AT&T Wireless Inc.",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "070"
   },
   {
     "network": "AT&T Wireless Inc.",
@@ -11760,118 +11760,6 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "830"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "590"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "282"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "487"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "271"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "287"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "276"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "481"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "013"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "281"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "486"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "270"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "286"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "275"
-  },
-  {
-    "network": "Verizon Wireless",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "480"
   },
   {
     "network": "Verizon Wireless",
@@ -12074,6 +11962,126 @@ export const jsonMccMnc = [
     "mnc": "482"
   },
   {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "590"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "282"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "487"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "271"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "287"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "276"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "481"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "013"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "281"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "486"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "270"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "286"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "275"
+  },
+  {
+    "network": "Verizon Wireless",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "480"
+  },
+  {
+    "network": "Cellular Network Partnership LLC",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "360"
+  },
+  {
     "network": "Cellular Network Partnership LLC",
     "country": "United States",
     "mcc": "312",
@@ -12088,14 +12096,6 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "270"
-  },
-  {
-    "network": "Cellular Network Partnership LLC",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "360"
   },
   {
     "network": "",
@@ -12236,18 +12236,18 @@ export const jsonMccMnc = [
   {
     "network": "Cross Wireless Telephone Co.",
     "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "140"
-  },
-  {
-    "network": "Cross Wireless Telephone Co.",
-    "country": "United States",
     "mcc": "312",
     "iso": "us",
     "country_code": "1",
     "mnc": "030"
+  },
+  {
+    "network": "Cross Wireless Telephone Co.",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "140"
   },
   {
     "network": "",
@@ -12287,6 +12287,14 @@ export const jsonMccMnc = [
     "mcc": "312",
     "iso": "us",
     "country_code": "1",
+    "mnc": "130"
+  },
+  {
+    "network": "East Kentucky Network LLC",
+    "country": "United States",
+    "mcc": "312",
+    "iso": "us",
+    "country_code": "1",
     "mnc": "120"
   },
   {
@@ -12296,14 +12304,6 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "750"
-  },
-  {
-    "network": "East Kentucky Network LLC",
-    "country": "United States",
-    "mcc": "312",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "130"
   },
   {
     "network": "Edge Wireless LLC",
@@ -12436,18 +12436,18 @@ export const jsonMccMnc = [
   {
     "network": "Keystone Wireless LLC",
     "country": "United States",
-    "mcc": "312",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "180"
-  },
-  {
-    "network": "Keystone Wireless LLC",
-    "country": "United States",
     "mcc": "310",
     "iso": "us",
     "country_code": "1",
     "mnc": "690"
+  },
+  {
+    "network": "Keystone Wireless LLC",
+    "country": "United States",
+    "mcc": "312",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "180"
   },
   {
     "network": "Lamar County Cellular",
@@ -12527,14 +12527,6 @@ export const jsonMccMnc = [
     "mcc": "312",
     "iso": "us",
     "country_code": "1",
-    "mnc": "220"
-  },
-  {
-    "network": "Missouri RSA No 5 Partnership",
-    "country": "United States",
-    "mcc": "312",
-    "iso": "us",
-    "country_code": "1",
     "mnc": "010"
   },
   {
@@ -12560,6 +12552,14 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "010"
+  },
+  {
+    "network": "Missouri RSA No 5 Partnership",
+    "country": "United States",
+    "mcc": "312",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "220"
   },
   {
     "network": "Mohave Cellular LP",
@@ -12767,7 +12767,7 @@ export const jsonMccMnc = [
     "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "730"
+    "mnc": "540"
   },
   {
     "network": "",
@@ -12775,7 +12775,7 @@ export const jsonMccMnc = [
     "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "540"
+    "mnc": "730"
   },
   {
     "network": "Public Service Cellular Inc.",
@@ -12788,18 +12788,18 @@ export const jsonMccMnc = [
   {
     "network": "RSA 1 Limited Partnership",
     "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "430"
-  },
-  {
-    "network": "RSA 1 Limited Partnership",
-    "country": "United States",
     "mcc": "312",
     "iso": "us",
     "country_code": "1",
     "mnc": "160"
+  },
+  {
+    "network": "RSA 1 Limited Partnership",
+    "country": "United States",
+    "mcc": "311",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "430"
   },
   {
     "network": "Sagebrush Cellular Inc.",
@@ -12868,22 +12868,6 @@ export const jsonMccMnc = [
   {
     "network": "Sprint Spectrum",
     "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "870"
-  },
-  {
-    "network": "Sprint Spectrum",
-    "country": "United States",
-    "mcc": "311",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "490"
-  },
-  {
-    "network": "Sprint Spectrum",
-    "country": "United States",
     "mcc": "310",
     "iso": "us",
     "country_code": "1",
@@ -12914,36 +12898,20 @@ export const jsonMccMnc = [
     "mnc": "880"
   },
   {
-    "network": "T-Mobile",
+    "network": "Sprint Spectrum",
     "country": "United States",
-    "mcc": "310",
+    "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "210"
+    "mnc": "870"
   },
   {
-    "network": "T-Mobile",
+    "network": "Sprint Spectrum",
     "country": "United States",
-    "mcc": "310",
+    "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "260"
-  },
-  {
-    "network": "T-Mobile",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "200"
-  },
-  {
-    "network": "T-Mobile",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "250"
+    "mnc": "490"
   },
   {
     "network": "T-Mobile",
@@ -13007,6 +12975,46 @@ export const jsonMccMnc = [
     "mcc": "310",
     "iso": "us",
     "country_code": "1",
+    "mnc": "210"
+  },
+  {
+    "network": "T-Mobile",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "260"
+  },
+  {
+    "network": "T-Mobile",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "200"
+  },
+  {
+    "network": "T-Mobile",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "250"
+  },
+  {
+    "network": "T-Mobile",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "800"
+  },
+  {
+    "network": "T-Mobile",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
     "mnc": "300"
   },
   {
@@ -13024,14 +13032,6 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "330"
-  },
-  {
-    "network": "T-Mobile",
-    "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "800"
   },
   {
     "network": "T-Mobile",
@@ -13087,7 +13087,7 @@ export const jsonMccMnc = [
     "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "830"
+    "mnc": "050"
   },
   {
     "network": "Thumb Cellular Limited Partnership",
@@ -13095,7 +13095,7 @@ export const jsonMccMnc = [
     "mcc": "311",
     "iso": "us",
     "country_code": "1",
-    "mnc": "050"
+    "mnc": "830"
   },
   {
     "network": "TMP Corporation",
@@ -13116,14 +13116,6 @@ export const jsonMccMnc = [
   {
     "network": "Uintah Basin Electronics Telecommunications Inc.",
     "country": "United States",
-    "mcc": "310",
-    "iso": "us",
-    "country_code": "1",
-    "mnc": "960"
-  },
-  {
-    "network": "Uintah Basin Electronics Telecommunications Inc.",
-    "country": "United States",
     "mcc": "312",
     "iso": "us",
     "country_code": "1",
@@ -13136,6 +13128,14 @@ export const jsonMccMnc = [
     "iso": "us",
     "country_code": "1",
     "mnc": "860"
+  },
+  {
+    "network": "Uintah Basin Electronics Telecommunications Inc.",
+    "country": "United States",
+    "mcc": "310",
+    "iso": "us",
+    "country_code": "1",
+    "mnc": "960"
   },
   {
     "network": "Union Telephone Co.",
@@ -13271,7 +13271,7 @@ export const jsonMccMnc = [
     "mcc": "748",
     "iso": "uy",
     "country_code": "598",
-    "mnc": "01"
+    "mnc": "03"
   },
   {
     "network": "Ancel/Antel",
@@ -13279,7 +13279,7 @@ export const jsonMccMnc = [
     "mcc": "748",
     "iso": "uy",
     "country_code": "598",
-    "mnc": "03"
+    "mnc": "01"
   },
   {
     "network": "Claro/AM Wireless",
@@ -13431,14 +13431,6 @@ export const jsonMccMnc = [
     "mcc": "452",
     "iso": "vn",
     "country_code": "84",
-    "mnc": "04"
-  },
-  {
-    "network": "Viettel Mobile",
-    "country": "Viet Nam",
-    "mcc": "452",
-    "iso": "vn",
-    "country_code": "84",
     "mnc": "08"
   },
   {
@@ -13448,6 +13440,14 @@ export const jsonMccMnc = [
     "iso": "vn",
     "country_code": "84",
     "mnc": "06"
+  },
+  {
+    "network": "Viettel Mobile",
+    "country": "Viet Nam",
+    "mcc": "452",
+    "iso": "vn",
+    "country_code": "84",
+    "mnc": "04"
   },
   {
     "network": "Vinaphone",

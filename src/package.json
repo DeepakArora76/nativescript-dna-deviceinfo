@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-dna-deviceinfo",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"description": "NativeScript plugin to acquire device information.",
 	"main": "deviceinfo",
 	"typings": "index.d.ts",
@@ -68,7 +68,11 @@
 		"WiFi",
 		"SSID",
 		"WiFi SSID",
-		"Bluetooth"
+		"Bluetooth",
+		"Orientation",
+		"Display",
+		"Display Metrics",
+		"Metrics"
 	],
 	"author": {
 		"name": "Deepak Arora",
