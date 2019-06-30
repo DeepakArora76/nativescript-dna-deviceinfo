@@ -168,7 +168,7 @@ DeviceInfo.batteryLevel();
 
 ### - cellularServiceProviders
 
-Returns a list of GSM network providers, *Carrier*, of a device is equipped with.
+Returns a list of GSM network providers, *Carrier*, in use by device. In absence of adequate permission, returns empty *Carrier* list.
 
 ```javascript
 let carriers = DeviceInfo.cellularServiceProviders();
@@ -233,7 +233,7 @@ interface StorageVolume {
 
 ### - wifiSSID
 
-Returns service set identifier(SSID) of a wireless local area network (WLAN). In the absence of right permissions, returns an empty string.
+Returns service set identifier(SSID) of a wireless local area network (WLAN). In absence of right permissions, returns an empty string.
 
 ```javascript
 DeviceInfo.wifiSSID();
@@ -333,7 +333,7 @@ DeviceInfo.isBatteryCharging();
 
 ### - isLocationEnabled
 
-Returns Promise which resolves to 'true' if Location Service is enabled and the app has permission to access it, otherwise false.
+Depending on the state of Location Service and the app permission, returned Promise may resolve to 'true' or 'false'. In the absence of appropriate permission, rejected Promise is returned.
 
 ```javascript
 DeviceInfo.isLocationEnabled().then(value => console.log(value))
@@ -353,7 +353,7 @@ async LocationServiceStatus() {
 
 ### - isBluetoothEnabled
 
-Returns Promise which resolves to 'true' if Bluetooth is enabled, otherwise false.
+Depending on the state of Bluetooth and the app permission, returned Promise may resolve to 'true' or 'false'. In the absence of appropriate permission, rejected Promise is returned.
 
 ```javascript
 DeviceInfo.isBluetoothEnabled().then(value => console.log(value))
@@ -375,7 +375,7 @@ async PrintBluetoothStatus() {
 ## APIs in Action
 
 ```javascript
-  printDeviceInfo() { 
+  async printDeviceInfo() { 
     console.log("Free memory: ", formatBytes(DeviceInfo.freeMemory()));
     console.log("Total memory: ", formatBytes(DeviceInfo.totalMemory()));
     console.log("Total storage space: ", formatBytes(DeviceInfo.totalStorageSpace()));
@@ -440,6 +440,7 @@ async PrintBluetoothStatus() {
 - 2.3.1: Updated Mobile Country Code and Mobile Network Code.
 - 2.4.0: Added an API to get location service state.
 - 2.4.1: Updated documentation.
+- 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
 
 ## License
 

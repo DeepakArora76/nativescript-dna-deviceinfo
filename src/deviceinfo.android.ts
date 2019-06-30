@@ -194,14 +194,16 @@ export class DeviceInfo {
     const sm = DeviceInfo.subscriptionManager();
     if (sm) {
       const cellularProviders = sm.getActiveSubscriptionInfoList();
-      for (let i = 0; i < cellularProviders.size(); i++) {
-        let carrier = DeviceInfo.prepareCarrier(cellularProviders.get(i));
-        if (carrier.mobileCountryCode === DeviceInfo.activeProviderMcc() &&
-          carrier.mobileNetworkCode === DeviceInfo.activeProviderMnc()) {
-          carrier.networkType = DeviceInfo.activeProviderRadioAccessTechnology();
-          carrier.generation = wirelessCellularGenerator(carrier.networkType);
+      if (cellularProviders) {
+        for (let i = 0; i < cellularProviders.size(); i++) {
+          let carrier = DeviceInfo.prepareCarrier(cellularProviders.get(i));
+          if (carrier.mobileCountryCode === DeviceInfo.activeProviderMcc() &&
+            carrier.mobileNetworkCode === DeviceInfo.activeProviderMnc()) {
+            carrier.networkType = DeviceInfo.activeProviderRadioAccessTechnology();
+            carrier.generation = wirelessCellularGenerator(carrier.networkType);
+          }
+          carriers.push(carrier);
         }
-        carriers.push(carrier);
       }
     }
     else {

@@ -54,12 +54,15 @@ export class HomeViewModel extends Observable {
             }
 
             else {
-                requestPermissions([android.Manifest.permission.ACCESS_COARSE_LOCATION, android.Manifest.permission.READ_PHONE_STATE], "I need permission").then(
-                    () => {
-                        const provider = DeviceInfo.cellularServiceProviders();
-                        console.log(provider);
-                    }
-                );
+                requestPermissions([
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                    android.Manifest.permission.READ_PHONE_STATE],
+                    "I need permission").then(
+                        () => {
+                            const provider = DeviceInfo.cellularServiceProviders();
+                            console.log(provider);
+                        }
+                    );
             }
         }
         else {
