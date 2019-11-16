@@ -66,6 +66,9 @@ export class DeviceInfo {
     "iPhone11,4": "iPhone XS Max",
     "iPhone11,6": "iPhone XS Max Global",
     "iPhone11,8": "iPhone XR",
+    "iPhone12,1": "iPhone 11",
+    "iPhone12,3": "iPhone 11 Pro",
+    "iPhone12,5": "iPhone 11 Pro Max",
 
     "iPod1,1": "1st Gen iPod",
     "iPod2,1": "2nd Gen iPod",
@@ -73,6 +76,7 @@ export class DeviceInfo {
     "iPod4,1": "4th Gen iPod",
     "iPod5,1": "5th Gen iPod",
     "iPod7,1": "6th Gen iPod",
+    "iPod9,1": "7th Gen iPod",
 
     "iPad1,1": "iPad",
     "iPad1,2": "iPad 3G",
@@ -122,6 +126,10 @@ export class DeviceInfo {
     "iPad8,6": "iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi)",
     "iPad8,7": "iPad Pro 3rd Gen (12.9 inch, WiFi+Cellular)",
     "iPad8,8": "iPad Pro 3rd Gen (12.9 inch, 1TB, WiFi+Cellular)",
+    "iPad11,1": "iPad mini 5th Gen (WiFi)",
+    "iPad11,2": "iPad mini 5th Gen",
+    "iPad11,3": "iPad Air 3rd Gen (WiFi)",
+    "iPad11,4": "iPad Air 3rd Gen",
 
     "Watch1,1": "Apple Watch 38mm case",
     "Watch1,2": "Apple Watch 38mm case",
@@ -137,6 +145,10 @@ export class DeviceInfo {
     "Watch4,2": "Apple Watch Series 4 44mm case (GPS)",
     "Watch4,3": "Apple Watch Series 4 40mm case (GPS+Cellular)",
     "Watch4,4": "Apple Watch Series 4 44mm case (GPS+Cellular)",
+    "Watch5,1": "Apple Watch Series 5 40mm case (GPS)",
+    "Watch5,2": "Apple Watch Series 5 44mm case (GPS)",
+    "Watch5,3": "Apple Watch Series 5 40mm case (GPS+Cellular)",
+    "Watch5,4": "Apple Watch Series 5 44mm case (GPS+Cellular)"
   };
 
   static totalMemory(): number {

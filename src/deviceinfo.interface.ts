@@ -1,6 +1,31 @@
-import { RadioAccessTechnology, WCTGeneration } from "./index.d";
+export const enum RadioAccessTechnology {
+  UNKNOWN,
+  CDMA,
+  CDMAEVDORev0,
+  CDMAEVDORevA,
+  CDMAEVDORevB,
+  EDGE,
+  EHRPD,
+  GPRS,
+  HSPA,
+  HSDPA,
+  HSPAP,
+  HSUPA,
+  NR,
+  IDEN,
+  IWLAN,
+  UMTS,
+  LTE,
+  WCDMA,
+}
 
-export { RadioAccessTechnology, WCTGeneration };
+export const enum WCTGeneration {
+  _UNKNOWN = "UnKnown",
+  _2G = "2G",
+  _3G = "3G",
+  _4G = "4G",
+  _5G = "5G"
+}
 
 export interface Carrier {
   carrierName: string;

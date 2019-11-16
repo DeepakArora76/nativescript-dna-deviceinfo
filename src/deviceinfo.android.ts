@@ -317,7 +317,7 @@ export class DeviceInfo {
   static wifiSSID(): string {
     const ctx = <ContextType>Android.context;
     const permission = android.Manifest.permission;
-    const contextCompat = android.support.v4.content.ContextCompat;
+    const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
     const PackageManager = android.content.pm.PackageManager;
 
     const permissionCL = permission.ACCESS_COARSE_LOCATION;
@@ -434,7 +434,7 @@ export class DeviceInfo {
     return new Promise((resolve, reject) => {
       const ctx = <ContextType>Android.context;
       const permission = android.Manifest.permission;
-      const contextCompat = android.support.v4.content.ContextCompat;
+      const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const PackageManager = android.content.pm.PackageManager;
 
       const permissionFL = permission.ACCESS_FINE_LOCATION;
@@ -480,7 +480,7 @@ export class DeviceInfo {
     }
     return new Promise<boolean>((resolve, reject) => {
       const permission = android.Manifest.permission;
-      const contextCompat = android.support.v4.content.ContextCompat;
+      const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const PackageManager = android.content.pm.PackageManager;
 
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission.BLUETOOTH);
@@ -491,6 +491,16 @@ export class DeviceInfo {
         reject(new Error("Missing bluetooth permission."));
       }
     });
+  }
+
+  private static androidSupport() {
+    let anyGlobal = global as any;
+    if (anyGlobal.androidx && anyGlobal.androidx.core) {
+      return anyGlobal.androidx.core;
+    }
+    else if (android.support && android.support.v4) {
+      return android.support.v4;
+    }
   }
 
   private static memoryInfo() {
@@ -596,7 +606,7 @@ export class DeviceInfo {
     if (Build.VERSION.SDK_INT >= LOLLIPOP_MR1) {
       const ctx = <ContextType>Android.context;
       const permission = android.Manifest.permission.READ_PHONE_STATE;
-      const contextCompat = android.support.v4.content.ContextCompat;
+      const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
       if (permissionStatus === android.content.pm.PackageManager.PERMISSION_GRANTED) {
         return android.telephony.SubscriptionManager.from(ctx);
@@ -610,7 +620,7 @@ export class DeviceInfo {
     if (Build.VERSION.SDK_INT >= JELLY_BEAN_MR1) {
       const ctx = <ContextType>Android.context;
       const permission = android.Manifest.permission.ACCESS_COARSE_LOCATION;
-      const contextCompat = android.support.v4.content.ContextCompat;
+      const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
       if (permissionStatus === android.content.pm.PackageManager.PERMISSION_GRANTED) {
         return ctx.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager;

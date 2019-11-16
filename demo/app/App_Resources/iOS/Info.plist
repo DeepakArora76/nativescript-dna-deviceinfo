@@ -43,9 +43,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Need location when in use.</string>
-  <key>NSLocationAlwaysUsageDescription</key>
-  <string>Need location always.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Need location when in use.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Need location always.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Require bluetooth for testing.</string>
+	<key>NEHotspotConfiguration</key>
+	<string>Require wifi permission for testing.</string>
 </dict>
 </plist>
