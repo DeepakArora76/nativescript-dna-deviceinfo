@@ -1,4 +1,4 @@
-import { android as Android, getNativeApplication } from 'tns-core-modules/application';
+import * as application from '@nativescript/core/application';
 
 import {
   Carrier,
@@ -109,7 +109,7 @@ export class DeviceInfo {
 
   static deviceName(): string {
     let deviceName = "Unknown";
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH");
     if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
       try {
@@ -124,17 +124,17 @@ export class DeviceInfo {
   }
 
   static deviceLocale(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const current = ctx.getResources().getConfiguration().locale;
     if (android.os.Build.VERSION.SDK_INT >= LOLLIPOP) {
-      return current.toLanguageTag();
+      return current.getDisplayLanguage();
     } else {
       return String().concat(current.getLanguage(), "-", current.getCountry());
     }
   }
 
   static deviceCountry(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const current = ctx.getResources().getConfiguration().locale;
     return current.getCountry();
   }
@@ -145,7 +145,7 @@ export class DeviceInfo {
 
   static userAgent(): string {
     try {
-      return android.webkit.WebSettings.getDefaultUserAgent(Android.context);
+      return android.webkit.WebSettings.getDefaultUserAgent(application.android.context);
     } catch (error) {
       console.log(<Error>error.message);
     }
@@ -153,19 +153,19 @@ export class DeviceInfo {
   }
 
   static appName(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     return ctx.getApplicationInfo().loadLabel(ctx.getPackageManager());
   }
 
   static appVersion(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const pckMgr = ctx.getPackageManager();
     const pckInfo = pckMgr.getPackageInfo(ctx.getPackageName(), 0);
     return pckInfo.versionName;
   }
 
   static bundleId(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     return ctx.getPackageName();
   }
 
@@ -181,7 +181,7 @@ export class DeviceInfo {
     const BM = android.os.BatteryManager;
     const iFilter = new android.content.IntentFilter(
       android.content.Intent.ACTION_BATTERY_CHANGED);
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const batteryStatus = ctx.registerReceiver(null, iFilter);
     const level = batteryStatus.getIntExtra(BM.EXTRA_LEVEL, -1);
     const scale = batteryStatus.getIntExtra(BM.EXTRA_SCALE, -1);
@@ -238,7 +238,7 @@ export class DeviceInfo {
 
   static externalStoragePaths(): string[] {
     let paths = [] as string[];
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const sm = <StorageManager>ctx.getSystemService(Context.STORAGE_SERVICE);
     try {
       const method = StorageManager.class.getMethod("getVolumePaths", []);
@@ -258,7 +258,7 @@ export class DeviceInfo {
 
   static storageVolumes(): StorageVolume[] {
     let storageVolumesCollection = [] as StorageVolume[];
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const sm = <StorageManager>ctx.getSystemService(Context.STORAGE_SERVICE);
     try {
       const method = StorageManager.class.getMethod("getVolumeList", []);
@@ -315,7 +315,7 @@ export class DeviceInfo {
   }
 
   static wifiSSID(): string {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const permission = android.Manifest.permission;
     const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
     const PackageManager = android.content.pm.PackageManager;
@@ -344,7 +344,7 @@ export class DeviceInfo {
   }
 
   static displayMetrics(): DisplayMetrics {
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const wm = ctx.getSystemService(Context.WINDOW_SERVICE) as android.view.WindowManager;
     let point = new android.graphics.Point();
 
@@ -385,13 +385,13 @@ export class DeviceInfo {
 
   static isPortrait(): boolean {
     const Configuration = android.content.res.Configuration;
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     return ctx.getResources().getConfiguration().orientation === Configuration.ORIENTATION_PORTRAIT;
   }
 
   static isTablet(): boolean {
     const Configuration = android.content.res.Configuration;
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const layout = ctx.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
     if (layout !== Configuration.SCREENLAYOUT_SIZE_LARGE && layout !== Configuration.SCREENLAYOUT_SIZE_XLARGE) {
       return false;
@@ -408,7 +408,7 @@ export class DeviceInfo {
   }
 
   static is24Hour(): boolean {
-    return android.text.format.DateFormat.is24HourFormat(Android.context);
+    return android.text.format.DateFormat.is24HourFormat(application.android.context);
   }
 
   static isEmulator(): boolean {
@@ -424,7 +424,7 @@ export class DeviceInfo {
     const BM = android.os.BatteryManager;
     const iFilter = new android.content.IntentFilter(
       android.content.Intent.ACTION_BATTERY_CHANGED);
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     const batteryStatus = ctx.registerReceiver(null, iFilter);
     const chargingStatus = batteryStatus.getIntExtra(BM.EXTRA_STATUS, -1);
     return chargingStatus === BM.BATTERY_STATUS_CHARGING;
@@ -432,7 +432,7 @@ export class DeviceInfo {
 
   static isLocationEnabled(): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      const ctx = <ContextType>Android.context;
+      const ctx = <ContextType>application.android.context;
       const permission = android.Manifest.permission;
       const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const PackageManager = android.content.pm.PackageManager;
@@ -469,10 +469,10 @@ export class DeviceInfo {
     type BluetoothAdapterType = android.bluetooth.BluetoothAdapter;
     const Build = android.os.Build;
     const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
-    const ctx = <ContextType>Android.context;
+    const ctx = <ContextType>application.android.context;
     let btAdapter: BluetoothAdapterType = null;
     if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
-      const btm = <BluetoothManagerType>ctx.getSystemService(Context.BLUETOOTH_SERVICE);
+      const btm = <BluetoothManagerType>ctx.getSystemService(application.android.context.BLUETOOTH_SERVICE);
       btAdapter = btm.getAdapter();
     }
     else {
@@ -504,7 +504,7 @@ export class DeviceInfo {
   }
 
   private static memoryInfo() {
-    const actMgr = <android.app.ActivityManager>(getNativeApplication()
+    const actMgr = <android.app.ActivityManager>(application.getNativeApplication()
       .getSystemService(Context.ACTIVITY_SERVICE));
 
     const memInfo = new android.app.ActivityManager.MemoryInfo();
@@ -514,17 +514,11 @@ export class DeviceInfo {
 
   private static totalSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    if (android.os.Build.VERSION.SDK_INT >= JELLY_BEAN_MR2) {
-      return statFs.getBlockCountLong() * statFs.getBlockSizeLong();
-    }
     return statFs.getBlockCount() * statFs.getBlockSize();
   }
 
   private static freeSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    if (android.os.Build.VERSION.SDK_INT >= JELLY_BEAN_MR2) {
-      return statFs.getAvailableBlocksLong() * statFs.getBlockSizeLong();
-    }
     return statFs.getAvailableBlocks() * statFs.getBlockSize();
   }
 
@@ -604,7 +598,7 @@ export class DeviceInfo {
   private static subscriptionManager(): SubscriptionManager | null {
     const Build = android.os.Build;
     if (Build.VERSION.SDK_INT >= LOLLIPOP_MR1) {
-      const ctx = <ContextType>Android.context;
+      const ctx = <ContextType>application.android.context;
       const permission = android.Manifest.permission.READ_PHONE_STATE;
       const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
@@ -618,7 +612,7 @@ export class DeviceInfo {
   private static telephonyManager(): TelephonyManager | null {
     const Build = android.os.Build;
     if (Build.VERSION.SDK_INT >= JELLY_BEAN_MR1) {
-      const ctx = <ContextType>Android.context;
+      const ctx = <ContextType>application.android.context;
       const permission = android.Manifest.permission.ACCESS_COARSE_LOCATION;
       const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission);
@@ -634,7 +628,7 @@ export class DeviceInfo {
       return false;
     }
 
-    const context = <ContextType>Android.context;
+    const context = <ContextType>application.android.context;
     const storageManager = <StorageManagerType>context.getSystemService(Context.STORAGE_SERVICE);
     try {
       const method = StorageManager.class.getDeclaredMethod(

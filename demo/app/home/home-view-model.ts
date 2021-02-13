@@ -1,9 +1,9 @@
 
-import { EventData } from "tns-core-modules/data/observable";
+import { EventData } from "@nativescript/core/data/observable";
 import { requestPermissions, hasPermission } from 'nativescript-permissions';
 import { DeviceInfo } from "nativescript-dna-deviceinfo"
 
-import { Observable } from 'tns-core-modules/data/observable';
+import { Observable } from '@nativescript/core/data/observable';
 
 export class HomeViewModel extends Observable {
     constructor() {

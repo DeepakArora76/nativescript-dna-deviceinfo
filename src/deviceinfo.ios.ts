@@ -13,7 +13,6 @@ import { round } from "./utility";
 export function staticDecorator<T>() {
   return (constructor: T) => { };
 }
-
 @staticDecorator<DeviceInfoInterface>()
 export class DeviceInfo {
   private static radioAccessTechnology = new Map([
@@ -439,6 +438,7 @@ export class DeviceInfo {
   }
 }
 
+@NativeClass()
 class BluetoothManagerDelegate extends NSObject implements CBCentralManagerDelegate {
   // Note: This ObjCProtocols is needed.
   public static ObjCProtocols = [CBCentralManagerDelegate];

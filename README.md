@@ -442,6 +442,7 @@ async PrintBluetoothStatus() {
 - 2.4.1: Updated documentation.
 - 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
 - 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
+- 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
 
 
 ## License
