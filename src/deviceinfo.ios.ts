@@ -218,11 +218,11 @@ export class DeviceInfo {
     const utsnamePtr = interop.alloc(interop.sizeof(utsname));
     uname(utsnamePtr);
 
-    const sysName  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 0)).toString() // sysname
+    const sysName = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 0)).toString() // sysname
     const nodeName = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 1)).toString() // nodename
-    const release  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 2)).toString() // release
-    const version  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 3)).toString() // version
-    const machine  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 4)).toString() // machine
+    const release = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 2)).toString() // release
+    const version = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 3)).toString() // version
+    const machine = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 4)).toString() // machine
     return machine;
 
     // const systemInfo =  new interop.Reference<utsname>();
@@ -265,9 +265,17 @@ export class DeviceInfo {
     return NSTimeZone.localTimeZone.name;
   }
 
-  static userAgent(): string {
-    const webView = UIWebView.alloc().initWithFrame(CGRectZero);
-    return webView.stringByEvaluatingJavaScriptFromString("navigator.userAgent");
+  static userAgent(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const wkWebView = WKWebView.alloc().init();
+      wkWebView.evaluateJavaScriptCompletionHandler("window.navigator.userAgent;", (result, error) => {
+        if (error) {
+          return reject(NSString.stringWithUTF8String(error.localizedDescription).toString());
+        } else {
+          return resolve(NSString.stringWithUTF8String(result).toString());
+        }
+      });
+    });
   }
 
   static appName(): string {

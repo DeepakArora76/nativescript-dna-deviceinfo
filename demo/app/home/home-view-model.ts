@@ -27,7 +27,7 @@ export class HomeViewModel extends Observable {
         console.log("Device locale: ", DeviceInfo.deviceLocale());
         console.log("Device country: ", DeviceInfo.deviceCountry());
         console.log("Device timezone: ", DeviceInfo.timezone());
-        console.log("Device user agent: ", DeviceInfo.userAgent());
+        console.log("Device user agent: ", await DeviceInfo.userAgent().catch(error => console.log(error)));
         console.log("App name: ", DeviceInfo.appName());
         console.log("App version: ", DeviceInfo.appVersion());
         console.log("App bundle id: ", DeviceInfo.bundleId());

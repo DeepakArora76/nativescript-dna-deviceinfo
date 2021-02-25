@@ -9,6 +9,7 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 
 
 ## Changelogs:
+- 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
 - 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
 - 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
 - 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
@@ -401,22 +402,22 @@ async PrintBluetoothStatus() {
 
 ```javascript
   async printDeviceInfo() { 
-    console.log("Free memory: ", formatBytes(DeviceInfo.freeMemory()));
-    console.log("Total memory: ", formatBytes(DeviceInfo.totalMemory()));
-    console.log("Total storage space: ", formatBytes(DeviceInfo.totalStorageSpace()));
-    console.log("Free storage space: ",formatBytes(DeviceInfo.freeStorageSpace()));
+    console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
+    console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
+    console.log("Total storage space: ", this.getSize(DeviceInfo.totalStorageSpace()));
+    console.log("Free storage space: ", this.getSize(DeviceInfo.freeStorageSpace()));
     console.log("Device id: ", DeviceInfo.deviceId());
-    console.log("Device name: ",  DeviceInfo.deviceName());
+    console.log("Device name: ", DeviceInfo.deviceName());
     console.log("Device locale: ", DeviceInfo.deviceLocale());
     console.log("Device country: ", DeviceInfo.deviceCountry());
     console.log("Device timezone: ", DeviceInfo.timezone());
-    console.log("Device user agent: ", DeviceInfo.userAgent());
+    console.log("Device user agent: ", await DeviceInfo.userAgent().catch(error => console.log(error)));
     console.log("App name: ", DeviceInfo.appName());
     console.log("App version: ", DeviceInfo.appVersion());
     console.log("App bundle id: ", DeviceInfo.bundleId());
     console.log("App bundle number: ", DeviceInfo.bundleNumber());
-    console.log("System manufacturer: ",  DeviceInfo.systemManufacturer());
-    console.log("Battery level: ",  Math.round(DeviceInfo.batteryLevel()));
+    console.log("System manufacturer: ", DeviceInfo.systemManufacturer());
+    console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
     console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
     console.log("Storage volume info: ", DeviceInfo.storageVolumes());
     console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
@@ -425,11 +426,9 @@ async PrintBluetoothStatus() {
     console.log("Is tablet: ", DeviceInfo.isTablet());
     console.log("Is 24 hour: ", DeviceInfo.is24Hour());
     console.log("Is emulator: ", DeviceInfo.isEmulator());
-    console.log("Is battery charing: ",  DeviceInfo.isBatteryCharging());
-    console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled()
-                                                                 .catch(error => console.log(error)));
-    console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled()
-                                                          .catch(error => console.log(error)));
+    console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
+    console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled().catch(error => console.log(error)));
+    console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
   }
 
   formatBytes(bytes, decimals) {

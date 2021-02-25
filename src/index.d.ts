@@ -14,7 +14,7 @@ export declare class DeviceInfo {
   static deviceLocale(): string;
   static deviceCountry(): string;
   static timezone(): string;
-  static userAgent(): string;
+  static userAgent(): Promise<string>;
   static appName(): string;
   static appVersion(): string;
   static bundleId(): string;
