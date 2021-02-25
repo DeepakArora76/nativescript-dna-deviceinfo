@@ -8,6 +8,31 @@ NativeScript plugin to acquire device info.
 The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms. 
 
 
+## Changelogs:
+- 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
+- 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
+- 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
+- 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
+- 2.4.1: Updated documentation.
+- 2.4.0: Added an API to get location service state.
+- 2.3.1: Updated Mobile Country Code and Mobile Network Code.
+- 2.3.0: Added APIs to get device orientation and display metrics.
+- 2.2.0: Added an API to get a status of Bluetooth.
+- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
+- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
+- 2.1.1: The documentation is updated.
+- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
+- 1.4.0: Added storageVolumeInfo API.
+- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
+- 1.2.1: Removed unwanted dependencies.
+- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
+- 1.1.1: Updated document.
+- 1.1.0: New APIs related to battery charging status and its charge level.
+- 1.0.1: Minor document correction.
+- 1.0.0: First release.
+
+
 ## Installation
 
 From the command prompt, go to your app's root folder and execute:
@@ -419,31 +444,6 @@ async PrintBluetoothStatus() {
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
   }
 ```
-
-
-## Changelogs:
-- 1.0.0: First release.
-- 1.0.1: Minor document correction.
-- 1.1.0: New APIs related to battery charging status and its charge level.
-- 1.1.1: Updated document.
-- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
-- 1.2.1: Removed unwanted dependencies.
-- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
-- 1.4.0: Added storageVolumeInfo API.
-- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
-- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
-- 2.1.1: The documentation is updated.
-- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
-- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
-- 2.2.0: Added an API to get a status of Bluetooth.
-- 2.3.0: Added APIs to get device orientation and display metrics.
-- 2.3.1: Updated Mobile Country Code and Mobile Network Code.
-- 2.4.0: Added an API to get location service state.
-- 2.4.1: Updated documentation.
-- 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
-- 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
-- 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
-
 
 ## License
 

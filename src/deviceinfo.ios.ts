@@ -214,9 +214,23 @@ export class DeviceInfo {
   }
 
   static deviceId(): string {
-    let systemInfo = new interop.Reference<utsname>();
-    uname(systemInfo);
-    return NSString.stringWithUTF8String(systemInfo.value.machine).toString();
+    const _SYS_NAMELEN = 256;
+    const utsnamePtr = interop.alloc(interop.sizeof(utsname));
+    uname(utsnamePtr);
+
+    const sysName  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 0)).toString() // sysname
+    const nodeName = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 1)).toString() // nodename
+    const release  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 2)).toString() // release
+    const version  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 3)).toString() // version
+    const machine  = NSString.stringWithUTF8String(utsnamePtr.add(_SYS_NAMELEN * 4)).toString() // machine
+    return machine;
+
+    // const systemInfo =  new interop.Reference<utsname>();
+    // uname(systemInfo);
+    // // For some reason stringWithUTF8String is crashing! The systemInfo.value.machine
+    // // contains the value. JS bytes array to string is possible.
+    // const deviceId = NSString.stringWithUTF8String(systemInfo.value.machine).toString();
+    // return deviceId;
   }
 
   static deviceName(): string {
@@ -363,7 +377,7 @@ export class DeviceInfo {
 
   static isPortrait(): boolean {
     return UIDevice.currentDevice.orientation === UIDeviceOrientation.Portrait ||
-    UIDevice.currentDevice.orientation === UIDeviceOrientation.PortraitUpsideDown;
+      UIDevice.currentDevice.orientation === UIDeviceOrientation.PortraitUpsideDown;
   }
 
   static isTablet(): boolean {
