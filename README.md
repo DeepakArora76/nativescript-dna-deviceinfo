@@ -9,6 +9,7 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 
 
 ## Changelogs:
+- 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
 - 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
 - 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
 - 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
