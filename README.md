@@ -10,9 +10,9 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/NativescriptDeviceInfoJSDemo.git) repository for practical implementation guidance and hints.
 
 
-
 ## Changelogs:
-- 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" API for iOS and Android. Fixed issues related to Bluetooth detection for Android.
+- 3.3.1: Fix a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
+- 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
 - 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
 - 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
 - 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
@@ -23,11 +23,11 @@ Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna
 - 2.4.0: Added an API to get location service state.
 - 2.3.1: Updated Mobile Country Code and Mobile Network Code.
 - 2.3.0: Added APIs to get device orientation and display metrics.
-- 2.2.0: Added an API to get a status of Bluetooth.
+- 2.2.0: Added an API to get the status of Bluetooth.
 - 2.1.3: Adjusted the license from Apache-2.0 to MIT.
 - 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
 - 2.1.1: The documentation is updated.
-- 2.1.0: Added an API to get service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.1.0: Added an API to get the service set identifier(SSID) of a wireless local area network (WLAN).
 - 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
 - 1.4.0: Added storageVolumeInfo API.
 - 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
@@ -99,6 +99,8 @@ Below is the list of APIs with their supported platforms. Kindly visit [typescri
 | isBatteryCharging              | boolean                |   +   |     +     |
 | isLocationEnabled              | Promise<boolean>       |   +   |     +     |
 | isBluetoothEnabled             | Promise<boolean>       |   +   |     +     |
+
+Description of the APIs:
 
 ### - totalMemory
 
@@ -305,7 +307,8 @@ DeviceInfo.wifiSSID();
 ```
 
 - Notes for iOS users:
-  * Supported on iOS 12.0 and older versions.
+  * Supported on iOS 12.0 and older versions. 
+  * Version above 12.0 uses NEHotspotHelper which requires "com.apple.developer.networking.HotspotHelper" entitlement by Apple.
 
 - Notes for Android users:
   * Permissions ACCESS_WIFI_STATE and ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION are required.
@@ -362,25 +365,25 @@ interface DisplayMetrics {
 
 ### - wifiIpv4Address
 
-Returns *Promise<string>* of a device.
+Returns *Promise<string>* which resolves to WiFi IPv4 address.
 
 ```javascript
 DeviceInfo.wifiIpv4Address();
 ```
 
 - Notes for Android users:
-  * Permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are required for this API. Make sure that these permissions are in place in AndroidManifest.xml and in code too.
+  * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
 
 ### - cellularIpv4Address
 
-Returns *Promise<string>* of a device.
+Returns *Promise<string>* which resolves to cellular IPv4 address.
 
 ```javascript
 DeviceInfo.cellularIpv4Address();
 ```
 
 - Notes for Android users:
-  * Permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are required for this API. Make sure that these permissions are in place in AndroidManifest.xml and in code too.
+  * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
 
 ### - isPortrait
 Returns  'true' if a device is in portrait mode, otherwise 'false'.

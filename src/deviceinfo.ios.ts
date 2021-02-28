@@ -370,14 +370,36 @@ export class DeviceInfo {
   }
 
   static wifiSSID(): string {
-    const interfaces = CNCopySupportedInterfaces();
-    if (interfaces && interfaces.count) {
-      const interfaceName = CFArrayGetValueAtIndex(interfaces, 0);
-      var reference = new interop.Reference(interop.types.unichar, interfaceName);
-      const dict = CNCopyCurrentNetworkInfo(reference.value);
-      if (dict !== null && dict.count) {
-        return dict.objectForKey(kCNNetworkInfoKeySSID);
+    const sysVer = Number.parseInt(UIDevice.currentDevice.systemVersion);
+    const sysName = UIDevice.currentDevice.systemName.toLocaleLowerCase();
+    if (sysName === "ios" && sysVer <= 12) {
+      const interfaces = CNCopySupportedInterfaces();
+      if (interfaces && interfaces.count) {
+        const interfaceName = CFArrayGetValueAtIndex(interfaces, 0);
+        const dict = CNCopyCurrentNetworkInfo(interfaceName as unknown as string);
+        if (dict !== null && dict.count) {
+          return dict.objectForKey(kCNNetworkInfoKeySSID);
+        }
       }
+    } else {
+      // Note : Before using NEHotspotHelper, one must first be granted a special entitlement
+      // (com.apple.developer.networking.HotspotHelper) by Apple.
+      const currentNetwork: NSArray<NEHotspotNetwork> = NEHotspotHelper.supportedNetworkInterfaces();
+      if (currentNetwork && currentNetwork.count) {
+        const ssid = currentNetwork[0].SSID;
+        return ssid;
+      }
+
+      // Another solution
+      // * @method fetchCurrentWithCompletionHandler:completionHandler:
+      // * @discussion This method returns SSID and BSSID of the current Wi-Fi network when the
+      // *   requesting application meets one of following 4 requirements -.
+      // *   1. application is using CoreLocation API and has user's authorization to access precise location.
+      // *   2. application has used NEHotspotConfiguration API to configure the current Wi-Fi network.
+      // *   3. application has active VPN configurations installed.
+      // *   4. application has active NEDNSSettingsManager configuration installed.
+      // *   An application will receive nil if it fails to meet any of the above 4 requirements.
+      // *   An application will receive nil if does not have the "com.apple.developer.networking.wifi-info" entitlement.
     }
     return "";
   }
