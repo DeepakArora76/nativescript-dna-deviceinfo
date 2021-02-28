@@ -384,6 +384,14 @@ export class DeviceInfo {
     return dm;
   }
 
+  static wifiIpv4Address(): Promise<string> {
+    return DeviceInfo.ipv4Address();
+  }
+
+  public static cellularIpv4Address(): Promise<string> {
+    return DeviceInfo.ipv4Address();
+  }
+
   static isPortrait(): boolean {
     const Configuration = android.content.res.Configuration;
     const ctx = <ContextType>application.android.context;
@@ -466,27 +474,29 @@ export class DeviceInfo {
   }
 
   static isBluetoothEnabled(): Promise<boolean> {
-    type BluetoothManagerType = android.bluetooth.BluetoothManager;
-    type BluetoothAdapterType = android.bluetooth.BluetoothAdapter;
-    const Build = android.os.Build;
-    const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
-    const ctx = <ContextType>application.android.context;
-    let btAdapter: BluetoothAdapterType = null;
-    if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
-      const btm = <BluetoothManagerType>ctx.getSystemService(application.android.context.BLUETOOTH_SERVICE);
-      btAdapter = btm.getAdapter();
-    }
-    else {
-      btAdapter = BluetoothAdapter.getDefaultAdapter();
-    }
     return new Promise<boolean>((resolve, reject) => {
+      type BluetoothManagerType = android.bluetooth.BluetoothManager;
+      type BluetoothAdapter = android.bluetooth.BluetoothAdapter;
+      const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
+      const Build = android.os.Build;
+      const ctx = <ContextType>application.android.context;
+      let btAdapter: BluetoothAdapter = null;
+
+      if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
+        const btm = <BluetoothManagerType>ctx.getSystemService(android.content.Context.BLUETOOTH_SERVICE);
+        btAdapter = btm ? btm.getAdapter() : null;
+      }
+      else {
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
+      }
+
       const permission = android.Manifest.permission;
       const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const PackageManager = android.content.pm.PackageManager;
 
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission.BLUETOOTH);
       if (permissionStatus === PackageManager.PERMISSION_GRANTED) {
-        resolve(btAdapter && btAdapter.getState() === BluetoothAdapter.STATE_ON);
+        resolve(btAdapter && btAdapter.isEnabled());
       }
       else {
         reject(new Error("Missing bluetooth permission."));
@@ -643,5 +653,32 @@ export class DeviceInfo {
       console.log(<Error>error.message);
     }
     return false;
+  }
+
+  private static ipv4Address(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        type NetworkInterface = java.net.NetworkInterface
+        const NetworkInterface = java.net.NetworkInterface;
+        const Collections = java.util.Collections;
+        const interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+        for (let index = 0; index < interfaces.size(); index++) {
+          const netInterface: NetworkInterface = interfaces.get(index);
+          const addrs = Collections.list(netInterface.getInetAddresses());
+          for (let addrIndex = 0; addrIndex < addrs.size(); addrIndex++) {
+            const addr = addrs.get(addrIndex);
+            if (!addr.isLoopbackAddress()) {
+              const hostAddr = addr.getHostAddress();
+              const isIPv4 = hostAddr.indexOf(':') < 0
+              if (isIPv4) {
+                return resolve(hostAddr);
+              }
+            }
+          }
+        }
+      } catch (Exception) {
+      }
+      resolve("");
+    });
   }
 }

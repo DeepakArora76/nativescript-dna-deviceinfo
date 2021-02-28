@@ -36,6 +36,7 @@ export class HomeViewModel extends Observable {
         console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
         console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
         console.log("Storage volume info: ", DeviceInfo.storageVolumes());
+        // wifiSSID is supported for iOS 12.0
         console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
         console.log("Display metrics: ", DeviceInfo.displayMetrics());
         console.log("Is portrait orientation: ", DeviceInfo.isPortrait());
@@ -44,28 +45,44 @@ export class HomeViewModel extends Observable {
         console.log("Is emulator: ", DeviceInfo.isEmulator());
         console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
         console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled().catch(error => console.log(error)));
-        console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
 
         if (DeviceInfo.systemManufacturer() !== "Apple") {
-            if (hasPermission(android.Manifest.permission.ACCESS_COARSE_LOCATION) &&
-                hasPermission(android.Manifest.permission.READ_PHONE_STATE)) {
-                const provider = DeviceInfo.cellularServiceProviders();
-                console.log(provider);
-            }
+            requestPermissions([
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.READ_PHONE_STATE
+            ], "App requires Location access permissions"
+            ).then(
+                () => {
+                    const provider = DeviceInfo.cellularServiceProviders();
+                    console.log(provider);
+                }
+            ).catch(error => console.log(error));
 
-            else {
-                requestPermissions([
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                    android.Manifest.permission.READ_PHONE_STATE],
-                    "I need permission").then(
-                        () => {
-                            const provider = DeviceInfo.cellularServiceProviders();
-                            console.log(provider);
-                        }
-                    );
-            }
+            requestPermissions([
+                android.Manifest.permission.INTERNET,
+                android.Manifest.permission.ACCESS_NETWORK_STATE,
+                android.Manifest.permission.ACCESS_WIFI_STATE
+            ], "App requires Network permissions"
+            ).then(
+                async () => {
+                    console.log("WiFi IPv4 Address: ", await DeviceInfo.wifiIpv4Address());
+                    console.log("Cellular IPv4 Address: ", await DeviceInfo.cellularIpv4Address());
+                }
+            ).catch(error => console.log(error));
+
+            requestPermissions([
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ], "App requires Network permissions"
+            ).then(
+                async () => {
+                    console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
+                }
+            ).catch(error => console.log(error));
         }
         else {
+            console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
+            console.log("WiFi IPv4 Address: ", await DeviceInfo.wifiIpv4Address());
+            console.log("Cellular IPv4 Address: ", await DeviceInfo.cellularIpv4Address());
             const provider = DeviceInfo.cellularServiceProviders();
             console.log(provider);
         }

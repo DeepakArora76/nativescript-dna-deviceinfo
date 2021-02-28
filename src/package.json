@@ -1,6 +1,6 @@
 {
   "name": "nativescript-dna-deviceinfo",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "NativeScript plugin to acquire device information.",
   "main": "deviceinfo",
   "typings": "index.d.ts",
@@ -24,6 +24,7 @@
     "demo.ios": "npm i && cd ../demo && nsc run ios",
     "demo.ios.debug": "npm run nsc && cd ../demo && nsc debug ios",
     "demo.android": "npm i && cd ../demo && nsc run android",
+    "demo.android.debug": "npm i && cd ../demo && nsc debug android",
     "demo.reset": "cd ../demo && npx rimraf -- hooks node_modules platforms package-lock.json",
     "plugin.prepare": "npm run build && cd ../demo && nsc plugin remove nativescript-dna-deviceinfo && nsc plugin add ../src",
     "publish-packages": "nx g @nativescript/plugin-tools:publish",
@@ -65,6 +66,7 @@
     "WiFi",
     "SSID",
     "WiFi SSID",
+    "IPv4",
     "Bluetooth",
     "Orientation",
     "Display",

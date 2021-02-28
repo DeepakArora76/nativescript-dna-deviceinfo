@@ -5,10 +5,14 @@
 
 NativeScript plugin to acquire device info.
 
-The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms. 
+The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms.
+
+Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/NativescriptDeviceInfoJSDemo.git) repository for practical implementation guidance and hints.
+
 
 
 ## Changelogs:
+- 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" API for iOS and Android. Fixed issues related to Bluetooth detection for Android.
 - 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
 - 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
 - 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
@@ -61,6 +65,40 @@ const DeviceInfo = nativescript_dna_deviceinfo.DeviceInfo;
 
 
 ## APIs
+Below is the list of APIs with their supported platforms. Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/NativescriptDeviceInfoJSDemo.git) repository for practical implementation guidance and hints.
+
+| API                            | Return Type            | iOS   | Android   |
+| -------------------------------| -----------------------|:-----:|:---------:|
+| totalMemory                    | number                 |   +   |     +     |
+| freeMemory                     | number                 |   +   |     +     |
+| totalStorageSpace              | number                 |   +   |     +     |
+| freeStorageSpace               | number                 |   +   |     +     |
+| deviceId                       | string                 |   +   |     +     |
+| deviceName                     | string                 |   +   |     +     |
+| deviceLocale                   | string                 |   +   |     +     |
+| deviceCountry                  | string                 |   +   |     +     |
+| timezone                       | string                 |   +   |     +     |
+| userAgent                      | Promise<string>        |   +   |     +     |
+| appName                        | string                 |   +   |     +     |
+| appVersion                     | string                 |   +   |     +     |
+| bundleId                       | string                 |   +   |     +     |
+| bundleNumber                   | string                 |   +   |     -     |
+| systemManufacturer             | string                 |   +   |     +     |
+| batteryLevel                   | number                 |   +   |     +     |
+| cellularServiceProviders       | Carrier[]              |   +   |     +     |
+| externalStoragePaths           | string[]               |   -   |     +     |
+| storageVolumes                 | StorageVolume[]        |   -   |     +     |
+| wifiSSID                       | string                 |   +   |     +     |
+| displayMetrics                 | DisplayMetrics         |   +   |     +     |
+| wifiIpv4Address                | Promise<string>        |   +   |     +     |
+| cellularIpv4Address            | Promise<string>        |   +   |     +     |
+| isPortrait                     | boolean                |   +   |     +     |
+| isTablet                       | boolean                |   +   |     +     |
+| is24Hour                       | boolean                |   +   |     +     |
+| isEmulator                     | boolean                |   +   |     +     |
+| isBatteryCharging              | boolean                |   +   |     +     |
+| isLocationEnabled              | Promise<boolean>       |   +   |     +     |
+| isBluetoothEnabled             | Promise<boolean>       |   +   |     +     |
 
 ### - totalMemory
 
@@ -139,7 +177,7 @@ DeviceInfo.timezone();
 
 ### - userAgent
 
-Returns the user agent string of a device.
+Returns Promise which resolves to 'user agent' if fetched successfully, otherwise 'error'.
 
 ```javascript
 DeviceInfo.userAgent();
@@ -266,6 +304,9 @@ Returns service set identifier(SSID) of a wireless local area network (WLAN). In
 DeviceInfo.wifiSSID();
 ```
 
+- Notes for iOS users:
+  * Supported on iOS 12.0 and older versions.
+
 - Notes for Android users:
   * Permissions ACCESS_WIFI_STATE and ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION are required.
   * Android version 9 (Pie) requires location service in enabled(ON) state alongside above-said permissions.
@@ -318,6 +359,28 @@ interface DisplayMetrics {
 
 - Notes for Android users:
   * A word of caution: *pixelPerInch* and *diagonalInInches* may be inaccurate and not matches to the device specs. 
+
+### - wifiIpv4Address
+
+Returns *Promise<string>* of a device.
+
+```javascript
+DeviceInfo.wifiIpv4Address();
+```
+
+- Notes for Android users:
+  * Permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are required for this API. Make sure that these permissions are in place in AndroidManifest.xml and in code too.
+
+### - cellularIpv4Address
+
+Returns *Promise<string>* of a device.
+
+```javascript
+DeviceInfo.cellularIpv4Address();
+```
+
+- Notes for Android users:
+  * Permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are required for this API. Make sure that these permissions are in place in AndroidManifest.xml and in code too.
 
 ### - isPortrait
 Returns  'true' if a device is in portrait mode, otherwise 'false'.
@@ -403,10 +466,10 @@ async PrintBluetoothStatus() {
 
 ```javascript
   async printDeviceInfo() { 
-    console.log("Free memory: ", this.getSize(DeviceInfo.freeMemory()));
-    console.log("Total memory: ", this.getSize(DeviceInfo.totalMemory()));
-    console.log("Total storage space: ", this.getSize(DeviceInfo.totalStorageSpace()));
-    console.log("Free storage space: ", this.getSize(DeviceInfo.freeStorageSpace()));
+    console.log("Free memory: ", getSize(DeviceInfo.freeMemory()));
+    console.log("Total memory: ", getSize(DeviceInfo.totalMemory()));
+    console.log("Total storage space: ", getSize(DeviceInfo.totalStorageSpace()));
+    console.log("Free storage space: ", getSize(DeviceInfo.freeStorageSpace()));
     console.log("Device id: ", DeviceInfo.deviceId());
     console.log("Device name: ", DeviceInfo.deviceName());
     console.log("Device locale: ", DeviceInfo.deviceLocale());
@@ -429,7 +492,6 @@ async PrintBluetoothStatus() {
     console.log("Is emulator: ", DeviceInfo.isEmulator());
     console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
     console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled().catch(error => console.log(error)));
-    console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
   }
 
   formatBytes(bytes, decimals) {
@@ -442,6 +504,10 @@ async PrintBluetoothStatus() {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
+  }
+
+  getSize(bytes: number) {
+    return formatBytes(bytes, 2);
   }
 ```
 

@@ -27,6 +27,17 @@ export const enum WCTGeneration {
   _5G = "5G"
 }
 
+export enum AddressType {
+  IPv4 = 2,
+  IPv6 = 30
+}
+
+export interface Address {
+  address: string;
+  type: AddressType;
+  adapterName?: string;
+}
+
 export interface Carrier {
   carrierName: string;
   displayName: string;
@@ -135,7 +146,7 @@ export interface DeviceInfoInterface {
   // Returns list of paths for all mountable volumes.
   externalStoragePaths(): string[];
 
-  // Returns a list of Storage
+  // Returns a list of Storage.
   storageVolumes(): StorageVolume[];
 
   // Returns WiFi SSID
@@ -143,6 +154,12 @@ export interface DeviceInfoInterface {
 
   // Returns display metrics of a device.
   displayMetrics(): DisplayMetrics;
+
+  // Returns Promise which resolves to WiFi IPv4 address.
+  wifiIpv4Address(): Promise<string>
+
+  // Returns Promise which resolves to cellular IPv4 address.
+  cellularIpv4Address(): Promise<string>
 
   // Returns  'true' if a device is in portrait mode, otherwise 'false'.
   isPortrait(): boolean;

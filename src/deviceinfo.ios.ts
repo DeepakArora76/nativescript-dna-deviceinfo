@@ -1,4 +1,6 @@
 import {
+  Address,
+  AddressType,
   Carrier,
   DeviceInfoInterface,
   DisplayMetrics,
@@ -371,7 +373,8 @@ export class DeviceInfo {
     const interfaces = CNCopySupportedInterfaces();
     if (interfaces && interfaces.count) {
       const interfaceName = CFArrayGetValueAtIndex(interfaces, 0);
-      const dict = CNCopyCurrentNetworkInfo(interfaceName as unknown as string);
+      var reference = new interop.Reference(interop.types.unichar, interfaceName);
+      const dict = CNCopyCurrentNetworkInfo(reference.value);
       if (dict !== null && dict.count) {
         return dict.objectForKey(kCNNetworkInfoKeySSID);
       }
@@ -402,6 +405,26 @@ export class DeviceInfo {
     const diagnoalInInches = Math.sqrt(Math.pow(horizontal, 2) + Math.pow(vertical, 2));
     dm.diagonalInInches = round(diagnoalInInches, 1);
     return dm;
+  }
+
+  public static wifiIpv4Address(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const iPhoneWifiInterfaceName = "en0";
+      const appleTvWifiInterfaceName = "en1";
+      let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhoneWifiInterfaceName, AddressType.IPv4);
+      if (addresses.length === 0 || addresses[0].address === "") {
+        addresses = DeviceInfo.getInterfaceCardIpAddress(appleTvWifiInterfaceName, AddressType.IPv4);
+      }
+      return resolve(addresses.length ? addresses[0].address : "");
+    });
+  }
+
+  public static cellularIpv4Address(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const iPhonePhoneDataServiceInterfaceName = "pdp_ip0"; // Interface is the cell connection on the iPhone
+      let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhonePhoneDataServiceInterfaceName, AddressType.IPv4);
+      return resolve(addresses.length ? addresses[0].address : "");
+    });
   }
 
   static isPortrait(): boolean {
@@ -478,6 +501,64 @@ export class DeviceInfo {
     carrier.displayName = provider ? provider.network : cellularProvider.carrierName;
     carrier.carrierName = cellularProvider.carrierName;
     return carrier;
+  }
+
+  private static getInterfaceCardIpAddress(
+    interfaceCardName?: string,
+    ipAddressType?: AddressType
+  ): Address[] {
+    const MAX_ADDRLEN = 46; // set to INET6
+    let addresses: Address[] = [];
+
+    let iPtrPtr = new interop.Reference<interop.Reference<ifaddrs>>();
+    if (getifaddrs(iPtrPtr) === 0) {
+      const interfacesPtr = iPtrPtr.value;
+      let tempAddrPtr = interfacesPtr;
+      while (tempAddrPtr != null) {
+        let sinAddr = null;
+        const addr = tempAddrPtr.value;
+        const adapterName = NSString.stringWithUTF8String(addr.ifa_name).toString();
+        const sa = new interop.Reference(sockaddr, addr.ifa_addr).value;
+        const sinFamily = sa.sa_family;
+        if (sinFamily === 2 /*AF_INET*/) {
+          // "add(4)" is a workaround to the below commented out code
+          sinAddr = interop.handleof(addr.ifa_addr).add(4);
+
+          //// Below code is commented out as interop.Reference returns undefined value
+          // const addrIn = new interop.Reference(sockaddr_in, addr.ifa_addr).value;
+          // sinAddr = addrIn.sin_addr;
+        } else if (sinFamily === 30 /*AF_INET6*/) {
+          // For "add(8)", refer to https://github.com/NativeScript/ios-runtime/issues/1017
+          sinAddr = interop.handleof(addr.ifa_addr).add(8);
+        }
+
+        if (sinAddr) {
+          const addrStr = interop.alloc(MAX_ADDRLEN);
+          const result = inet_ntop(sinFamily, sinAddr, addrStr, MAX_ADDRLEN);
+          if (result) {
+            const addr = NSString.stringWithUTF8String(addrStr).toString();
+            let address = {
+              address: addr,
+              type: sinFamily,
+              adapterName: adapterName
+            };
+            // value == null does do what you've asked: Checks that value is null or undefined
+            if (interfaceCardName == null && ipAddressType == null) {
+              addresses.push(address);
+            } else if (adapterName === interfaceCardName && ipAddressType == null) {
+              addresses.push(address);
+            } else if (adapterName === interfaceCardName && ipAddressType === sinFamily) {
+              addresses = [];
+              addresses.push(address);
+              return addresses;
+            }
+          }
+        }
+        tempAddrPtr = <interop.Reference<ifaddrs>>addr.ifa_next;
+      }
+      freeifaddrs(interfacesPtr);
+    }
+    return addresses;
   }
 }
 

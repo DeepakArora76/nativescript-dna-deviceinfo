@@ -26,6 +26,8 @@ export declare class DeviceInfo {
   static storageVolumes(): StorageVolume[];
   static wifiSSID(): string;
   static displayMetrics(): DisplayMetrics;
+  static wifiIpv4Address(): Promise<string>;
+  static cellularIpv4Address(): Promise<string>;
   static isPortrait(): boolean;
   static isTablet(): boolean;
   static is24Hour(): boolean;
