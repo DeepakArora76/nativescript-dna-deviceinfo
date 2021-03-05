@@ -429,24 +429,24 @@ export class DeviceInfo {
     return dm;
   }
 
-  public static wifiIpv4Address(): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const iPhoneWifiInterfaceName = "en0";
-      const appleTvWifiInterfaceName = "en1";
-      let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhoneWifiInterfaceName, AddressType.IPv4);
-      if (addresses.length === 0 || addresses[0].address === "") {
-        addresses = DeviceInfo.getInterfaceCardIpAddress(appleTvWifiInterfaceName, AddressType.IPv4);
-      }
-      return resolve(addresses.length ? addresses[0].address : "");
-    });
+  static wifiIpv4Address(): string {
+    const iPhoneWifiInterfaceName = "en0";
+    const appleTvWifiInterfaceName = "en1";
+    let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhoneWifiInterfaceName, AddressType.IPv4);
+    if (addresses.length === 0 || addresses[0].address === "") {
+      addresses = DeviceInfo.getInterfaceCardIpAddress(appleTvWifiInterfaceName, AddressType.IPv4);
+    }
+    return addresses.length ? addresses[0].address : "";
   }
 
-  public static cellularIpv4Address(): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const iPhonePhoneDataServiceInterfaceName = "pdp_ip0"; // Interface is the cell connection on the iPhone
-      let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhonePhoneDataServiceInterfaceName, AddressType.IPv4);
-      return resolve(addresses.length ? addresses[0].address : "");
-    });
+  static cellularIpv4Address(): string {
+    const iPhonePhoneDataServiceInterfaceName = "pdp_ip0"; // Interface is the cell connection on the iPhone
+    let addresses = DeviceInfo.getInterfaceCardIpAddress(iPhonePhoneDataServiceInterfaceName, AddressType.IPv4);
+    return addresses.length ? addresses[0].address : "";
+  }
+
+  static dumpIpAddresses(): Address[] {
+    return DeviceInfo.getInterfaceCardIpAddress();
   }
 
   static isPortrait(): boolean {

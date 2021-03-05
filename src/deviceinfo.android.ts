@@ -1,6 +1,8 @@
 import * as application from '@nativescript/core/application';
 
 import {
+  Address,
+  AddressType,
   Carrier,
   DeviceInfoInterface,
   DisplayMetrics,
@@ -384,12 +386,16 @@ export class DeviceInfo {
     return dm;
   }
 
-  static wifiIpv4Address(): Promise<string> {
-    return DeviceInfo.ipv4Address();
+  static wifiIpv4Address(): string {
+    return DeviceInfo.ipv4Address("wlan");
   }
 
-  public static cellularIpv4Address(): Promise<string> {
-    return DeviceInfo.ipv4Address();
+  static cellularIpv4Address(): string {
+    return DeviceInfo.ipv4Address("rmnet");
+  }
+
+  static dumpIpAddresses(): Address[] {
+    return DeviceInfo.ipAddresses();
   }
 
   static isPortrait(): boolean {
@@ -655,30 +661,40 @@ export class DeviceInfo {
     return false;
   }
 
-  private static ipv4Address(): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      try {
-        type NetworkInterface = java.net.NetworkInterface
-        const NetworkInterface = java.net.NetworkInterface;
-        const Collections = java.util.Collections;
-        const interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-        for (let index = 0; index < interfaces.size(); index++) {
-          const netInterface: NetworkInterface = interfaces.get(index);
-          const addrs = Collections.list(netInterface.getInetAddresses());
-          for (let addrIndex = 0; addrIndex < addrs.size(); addrIndex++) {
-            const addr = addrs.get(addrIndex);
-            if (!addr.isLoopbackAddress()) {
-              const hostAddr = addr.getHostAddress();
-              const isIPv4 = hostAddr.indexOf(':') < 0
-              if (isIPv4) {
-                return resolve(hostAddr);
-              }
-            }
-          }
+  private static ipv4Address(interfaceName: string): string {
+    const addresses = DeviceInfo.ipAddresses();
+    const foundAddress = addresses.find(addr => {
+      if (addr.adapterName && addr.adapterName.includes(interfaceName)) {
+        if (addr.type == AddressType.IPv4) {
+          return true;
         }
-      } catch (Exception) {
       }
-      resolve("");
+      return false;
     });
+    return foundAddress ? foundAddress.address : ""
+  }
+
+  private static ipAddresses(): Address[] {
+    type InetAddress = java.net.InetAddress;
+    type NetworkInterface = java.net.NetworkInterface
+    const NetworkInterface = java.net.NetworkInterface;
+    const Collections = java.util.Collections;
+    let addresses: Address[] = [];
+    try {
+      const interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+      for (let index = 0; index < interfaces.size(); index++) {
+        const netInterface: NetworkInterface = interfaces.get(index);
+        const displayName = netInterface.getDisplayName();
+        const addrs = Collections.list(netInterface.getInetAddresses());
+        for (let addrIndex = 0; addrIndex < addrs.size(); addrIndex++) {
+          const addr: InetAddress = addrs.get(addrIndex);
+          const hostAddr = addr.getHostAddress();
+          const addrType = hostAddr.indexOf(':') < 0 ? AddressType.IPv4 : AddressType.IPv6;
+          addresses.push({ address: hostAddr, type: addrType, adapterName: displayName });
+        }
+      }
+    } catch (Exception) {
+    }
+    return addresses;
   }
 }

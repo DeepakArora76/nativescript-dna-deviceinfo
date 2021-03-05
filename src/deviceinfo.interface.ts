@@ -155,11 +155,14 @@ export interface DeviceInfoInterface {
   // Returns display metrics of a device.
   displayMetrics(): DisplayMetrics;
 
-  // Returns Promise which resolves to WiFi IPv4 address.
-  wifiIpv4Address(): Promise<string>
+  // Returns WiFi IPv4 address.
+  wifiIpv4Address(): string
 
-  // Returns Promise which resolves to cellular IPv4 address.
-  cellularIpv4Address(): Promise<string>
+  // Returns cellular IPv4 address.
+  cellularIpv4Address(): string
+
+  // Returns a list of addresses.
+  dumpIpAddresses(): Address[]
 
   // Returns  'true' if a device is in portrait mode, otherwise 'false'.
   isPortrait(): boolean;

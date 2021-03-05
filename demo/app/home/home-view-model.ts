@@ -64,9 +64,10 @@ export class HomeViewModel extends Observable {
                 android.Manifest.permission.ACCESS_WIFI_STATE
             ], "App requires Network permissions"
             ).then(
-                async () => {
-                    console.log("WiFi IPv4 Address: ", await DeviceInfo.wifiIpv4Address());
-                    console.log("Cellular IPv4 Address: ", await DeviceInfo.cellularIpv4Address());
+                () => {
+                    console.log("WiFi IPv4 Address: ", DeviceInfo.wifiIpv4Address());
+                    console.log("Cellular IPv4 Address: ", DeviceInfo.cellularIpv4Address());
+                    console.log("IP Address", JSON.stringify(DeviceInfo.dumpIpAddresses(), null, 4));
                 }
             ).catch(error => console.log(error));
 
@@ -81,8 +82,9 @@ export class HomeViewModel extends Observable {
         }
         else {
             console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
-            console.log("WiFi IPv4 Address: ", await DeviceInfo.wifiIpv4Address());
-            console.log("Cellular IPv4 Address: ", await DeviceInfo.cellularIpv4Address());
+            console.log("WiFi IPv4 Address: ", DeviceInfo.wifiIpv4Address());
+            console.log("Cellular IPv4 Address: ", DeviceInfo.cellularIpv4Address());
+            console.log("IP Address:", JSON.stringify(DeviceInfo.dumpIpAddresses(), null, 4));
             const provider = DeviceInfo.cellularServiceProviders();
             console.log(provider);
         }

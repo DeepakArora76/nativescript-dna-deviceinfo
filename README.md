@@ -7,11 +7,12 @@ NativeScript plugin to acquire device info.
 
 The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms.
 
-Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/NativescriptDeviceInfoJSDemo.git) repository for practical implementation guidance and hints.
+Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
 
 ## Changelogs:
-- 3.3.1: Fix a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
+- 3.4.0: Added "dumpIpAddresses" API. Changed "wifiIpv4Address" and "cellularIpv4Address" to return an IPv4 address string, and their Android implementation is revised.
+- 3.3.1: Fixed a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
 - 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
 - 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
 - 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
@@ -51,11 +52,11 @@ This command automatically installs the necessary files, as well as stores **nat
 
 ## Import / require
 
-Various device related utility APIs are accessible from the DeviceInfo class. To import the class, use one of the following forms:
+Various device-related APIs are accessible from the DeviceInfo class. To import the class, use one of the following forms:
 
 TypeScript:
 ```javascript
-import { DeviceInfo } from 'nativescript-dna-deviceinfo';
+import { DeviceInfo } from "nativescript-dna-deviceinfo";
 ```
 JavaScript:
 ```javascript
@@ -65,44 +66,48 @@ const DeviceInfo = nativescript_dna_deviceinfo.DeviceInfo;
 
 
 ## APIs
-Below is the list of APIs with their supported platforms. Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/NativescriptDeviceInfoJSDemo.git) repository for practical implementation guidance and hints.
+Below is the list of APIs with their supported platforms. 
 
-| API                            | Return Type            | iOS   | Android   |
-| -------------------------------| -----------------------|:-----:|:---------:|
-| totalMemory                    | number                 |   +   |     +     |
-| freeMemory                     | number                 |   +   |     +     |
-| totalStorageSpace              | number                 |   +   |     +     |
-| freeStorageSpace               | number                 |   +   |     +     |
-| deviceId                       | string                 |   +   |     +     |
-| deviceName                     | string                 |   +   |     +     |
-| deviceLocale                   | string                 |   +   |     +     |
-| deviceCountry                  | string                 |   +   |     +     |
-| timezone                       | string                 |   +   |     +     |
-| userAgent                      | Promise<string>        |   +   |     +     |
-| appName                        | string                 |   +   |     +     |
-| appVersion                     | string                 |   +   |     +     |
-| bundleId                       | string                 |   +   |     +     |
-| bundleNumber                   | string                 |   +   |     -     |
-| systemManufacturer             | string                 |   +   |     +     |
-| batteryLevel                   | number                 |   +   |     +     |
-| cellularServiceProviders       | Carrier[]              |   +   |     +     |
-| externalStoragePaths           | string[]               |   -   |     +     |
-| storageVolumes                 | StorageVolume[]        |   -   |     +     |
-| wifiSSID                       | string                 |   +   |     +     |
-| displayMetrics                 | DisplayMetrics         |   +   |     +     |
-| wifiIpv4Address                | Promise<string>        |   +   |     +     |
-| cellularIpv4Address            | Promise<string>        |   +   |     +     |
-| isPortrait                     | boolean                |   +   |     +     |
-| isTablet                       | boolean                |   +   |     +     |
-| is24Hour                       | boolean                |   +   |     +     |
-| isEmulator                     | boolean                |   +   |     +     |
-| isBatteryCharging              | boolean                |   +   |     +     |
-| isLocationEnabled              | Promise<boolean>       |   +   |     +     |
-| isBluetoothEnabled             | Promise<boolean>       |   +   |     +     |
+Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
-Description of the APIs:
+| API                                                   | Return Type            | iOS   | Android   |
+| ------------------------------------------------------| -----------------------|:-----:|:---------:|
+| [totalMemory](#totalMemory)                           | number                 |   +   |     +     |
+| [freeMemory](#freeMemory)                             | number                 |   +   |     +     |
+| [totalStorageSpace](#totalStorageSpace)               | number                 |   +   |     +     |
+| [freeStorageSpace](#freeStorageSpace)                 | number                 |   +   |     +     |
+| [deviceId](#deviceId)                                 | string                 |   +   |     +     |
+| [deviceName](#deviceName)                             | string                 |   +   |     +     |
+| [deviceLocale](#deviceLocale)                         | string                 |   +   |     +     |
+| [deviceCountry](#deviceCountry)                       | string                 |   +   |     +     |
+| [timezone](#timezone)                                 | string                 |   +   |     +     |
+| [userAgent](#userAgent)                               | Promise<string>        |   +   |     +     |
+| [appName](#appName)                                   | string                 |   +   |     +     |
+| [appVersion](#appVersion)                             | string                 |   +   |     +     |
+| [bundleId](#bundleId)                                 | string                 |   +   |     +     |
+| [bundleNumber](#bundleNumber)                         | string                 |   +   |     -     |
+| [systemManufacturer](#systemManufacturer)             | string                 |   +   |     +     |
+| [batteryLevel](#batteryLevel)                         | number                 |   +   |     +     |
+| [cellularServiceProviders](#cellularServiceProviders) | Carrier[]              |   +   |     +     |
+| [externalStoragePaths](#externalStoragePaths)         | string[]               |   -   |     +     |
+| [storageVolumes](#storageVolumes)                     | StorageVolume[]        |   -   |     +     |
+| [wifiSSID](#wifiSSID)                                 | string                 |   +   |     +     |
+| [displayMetrics](#displayMetrics)                     | DisplayMetrics         |   +   |     +     |
+| [wifiIpv4Address](#wifiIpv4Address)                   | string                 |   +   |     +     |
+| [cellularIpv4Address](#cellularIpv4Address)           | string                 |   +   |     +     |
+| [dumpIpAddresses](#dumpIpAddresses)                   | Address[]              |   +   |     +     |
+| [isPortrait](#isPortrait)                             | boolean                |   +   |     +     |
+| [isTablet](#isTablet)                                 | boolean                |   +   |     +     |
+| [is24Hour](#is24Hour)                                 | boolean                |   +   |     +     |
+| [isEmulator](#isEmulator)                             | boolean                |   +   |     +     |
+| [isBatteryCharging](#isBatteryCharging)               | boolean                |   +   |     +     |
+| [isLocationEnabled](#isLocationEnabled)               | Promise<boolean>       |   +   |     +     |
+| [isBluetoothEnabled](#isBluetoothEnabled)             | Promise<boolean>       |   +   |     +     |
 
-### - totalMemory
+
+Each of the above APIs is described in detail along with their platform requirements where it makes sense.
+
+### totalMemory
 
 Returns total memory(RAM) size of a device in bytes.
 
@@ -110,7 +115,7 @@ Returns total memory(RAM) size of a device in bytes.
 DeviceInfo.totalMemory();
 ```
 
-### - freeMemory
+### freeMemory
 
 Returns free memory(RAM) size of a device in bytes.
 
@@ -118,7 +123,7 @@ Returns free memory(RAM) size of a device in bytes.
 DeviceInfo.freeMemory();
 ```
 
-### - totalStorageSpace
+### totalStorageSpace
 
 Returns total storage(internal) space of a device in bytes.
 
@@ -126,7 +131,7 @@ Returns total storage(internal) space of a device in bytes.
 DeviceInfo.totalStorageSpace();
 ```
 
-### - freeStorageSpace
+### freeStorageSpace
 
 Returns free storage(internal) space of a device in bytes.
 
@@ -134,7 +139,7 @@ Returns free storage(internal) space of a device in bytes.
 DeviceInfo.freeStorageSpace();
 ```
 
-### - deviceId
+### deviceId
 
 Returns a device ID.
 
@@ -142,7 +147,7 @@ Returns a device ID.
 DeviceInfo.deviceId();
 ```
 
-### - deviceName
+### deviceName
 
 Returns a device name.
 
@@ -153,7 +158,7 @@ DeviceInfo.deviceName();
 - Notes for Android users:
   * Permission BLUETOOTH is needed.
 
-### - deviceLocale
+### deviceLocale
 
 Returns the locale of a device.
 
@@ -161,7 +166,7 @@ Returns the locale of a device.
 DeviceInfo.deviceLocale();
 ```
 
-### - deviceCountry
+### deviceCountry
 
 Returns the device country.
 
@@ -169,7 +174,7 @@ Returns the device country.
 DeviceInfo.deviceCountry();
 ```
 
-### - timezone
+### timezone
 
 Returns the time zone of a device.
 
@@ -177,7 +182,7 @@ Returns the time zone of a device.
 DeviceInfo.timezone();
 ```
 
-### - userAgent
+### userAgent
 
 Returns Promise which resolves to 'user agent' if fetched successfully, otherwise 'error'.
 
@@ -185,7 +190,7 @@ Returns Promise which resolves to 'user agent' if fetched successfully, otherwis
 DeviceInfo.userAgent();
 ```
 
-### - appName
+### appName
 
 Returns an app name.
 
@@ -193,7 +198,7 @@ Returns an app name.
 DeviceInfo.appName();
 ```
 
-### - appVersion
+### appVersion
 
 Returns an app version.
 
@@ -201,7 +206,7 @@ Returns an app version.
 DeviceInfo.appVersion();
 ```
 
-### - bundleId
+### bundleId
 
 Returns an app bundle id.
 
@@ -209,7 +214,7 @@ Returns an app bundle id.
 DeviceInfo.bundleId();
 ```
 
-### - bundleNumber
+### bundleNumber
 
 Returns an app bundle number.
 
@@ -217,7 +222,7 @@ Returns an app bundle number.
 DeviceInfo.bundleNumber();
 ```
 
-### - systemManufacturer
+### systemManufacturer
 
 Returns a device manufacturer.
 
@@ -225,7 +230,7 @@ Returns a device manufacturer.
 DeviceInfo.systemManufacturer();
 ```
 
-### - batteryLevel
+### batteryLevel
 
 Returns the charge level of a device battery.
 
@@ -233,7 +238,7 @@ Returns the charge level of a device battery.
 DeviceInfo.batteryLevel();
 ```
 
-### - cellularServiceProviders
+### cellularServiceProviders
 
 Returns a list of GSM network providers, *Carrier*, in use by device. In absence of adequate permission, returns empty *Carrier* list.
 
@@ -264,7 +269,7 @@ Besides other helpful information returned from the API, it can be used to know 
   * If the **targetSdkVersion is 17**, a device with dual sim, the API returns an "active" carrier. Permission ACCESS_COARSE_LOCATION is needed.
   * If the **targetSdkVersion is >= 22**, a device with dual sim, the API returns both the carriers. Permission READ_PHONE_STATE is needed. To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
 
-### - externalStoragePaths
+### externalStoragePaths
 
 Returns a list of paths for all mountable volumes (external storage cards, USB O-T-G). The empty list means that no mountable volumes found.
 
@@ -272,7 +277,7 @@ Returns a list of paths for all mountable volumes (external storage cards, USB O
 DeviceInfo.externalStoragePaths();
 ```
 
-### - storageVolumes
+### storageVolumes
 
 Returns a list of *StorageVolume*. An empty list means that no mountable volumes found.
 
@@ -298,7 +303,7 @@ interface StorageVolume {
 }
 ```
 
-### - wifiSSID
+### wifiSSID
 
 Returns service set identifier(SSID) of a wireless local area network (WLAN). In absence of right permissions, returns an empty string.
 
@@ -306,18 +311,15 @@ Returns service set identifier(SSID) of a wireless local area network (WLAN). In
 DeviceInfo.wifiSSID();
 ```
 
-- Notes for iOS users:
-  * Supported on iOS 12.0 and older versions. 
-  * Version above 12.0 uses NEHotspotHelper which requires "com.apple.developer.networking.HotspotHelper" entitlement by Apple.
-
 - Notes for Android users:
   * Permissions ACCESS_WIFI_STATE and ACCESS_FINE_LOCATION/ACCESS_COARSE_LOCATION are required.
   * Android version 9 (Pie) requires location service in enabled(ON) state alongside above-said permissions.
   * To know more about the request permissions process, please visit the link [Request App Permissions](https://developer.android.com/training/permissions/requesting).
 
 - Notes for iOS users:
-  * To use this API on iOS 12 and later, enable the Access WiFi Information.
-  * To use this API on iOS 13 and later, enable the Access WiFi Information, and 
+  * To use this API on iOS 12 and earlier, enable the Access WiFi Information.
+  * The API for iOS 13 and above uses NEHotspotHelper which requires "com.apple.developer.networking.HotspotHelper" entitlement by Apple.
+  * To use this API on iOS 13 and above, enable the Access WiFi Information, and
       * must also meet at least one of criteria below
         * Apps with permission to access location
         * Currently enabled VPN app
@@ -340,7 +342,7 @@ DeviceInfo.wifiSSID();
       </plist>
     ```
 
-### - displayMetrics
+### displayMetrics
 
 Returns *DisplayMetrics* of a device.
 
@@ -363,9 +365,9 @@ interface DisplayMetrics {
 - Notes for Android users:
   * A word of caution: *pixelPerInch* and *diagonalInInches* may be inaccurate and not matches to the device specs. 
 
-### - wifiIpv4Address
+### wifiIpv4Address
 
-Returns *Promise<string>* which resolves to WiFi IPv4 address.
+Returns WiFi IPv4 address.
 
 ```javascript
 DeviceInfo.wifiIpv4Address();
@@ -374,9 +376,9 @@ DeviceInfo.wifiIpv4Address();
 - Notes for Android users:
   * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
 
-### - cellularIpv4Address
+### cellularIpv4Address
 
-Returns *Promise<string>* which resolves to cellular IPv4 address.
+Returns cellular IPv4 address.
 
 ```javascript
 DeviceInfo.cellularIpv4Address();
@@ -385,14 +387,25 @@ DeviceInfo.cellularIpv4Address();
 - Notes for Android users:
   * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
 
-### - isPortrait
+### dumpIpAddresses
+
+Returns *Address[]*, which is a collection of IPv4 and IPv6 addresses that a device is equipped with.
+
+```javascript
+DeviceInfo.dumpIpAddresses();
+```
+
+- Notes for Android users:
+  * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
+
+### isPortrait
 Returns  'true' if a device is in portrait mode, otherwise 'false'.
 
 ```javascript
 DeviceInfo.isPortrait();
 ```
 
-### - isTablet
+### isTablet
 
 Returns 'true' if a device is a tablet, otherwise 'false'.
 
@@ -400,7 +413,7 @@ Returns 'true' if a device is a tablet, otherwise 'false'.
 DeviceInfo.isTablet();
 ```
 
-### - is24Hour
+### is24Hour
 
 Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
 
@@ -408,7 +421,7 @@ Returns 'true' if a device configured to a 24-hour clock, otherwise 'false'.
 DeviceInfo.is24Hour();
 ```
 
-### - isEmulator
+### isEmulator
 
 Returns 'true' if an app is running on an emulator, otherwise 'false'.
 
@@ -416,7 +429,7 @@ Returns 'true' if an app is running on an emulator, otherwise 'false'.
 DeviceInfo.isEmulator();
 ```
 
-### - isBatteryCharging
+### isBatteryCharging
 
 Returns 'true' if a device is plugged in and charging, otherwise  'false'.
 
@@ -424,7 +437,7 @@ Returns 'true' if a device is plugged in and charging, otherwise  'false'.
 DeviceInfo.isBatteryCharging();
 ```
 
-### - isLocationEnabled
+### isLocationEnabled
 
 Depending on the state of Location Service and the app permission, returned Promise may resolve to 'true' or 'false'. In the absence of appropriate permission, rejected Promise is returned.
 
@@ -444,7 +457,7 @@ async LocationServiceStatus() {
   * Permission ACCESS_FINE_LOCATION is required.
 
 
-### - isBluetoothEnabled
+### isBluetoothEnabled
 
 Depending on the state of Bluetooth and the app permission, returned Promise may resolve to 'true' or 'false'. In the absence of appropriate permission, rejected Promise is returned.
 
