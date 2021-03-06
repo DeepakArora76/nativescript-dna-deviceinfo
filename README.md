@@ -10,7 +10,9 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
 
+
 ## Changelogs:
+- 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.
 - 3.4.0: Added "dumpIpAddresses" API. Changed "wifiIpv4Address" and "cellularIpv4Address" to return an IPv4 address string, and their Android implementation is revised.
 - 3.3.1: Fixed a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
 - 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
