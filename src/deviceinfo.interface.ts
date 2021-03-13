@@ -156,13 +156,31 @@ export interface DeviceInfoInterface {
   displayMetrics(): DisplayMetrics;
 
   // Returns WiFi IPv4 address.
-  wifiIpv4Address(): string
+  wifiIpv4Address(): string;
 
   // Returns cellular IPv4 address.
-  cellularIpv4Address(): string
+  cellularIpv4Address(): string;
 
   // Returns a list of addresses.
-  dumpIpAddresses(): Address[]
+  dumpIpAddresses(): Address[];
+
+  // Returns the audio volume level as a scalar from 0 to 100.
+  audioVolumeLevel(): number;
+
+  // Sets the audio volume level. The level should be a scalar value between 0 and 100.
+  setAudioVolumeLevel(audioVol: number): void;
+
+  // Returns 'true' if a bluetooth headset is connected with the device, otherwise 'false'.
+  isBluetoothHeadsetConnected(): boolean;
+
+  // Returns 'true' if a mic, whether built-in or external, is available, otherwise 'false'.
+  isMicAvailable(): boolean;
+
+  // Returns 'true' if the device is equipped with a built-in mic, otherwise 'false'.
+  isBuiltInMicAvailable(): boolean;
+
+  // Returns 'true' if the connected headset has a built-in mic, otherwise 'false'.
+  isHeadsetMicAvailable(): boolean;
 
   // Returns  'true' if a device is in portrait mode, otherwise 'false'.
   isPortrait(): boolean;

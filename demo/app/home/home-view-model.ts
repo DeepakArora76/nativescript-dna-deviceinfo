@@ -36,15 +36,19 @@ export class HomeViewModel extends Observable {
         console.log("Battery level: ", Math.round(DeviceInfo.batteryLevel()));
         console.log("Storage paths: ", DeviceInfo.externalStoragePaths());
         console.log("Storage volume info: ", DeviceInfo.storageVolumes());
-        // wifiSSID is supported for iOS 12.0
         console.log("WiFi SSID: ", DeviceInfo.wifiSSID());
         console.log("Display metrics: ", DeviceInfo.displayMetrics());
+        console.log("Mic available: ", DeviceInfo.isMicAvailable());
+        console.log("Connected to Bluetooth Headset:", DeviceInfo.isBluetoothHeadsetConnected());
         console.log("Is portrait orientation: ", DeviceInfo.isPortrait());
         console.log("Is tablet: ", DeviceInfo.isTablet());
         console.log("Is 24 hour: ", DeviceInfo.is24Hour());
         console.log("Is emulator: ", DeviceInfo.isEmulator());
         console.log("Is battery charing: ", DeviceInfo.isBatteryCharging());
         console.log("Is Location service enabled: ", await DeviceInfo.isLocationEnabled().catch(error => console.log(error)));
+        console.log("Setting audio volume level to 30");
+        DeviceInfo.setAudioVolumeLevel(30);
+        console.log("Audio output volume level: ", DeviceInfo.audioVolumeLevel());
 
         if (DeviceInfo.systemManufacturer() !== "Apple") {
             requestPermissions([

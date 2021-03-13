@@ -28,7 +28,13 @@ export declare class DeviceInfo {
   static displayMetrics(): DisplayMetrics;
   static wifiIpv4Address(): string;
   static cellularIpv4Address(): string;
-  static dumpIpAddresses(): Address[]
+  static dumpIpAddresses(): Address[];
+  static audioVolumeLevel(): number;
+  static setAudioVolumeLevel(audioVol: number);
+  static isBluetoothHeadsetConnected(): boolean;
+  static isMicAvailable(): boolean;
+  static isBuiltInMicAvailable(): boolean;
+  static isHeadsetMicAvailable(): boolean;
   static isPortrait(): boolean;
   static isTablet(): boolean;
   static is24Hour(): boolean;

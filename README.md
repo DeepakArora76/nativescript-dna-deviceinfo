@@ -9,37 +9,10 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 
 Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
+The [Changelogs](#Changelogs) selection is located towards the end of the document.
 
-
-## Changelogs:
-- 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.
-- 3.4.0: Added "dumpIpAddresses" API. Changed "wifiIpv4Address" and "cellularIpv4Address" to return an IPv4 address string, and their Android implementation is revised.
-- 3.3.1: Fixed a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
-- 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
-- 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
-- 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
-- 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
-- 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
-- 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
-- 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
-- 2.4.1: Updated documentation.
-- 2.4.0: Added an API to get location service state.
-- 2.3.1: Updated Mobile Country Code and Mobile Network Code.
-- 2.3.0: Added APIs to get device orientation and display metrics.
-- 2.2.0: Added an API to get the status of Bluetooth.
-- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
-- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
-- 2.1.1: The documentation is updated.
-- 2.1.0: Added an API to get the service set identifier(SSID) of a wireless local area network (WLAN).
-- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
-- 1.4.0: Added storageVolumeInfo API.
-- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
-- 1.2.1: Removed unwanted dependencies.
-- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
-- 1.1.1: Updated document.
-- 1.1.0: New APIs related to battery charging status and its charge level.
-- 1.0.1: Minor document correction.
-- 1.0.0: First release.
+I welcome an appreciation email with suggestions and feedback. It will encourage me to provide new APIs and support.
+My email-id is [Deepak Arora](mailto:deepak.arora76@gmail.com?subject=nativescript-dna-deviceinfo). Enjoy and I will be looking forward to your valuable feedback.
 
 
 ## Installation
@@ -71,40 +44,44 @@ const DeviceInfo = nativescript_dna_deviceinfo.DeviceInfo;
 Below is the list of APIs with their supported platforms. 
 
 Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
-
-| API                                                   | Return Type            | iOS   | Android   |
-| ------------------------------------------------------| -----------------------|:-----:|:---------:|
-| [totalMemory](#totalMemory)                           | number                 |   +   |     +     |
-| [freeMemory](#freeMemory)                             | number                 |   +   |     +     |
-| [totalStorageSpace](#totalStorageSpace)               | number                 |   +   |     +     |
-| [freeStorageSpace](#freeStorageSpace)                 | number                 |   +   |     +     |
-| [deviceId](#deviceId)                                 | string                 |   +   |     +     |
-| [deviceName](#deviceName)                             | string                 |   +   |     +     |
-| [deviceLocale](#deviceLocale)                         | string                 |   +   |     +     |
-| [deviceCountry](#deviceCountry)                       | string                 |   +   |     +     |
-| [timezone](#timezone)                                 | string                 |   +   |     +     |
-| [userAgent](#userAgent)                               | Promise<string>        |   +   |     +     |
-| [appName](#appName)                                   | string                 |   +   |     +     |
-| [appVersion](#appVersion)                             | string                 |   +   |     +     |
-| [bundleId](#bundleId)                                 | string                 |   +   |     +     |
-| [bundleNumber](#bundleNumber)                         | string                 |   +   |     -     |
-| [systemManufacturer](#systemManufacturer)             | string                 |   +   |     +     |
-| [batteryLevel](#batteryLevel)                         | number                 |   +   |     +     |
-| [cellularServiceProviders](#cellularServiceProviders) | Carrier[]              |   +   |     +     |
-| [externalStoragePaths](#externalStoragePaths)         | string[]               |   -   |     +     |
-| [storageVolumes](#storageVolumes)                     | StorageVolume[]        |   -   |     +     |
-| [wifiSSID](#wifiSSID)                                 | string                 |   +   |     +     |
-| [displayMetrics](#displayMetrics)                     | DisplayMetrics         |   +   |     +     |
-| [wifiIpv4Address](#wifiIpv4Address)                   | string                 |   +   |     +     |
-| [cellularIpv4Address](#cellularIpv4Address)           | string                 |   +   |     +     |
-| [dumpIpAddresses](#dumpIpAddresses)                   | Address[]              |   +   |     +     |
-| [isPortrait](#isPortrait)                             | boolean                |   +   |     +     |
-| [isTablet](#isTablet)                                 | boolean                |   +   |     +     |
-| [is24Hour](#is24Hour)                                 | boolean                |   +   |     +     |
-| [isEmulator](#isEmulator)                             | boolean                |   +   |     +     |
-| [isBatteryCharging](#isBatteryCharging)               | boolean                |   +   |     +     |
-| [isLocationEnabled](#isLocationEnabled)               | Promise<boolean>       |   +   |     +     |
-| [isBluetoothEnabled](#isBluetoothEnabled)             | Promise<boolean>       |   +   |     +     |
+      
+| API                                                          | Return Type            | iOS   | Android   |
+| -------------------------------------------------------------| -----------------------|:-----:|:---------:|
+| [totalMemory](#totalMemory)                                  | number                 |   +   |     +     |
+| [freeMemory](#freeMemory)                                    | number                 |   +   |     +     |
+| [totalStorageSpace](#totalStorageSpace)                      | number                 |   +   |     +     |
+| [freeStorageSpace](#freeStorageSpace)                        | number                 |   +   |     +     |
+| [deviceId](#deviceId)                                        | string                 |   +   |     +     |
+| [deviceName](#deviceName)                                    | string                 |   +   |     +     |
+| [deviceLocale](#deviceLocale)                                | string                 |   +   |     +     |
+| [deviceCountry](#deviceCountry)                              | string                 |   +   |     +     |
+| [timezone](#timezone)                                        | string                 |   +   |     +     |
+| [userAgent](#userAgent)                                      | Promise<string>        |   +   |     +     |
+| [appName](#appName)                                          | string                 |   +   |     +     |
+| [appVersion](#appVersion)                                    | string                 |   +   |     +     |
+| [bundleId](#bundleId)                                        | string                 |   +   |     +     |
+| [bundleNumber](#bundleNumber)                                | string                 |   +   |     -     |
+| [systemManufacturer](#systemManufacturer)                    | string                 |   +   |     +     |
+| [batteryLevel](#batteryLevel)                                | number                 |   +   |     +     |
+| [cellularServiceProviders](#cellularServiceProviders)        | Carrier[]              |   +   |     +     |
+| [externalStoragePaths](#externalStoragePaths)                | string[]               |   -   |     +     |
+| [storageVolumes](#storageVolumes)                            | StorageVolume[]        |   -   |     +     |
+| [wifiSSID](#wifiSSID)                                        | string                 |   +   |     +     |
+| [displayMetrics](#displayMetrics)                            | DisplayMetrics         |   +   |     +     |
+| [wifiIpv4Address](#wifiIpv4Address)                          | string                 |   +   |     +     |
+| [cellularIpv4Address](#cellularIpv4Address)                  | string                 |   +   |     +     |
+| [dumpIpAddresses](#dumpIpAddresses)                          | Address[]              |   +   |     +     |
+| [audioVolumeLevel](#audioVolumeLevel)                        | number                 |   +   |     +     |
+| [setAudioVolumeLevel](#setAudioVolumeLevel)                  | void                   |   +   |     +     |
+| [isBluetoothHeadsetConnected](#isBluetoothHeadsetConnected)  | boolean                |   +   |     +     |
+| [isMicAvailable](#isMicAvailable)                            | boolean                |   +   |     +     |
+| [isPortrait](#isPortrait)                                    | boolean                |   +   |     +     |
+| [isTablet](#isTablet)                                        | boolean                |   +   |     +     |
+| [is24Hour](#is24Hour)                                        | boolean                |   +   |     +     |
+| [isEmulator](#isEmulator)                                    | boolean                |   +   |     +     |
+| [isBatteryCharging](#isBatteryCharging)                      | boolean                |   +   |     +     |
+| [isLocationEnabled](#isLocationEnabled)                      | Promise<boolean>       |   +   |     +     |
+| [isBluetoothEnabled](#isBluetoothEnabled)                    | Promise<boolean>       |   +   |     +     |
 
 
 Each of the above APIs is described in detail along with their platform requirements where it makes sense.
@@ -400,8 +377,43 @@ DeviceInfo.dumpIpAddresses();
 - Notes for Android users:
   * Make sure that the permissions *android.permission.INTERNET*, *android.permission.ACCESS_NETWORK_STATE*, and *android.permission.ACCESS_WIFI_STATE* are in place in AndroidManifest.xml and in code too.
 
+### audioVolumeLevel
+
+Returns the audio volume level as a scalar from 0 to 100.
+
+```javascript
+DeviceInfo.audioVolumeLevel();
+```
+
+### setAudioVolumeLevel
+
+Sets the audio volume level. The level should be a scalar value between 0 and 100.
+
+```javascript
+DeviceInfo.setAudioVolumeLevel(50);
+```
+
+### isBluetoothHeadsetConnected
+
+Returns 'true' if a bluetooth headset is connected with the device, otherwise 'false'.
+
+```javascript
+DeviceInfo.isBluetoothHeadsetConnected();
+```
+
+- Note for Android users:
+  * Permission BLUETOOTH is needed.
+
+### isMicAvailable
+
+Returns 'true' if a mic, whether built-in or external, is available, otherwise 'false'.
+
+```javascript
+DeviceInfo.isMicAvailable();
+```
+
 ### isPortrait
-Returns  'true' if a device is in portrait mode, otherwise 'false'.
+Returns 'true' if a device is in portrait mode, otherwise 'false'.
 
 ```javascript
 DeviceInfo.isPortrait();
@@ -528,6 +540,39 @@ async PrintBluetoothStatus() {
     return formatBytes(bytes, 2);
   }
 ```
+
+
+## Changelogs:
+- 3.6.0: Introducing basic audio management APIs for Android and iOS. For Andriod, memory-related APIs are updated to use non-depreciated system APIs.
+- 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.
+- 3.4.0: Added "dumpIpAddresses" API. Changed "wifiIpv4Address" and "cellularIpv4Address" to return an IPv4 address string, and their Android implementation is revised.
+- 3.3.1: Fixed a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
+- 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
+- 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
+- 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
+- 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
+- 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
+- 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
+- 2.4.2: Handled crash in the API *cellularServiceProviders* for the Android platform.
+- 2.4.1: Updated documentation.
+- 2.4.0: Added an API to get location service state.
+- 2.3.1: Updated Mobile Country Code and Mobile Network Code.
+- 2.3.0: Added APIs to get device orientation and display metrics.
+- 2.2.0: Added an API to get the status of Bluetooth.
+- 2.1.3: Adjusted the license from Apache-2.0 to MIT.
+- 2.1.2: Added the package nativescript-custom-entitlements to dev dependencies to the demo app.
+- 2.1.1: The documentation is updated.
+- 2.1.0: Added an API to get the service set identifier(SSID) of a wireless local area network (WLAN).
+- 2.0.0: Changed APIs name for storageVolumes & cellularServiceProviders.
+- 1.4.0: Added storageVolumeInfo API.
+- 1.3.0: Added externalStoragePaths API. Fixed crashes and compatibility issues with the Android platform.
+- 1.2.1: Removed unwanted dependencies.
+- 1.2.0: Added an API to retrieve Network Providers, Carriers, related information.
+- 1.1.1: Updated document.
+- 1.1.0: New APIs related to battery charging status and its charge level.
+- 1.0.1: Minor document correction.
+- 1.0.0: First release.
+
 
 ## License
 

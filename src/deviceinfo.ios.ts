@@ -449,6 +449,63 @@ export class DeviceInfo {
     return DeviceInfo.getInterfaceCardIpAddress();
   }
 
+  static audioVolumeLevel(): number {
+    AVAudioSession.sharedInstance().setActiveError(true);
+    const vol = AVAudioSession.sharedInstance().outputVolume;
+    AVAudioSession.sharedInstance().setActiveError(false);
+    return Math.round(vol * 100);
+  }
+
+  static setAudioVolumeLevel(audioVol: number): void {
+    const volumeView = MPVolumeView.alloc().init();
+    for (let i = 0; i < volumeView.subviews.count; i++) {
+      if (volumeView.subviews[i] instanceof UISlider) {
+        const volSlider = volumeView.subviews[i] as unknown as UISlider;
+        setTimeout(() => volSlider.value = audioVol / 100, 500);
+        break;
+      }
+    }
+  }
+
+  static isBluetoothHeadsetConnected(): boolean {
+    const availableInputs = AVAudioSession.sharedInstance().currentRoute;
+    for (let i = 0; i < availableInputs.outputs.count; i++) {
+      const portType = availableInputs.outputs[i].portType
+      switch (portType) {
+        case AVAudioSessionPortBluetoothA2DP:
+          return true;
+      }
+    }
+    return false;
+  }
+
+  static isMicAvailable(): boolean {
+    AVAudioSession.sharedInstance().setActiveError(true);
+    return AVAudioSession.sharedInstance().inputAvailable;
+  }
+
+  static isBuiltInMicAvailable(): boolean {
+    const availableInputs = AVAudioSession.sharedInstance().availableInputs;
+    for (let i = 0; i < availableInputs.count; i++) {
+      if (availableInputs[i].portType === AVAudioSessionPortBuiltInMic)
+        return true;
+    }
+    return false;
+  }
+
+  static isHeadsetMicAvailable(): boolean {
+    const availableInputs = AVAudioSession.sharedInstance().currentRoute;
+    for (let i = 0; i < availableInputs.outputs.count; i++) {
+      const portType = availableInputs.outputs[i].portType
+      switch (portType) {
+        case AVAudioSessionPortHeadsetMic:
+        case AVAudioSessionPortBluetoothA2DP:
+          return true;
+      }
+    }
+    return false;
+  }
+
   static isPortrait(): boolean {
     return UIDevice.currentDevice.orientation === UIDeviceOrientation.Portrait ||
       UIDevice.currentDevice.orientation === UIDeviceOrientation.PortraitUpsideDown;

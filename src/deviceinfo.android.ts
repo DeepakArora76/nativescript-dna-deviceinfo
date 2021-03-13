@@ -398,6 +398,49 @@ export class DeviceInfo {
     return DeviceInfo.ipAddresses();
   }
 
+  static audioVolumeLevel(): number {
+    type AudioManager = android.media.AudioManager;
+    const AudioManager = android.media.AudioManager;
+    const ctx = <ContextType>application.android.context;
+    const audioManager = <AudioManager>ctx.getSystemService(Context.AUDIO_SERVICE);
+    const musicVolumeLevel = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+    const musicVolumeMax = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+    return Math.round(musicVolumeLevel * 100 / musicVolumeMax);
+  }
+
+  static setAudioVolumeLevel(audioVol: number) {
+    type AudioManager = android.media.AudioManager;
+    const AudioManager = android.media.AudioManager;
+    const ctx = <ContextType>application.android.context;
+    const audioManager = <AudioManager>ctx.getSystemService(Context.AUDIO_SERVICE);
+    const musicVolumeMax = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+    const volumeIndex = Math.round(audioVol * musicVolumeMax * 0.01);
+    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volumeIndex, 0);
+  }
+
+  static isBluetoothHeadsetConnected(): boolean {
+    const BluetoothProfile = android.bluetooth.BluetoothProfile;
+    const bluetoothAdapter = DeviceInfo.bluetoothAdapter();
+    if (bluetoothAdapter && bluetoothAdapter.isEnabled()) {
+      return bluetoothAdapter.getProfileConnectionState(BluetoothProfile.HEADSET) == BluetoothProfile.STATE_CONNECTED;
+    }
+    return false;
+  }
+
+  static isMicAvailable(): boolean {
+    const ctx = <ContextType>application.android.context;
+    const packageManager = ctx.getPackageManager();
+    return packageManager.hasSystemFeature(android.content.pm.PackageManager.FEATURE_MICROPHONE);
+  }
+
+  static isBuiltInMicAvailable(): boolean {
+    return false;
+  }
+
+  static isHeadsetMicAvailable(): boolean {
+    return false;
+  }
+
   static isPortrait(): boolean {
     const Configuration = android.content.res.Configuration;
     const ctx = <ContextType>application.android.context;
@@ -481,27 +524,13 @@ export class DeviceInfo {
 
   static isBluetoothEnabled(): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
-      type BluetoothManagerType = android.bluetooth.BluetoothManager;
-      type BluetoothAdapter = android.bluetooth.BluetoothAdapter;
-      const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
-      const Build = android.os.Build;
-      const ctx = <ContextType>application.android.context;
-      let btAdapter: BluetoothAdapter = null;
-
-      if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
-        const btm = <BluetoothManagerType>ctx.getSystemService(android.content.Context.BLUETOOTH_SERVICE);
-        btAdapter = btm ? btm.getAdapter() : null;
-      }
-      else {
-        btAdapter = BluetoothAdapter.getDefaultAdapter();
-      }
-
       const permission = android.Manifest.permission;
       const contextCompat = DeviceInfo.androidSupport().content.ContextCompat;
       const PackageManager = android.content.pm.PackageManager;
-
+      const ctx = <ContextType>application.android.context;
       const permissionStatus = contextCompat.checkSelfPermission(ctx, permission.BLUETOOTH);
       if (permissionStatus === PackageManager.PERMISSION_GRANTED) {
+        const btAdapter = DeviceInfo.bluetoothAdapter();
         resolve(btAdapter && btAdapter.isEnabled());
       }
       else {
@@ -531,12 +560,12 @@ export class DeviceInfo {
 
   private static totalSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    return statFs.getBlockCount() * statFs.getBlockSize();
+    return statFs.getBlockCountLong() * statFs.getBlockSizeLong();
   }
 
   private static freeSpace(file: java.io.File): number {
     const statFs = new android.os.StatFs(file.getAbsolutePath());
-    return statFs.getAvailableBlocks() * statFs.getBlockSize();
+    return statFs.getAvailableBlocksLong() * statFs.getBlockSizeLong();
   }
 
   private static prepareCarrier(cellularProvider: SubscriptionInfo): Carrier {
@@ -696,5 +725,23 @@ export class DeviceInfo {
     } catch (Exception) {
     }
     return addresses;
+  }
+
+  private static bluetoothAdapter(): android.bluetooth.BluetoothAdapter {
+    type BluetoothManagerType = android.bluetooth.BluetoothManager;
+    type BluetoothAdapter = android.bluetooth.BluetoothAdapter;
+    const BluetoothAdapter = android.bluetooth.BluetoothAdapter;
+    const Build = android.os.Build;
+    const ctx = <ContextType>application.android.context;
+    let btAdapter: BluetoothAdapter = null;
+
+    if (Build.VERSION.SDK_INT > JELLY_BEAN_MR1) {
+      const btm = <BluetoothManagerType>ctx.getSystemService(Context.BLUETOOTH_SERVICE);
+      btAdapter = btm ? btm.getAdapter() : null;
+    }
+    else {
+      btAdapter = BluetoothAdapter.getDefaultAdapter();
+    }
+    return btAdapter;
   }
 }
