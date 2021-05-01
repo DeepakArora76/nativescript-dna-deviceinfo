@@ -1,6 +1,6 @@
 {
   "name": "nativescript-dna-deviceinfo",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "NativeScript plugin to acquire device information.",
   "main": "deviceinfo",
   "typings": "index.d.ts",
@@ -79,7 +79,9 @@
     "Display Metrics",
     "Metrics",
     "Location",
-    "Location Service"
+    "Location Service",
+    "Brightness",
+    "Screen Brightness"
   ],
   "author": {
     "name": "Deepak Arora",

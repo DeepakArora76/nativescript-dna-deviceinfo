@@ -566,6 +566,7 @@ async PrintBluetoothStatus() {
 
 
 ## Changelogs:
+- 3.7.1: Reduced the package size.
 - 3.7.0: Bumped up various packages version. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
 - 3.6.1: Switched to webpack 3.0.0 version due to some security warnings.
 - 3.6.0: Introducing basic audio management APIs for Android and iOS. For Andriod, memory-related APIs are updated to use non-depreciated system APIs.
