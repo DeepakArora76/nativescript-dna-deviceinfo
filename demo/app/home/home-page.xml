@@ -6,8 +6,15 @@
   </ActionBar>
 
   <StackLayout>
-    <Button text="Console Output Device Info"
-            class="btn btn-outline btn-active"
-            tap="{{showDeviceInfo}}"/>
+    <Button text="Console Output Device Info" class="btn btn-outline btn-active" tap="{{showDeviceInfo}}"/>
+
+    <TextView style="margin-top: 15px"
+    borderColor="#DEDEDE"
+    borderWidth="1"
+    height="100px"
+    hint="Enter Note"
+    returnKeyType="send"
+    class="input input-border">
+    </TextView>
   </StackLayout>
 </Page>

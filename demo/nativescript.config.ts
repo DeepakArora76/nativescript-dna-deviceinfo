@@ -1,7 +1,7 @@
 import { NativeScriptConfig } from '@nativescript/core'
 
 export default {
-  id: 'org.nativescript.demo',
+  id: 'transably.com',
   appPath: 'app',
   appResourcesPath: 'app/App_Resources',
   webpackConfigPath: 'webpack.config.js',
