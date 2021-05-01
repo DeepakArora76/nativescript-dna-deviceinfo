@@ -73,6 +73,8 @@ Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna
 | [dumpIpAddresses](#dumpIpAddresses)                          | Address[]              |   +   |     +     |
 | [audioVolumeLevel](#audioVolumeLevel)                        | number                 |   +   |     +     |
 | [setAudioVolumeLevel](#setAudioVolumeLevel)                  | void                   |   +   |     +     |
+| [screenBrightnessLevel](#screenBrightnessLevel)              | number                 |   +   |     +     |
+| [setScreenBrightnessLevel](#setScreenBrightnessLevel)        | void                   |   +   |     +     |
 | [isBluetoothHeadsetConnected](#isBluetoothHeadsetConnected)  | boolean                |   +   |     +     |
 | [isMicAvailable](#isMicAvailable)                            | boolean                |   +   |     +     |
 | [isPortrait](#isPortrait)                                    | boolean                |   +   |     +     |
@@ -379,7 +381,7 @@ DeviceInfo.dumpIpAddresses();
 
 ### audioVolumeLevel
 
-Returns the audio volume level as a scalar from 0 to 100.
+Returns the audio volume level as a scalar value from 0 to 100.
 
 ```javascript
 DeviceInfo.audioVolumeLevel();
@@ -387,11 +389,32 @@ DeviceInfo.audioVolumeLevel();
 
 ### setAudioVolumeLevel
 
-Sets the audio volume level. The level should be a scalar value between 0 and 100.
+Sets the audio volume level. The level should be a scalar value from 0 and 100.
 
 ```javascript
 DeviceInfo.setAudioVolumeLevel(50);
 ```
+
+### screenBrightnessLevel
+
+Returns the screen brightness level as a scalar value from 0 to 10.
+
+```javascript
+DeviceInfo.screenBrightnessLevel();
+```
+- Notes for Android users:
+  * Make sure that the permissions *android.permission.WRITE_SETTINGS* is in place in AndroidManifest.xml and in code too
+
+### setScreenBrightnessLevel
+
+Sets the screen brightness level. The level should be a scalar value from 0 and 10.
+
+```javascript
+DeviceInfo.setScreenBrightnessLevel(0.8);
+```
+
+- Notes for Android users:
+  * Make sure that the permissions *android.permission.WRITE_SETTINGS* is in place in AndroidManifest.xml and in code too
 
 ### isBluetoothHeadsetConnected
 
@@ -543,6 +566,7 @@ async PrintBluetoothStatus() {
 
 
 ## Changelogs:
+- 3.7.0: Bumped up various packages version. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
 - 3.6.1: Switch to webpack 3.0.0 version due to some security warnings.
 - 3.6.0: Introducing basic audio management APIs for Android and iOS. For Andriod, memory-related APIs are updated to use non-depreciated system APIs.
 - 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.

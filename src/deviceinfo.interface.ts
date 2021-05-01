@@ -164,11 +164,17 @@ export interface DeviceInfoInterface {
   // Returns a list of addresses.
   dumpIpAddresses(): Address[];
 
-  // Returns the audio volume level as a scalar from 0 to 100.
+  // Returns the audio volume level as a scalar value from 0 to 100.
   audioVolumeLevel(): number;
 
-  // Sets the audio volume level. The level should be a scalar value between 0 and 100.
+  // Sets the audio volume level. The level should be a scalar value from 0 to 100.
   setAudioVolumeLevel(audioVol: number): void;
+
+  // Returns the screen brightness level as a scalar value from 0 to 10.
+  screenBrightnessLevel(): number;
+
+  // Sets the screen brightness level. The level should be a scalar value from 0 to 10.
+  setScreenBrightnessLevel(level: number): void;
 
   // Returns 'true' if a bluetooth headset is connected with the device, otherwise 'false'.
   isBluetoothHeadsetConnected(): boolean;

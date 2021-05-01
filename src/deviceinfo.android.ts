@@ -418,6 +418,36 @@ export class DeviceInfo {
     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, volumeIndex, 0);
   }
 
+  static screenBrightnessLevel(): number {
+    const ctx = <ContextType>application.android.context;
+    const cResolver = ctx.getContentResolver();
+    try {
+      const System = android.provider.Settings.System;
+      System.putInt(cResolver, System.SCREEN_BRIGHTNESS_MODE, System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+      const brightness = System.getInt(cResolver, System.SCREEN_BRIGHTNESS);
+      return brightness / 255.0;
+    } catch (error) {
+      console.log(<Error>error.message);
+    }
+    return -1;
+  }
+
+  static setScreenBrightnessLevel(level: number) {
+    if (!DeviceInfo.checkSystemWritePermission()) {
+      DeviceInfo.openAndroidPermissionsMenu();
+    }
+
+    if (!DeviceInfo.checkSystemWritePermission()) {
+      console.error("Missing System Write Settings Permmissions")
+    }
+
+    const brightness = Math.round(level * 255);
+    const ctx = <ContextType>application.android.context;
+    const cResolver = ctx.getContentResolver();
+    const System = android.provider.Settings.System;
+    System.putInt(cResolver, System.SCREEN_BRIGHTNESS, brightness);
+  }
+
   static isBluetoothHeadsetConnected(): boolean {
     const BluetoothProfile = android.bluetooth.BluetoothProfile;
     const bluetoothAdapter = DeviceInfo.bluetoothAdapter();
@@ -743,5 +773,31 @@ export class DeviceInfo {
       btAdapter = BluetoothAdapter.getDefaultAdapter();
     }
     return btAdapter;
+  }
+
+  private static checkSystemWritePermission(): boolean {
+    const System: any = android.provider.Settings.System;
+    const Build = android.os.Build;
+    if (Build.VERSION.SDK_INT >= 23 /*Build.VERSION_CODES.M*/) {
+      const ctx = <ContextType>application.android.context;
+      if (System.canWrite(ctx)) {
+        return true;
+      }
+    }
+    else {
+      // ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_SETTINGS) == PackageManager.PERMISSION_GRANTED;
+    }
+    return false;
+  }
+
+  private static openAndroidPermissionsMenu() {
+    const ctx = <ContextType>application.android.context;
+    const Settings: any = android.provider.Settings;
+    const Build = android.os.Build;
+    if (Build.VERSION.SDK_INT >= 23 /*Build.VERSION_CODES.M*/) {
+      const intent = new android.content.Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+      intent.setData(android.net.Uri.parse("package:" + ctx.getPackageName()));
+      ctx.startActivity(intent);
+    }
   }
 }

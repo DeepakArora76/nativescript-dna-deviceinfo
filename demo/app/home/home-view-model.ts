@@ -1,6 +1,6 @@
 
 import { EventData } from "@nativescript/core/data/observable";
-import { requestPermissions, hasPermission } from 'nativescript-permissions';
+import { requestPermissions } from 'nativescript-permissions';
 import { DeviceInfo } from "nativescript-dna-deviceinfo"
 
 import { Observable } from '@nativescript/core/data/observable';
@@ -83,8 +83,22 @@ export class HomeViewModel extends Observable {
                     console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
                 }
             ).catch(error => console.log(error));
+
+            requestPermissions([
+                android.Manifest.permission.WRITE_SETTINGS
+            ], "App requires permission to write settings"
+            ).then(
+                () => {
+                    console.log("Current screen brightness level: ", DeviceInfo.screenBrightnessLevel());
+                    console.log("Set screen brightness level to 0.9: ", DeviceInfo.setScreenBrightnessLevel(0.9));
+                    console.log("Updated ccreen brightness level: ", DeviceInfo.screenBrightnessLevel());
+                }
+            ).catch(error => console.log(error));
         }
         else {
+            console.log("Current screen brightness level: ", DeviceInfo.screenBrightnessLevel());
+            console.log("Set screen brightness level to 0.9: ", DeviceInfo.setScreenBrightnessLevel(0.9));
+            console.log("Updated ccreen brightness level: ", DeviceInfo.screenBrightnessLevel());
             console.log("Is Bluetooth enabled: ", await DeviceInfo.isBluetoothEnabled().catch(error => console.log(error)));
             console.log("WiFi IPv4 Address: ", DeviceInfo.wifiIpv4Address());
             console.log("Cellular IPv4 Address: ", DeviceInfo.cellularIpv4Address());
@@ -94,9 +108,9 @@ export class HomeViewModel extends Observable {
         }
     }
 
-    formatBytes(bytes, decimals) {
+    formatBytes(bytes: string | number, decimals: number) {
         if (bytes === 0) return '0 GB'
-        if (isNaN(parseInt(bytes))) return bytes
+        if (isNaN(parseInt(bytes as string))) return bytes
         if (typeof bytes === 'string') bytes = parseInt(bytes)
         if (bytes === 0) return '0';
         const k = 1000;

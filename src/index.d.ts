@@ -30,7 +30,9 @@ export declare class DeviceInfo {
   static cellularIpv4Address(): string;
   static dumpIpAddresses(): Address[];
   static audioVolumeLevel(): number;
-  static setAudioVolumeLevel(audioVol: number);
+  static setAudioVolumeLevel(level: number);
+  static screenBrightnessLevel(): number;
+  static setScreenBrightnessLevel(level: number);
   static isBluetoothHeadsetConnected(): boolean;
   static isMicAvailable(): boolean;
   static isBuiltInMicAvailable(): boolean;

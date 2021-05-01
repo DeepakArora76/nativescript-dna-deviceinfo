@@ -33,6 +33,7 @@ export class DeviceInfo {
 
   // A big thanks goes to the maintainer of react native
   // https://github.com/react-native-device-info/react-native-device-info/blob/master/ios/RNDeviceInfo/RNDeviceInfo.m
+  // https://gist.github.com/adamawolf/3048717
   private static deviceNameByCode = {
     "i386": "iPhone Simulator",
     "x86_64": "iPhone Simulator",
@@ -139,6 +140,18 @@ export class DeviceInfo {
     "iPad11,2": "iPad Mini 5", // (5th Generation iPad Mini)
     "iPad11,3": "iPad Air (3rd generation)",
     "iPad11,4": "iPad Air (3rd generation)",
+    "iPad11,6": "iPad 8th Gen (WiFi)",
+    "iPad11,7": "iPad 8th Gen (WiFi+Cellular)",
+    "iPad13,1": "iPad air 4th Gen (WiFi)",
+    "iPad13,2": "iPad air 4th Gen (WiFi+Cellular)",
+    "iPad13,4": "iPad Pro 11 inch 3rd Gen",
+    "iPad13,5": "iPad Pro 11 inch 3rd Gen",
+    "iPad13,6": "iPad Pro 11 inch 3rd Gen",
+    "iPad13,7": "iPad Pro 11 inch 3rd Gen",
+    "iPad13,8": "iPad Pro 12.9 inch 5th Gen",
+    "iPad13,9": "iPad Pro 12.9 inch 5th Gen",
+    "iPad13,10": "iPad Pro 12.9 inch 5th Gen",
+    "iPad13,11": "iPad Pro 12.9 inch 5th Gen",
 
     "AppleTV2,1": "Apple TV", // Apple TV (2nd Generation)
     "AppleTV3,1": "Apple TV", // Apple TV (3rd Generation)
@@ -465,6 +478,14 @@ export class DeviceInfo {
         break;
       }
     }
+  }
+
+  static screenBrightnessLevel(): number {
+    return UIScreen.mainScreen.brightness;
+  }
+
+  static setScreenBrightnessLevel(level: number) {
+    UIScreen.mainScreen.brightness = level;
   }
 
   static isBluetoothHeadsetConnected(): boolean {
