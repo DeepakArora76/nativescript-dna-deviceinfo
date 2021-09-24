@@ -1,4 +1,4 @@
-import { Carrier, StorageVolume, DisplayMetrics, RadioAccessTechnology, WCTGeneration } from './deviceinfo.interface';
+import { Address, Carrier, StorageVolume, DisplayMetrics, RadioAccessTechnology, WCTGeneration } from './deviceinfo.interface';
 
 export { RadioAccessTechnology, WCTGeneration };
 
