@@ -86,6 +86,10 @@ export class DeviceInfo {
     "iPhone13,3": "iPhone 12 Pro",
     "iPhone13,4": "iPhone 12 Pro Max",
     "iPhone12,8": "iPhone SE", // (2nd Generation iPhone SE)
+    "iPhone14,2": "iPhone 13 Pro",
+    "iPhone14,3": "iPhone 13 Pro Max",
+    "iPhone14,4": "iPhone 13 Mini",
+    "iPhone14,5": "iPhone 13",
 
     "iPad1,1": "iPad", // (Original)
     "iPad2,1": "iPad 2", //
@@ -142,6 +146,8 @@ export class DeviceInfo {
     "iPad11,4": "iPad Air (3rd generation)",
     "iPad11,6": "iPad 8th Gen (WiFi)",
     "iPad11,7": "iPad 8th Gen (WiFi+Cellular)",
+    "iPad12,1": "iPad 9th Gen (WiFi)",
+    "iPad12,2": "iPad 9th Gen (WiFi+Cellular)",
     "iPad13,1": "iPad air 4th Gen (WiFi)",
     "iPad13,2": "iPad air 4th Gen (WiFi+Cellular)",
     "iPad13,4": "iPad Pro 11 inch 3rd Gen",
@@ -152,6 +158,7 @@ export class DeviceInfo {
     "iPad13,9": "iPad Pro 12.9 inch 5th Gen",
     "iPad13,10": "iPad Pro 12.9 inch 5th Gen",
     "iPad13,11": "iPad Pro 12.9 inch 5th Gen",
+    "iPad14,2": "iPad mini 6th Gen",
 
     "AppleTV2,1": "Apple TV", // Apple TV (2nd Generation)
     "AppleTV3,1": "Apple TV", // Apple TV (3rd Generation)
