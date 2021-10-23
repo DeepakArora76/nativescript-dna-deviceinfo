@@ -262,13 +262,18 @@ module.exports = env => {
         plugins: [
             // Define useful constants like TNS_WEBPACK
             new webpack.DefinePlugin({
-                "global.TNS_WEBPACK": "true",
-                "global.isAndroid": platform === 'android',
-                "global.isIOS": platform === 'ios',
-                "process": "global.process",
+              'global.TNS_WEBPACK': 'true',
+              'global.isAndroid': platform === 'android',
+              'global.isIOS': platform === 'ios',
+              process: 'global.process',
+
+              // add these 3 lines
+              __UI_USE_XML_PARSER__: true,
+              __UI_USE_EXTERNAL_RENDERER__: false,
+              __CSS_PARSER__: JSON.stringify('css-tree')
             }),
             // Remove all files from the out dir.
-            new CleanWebpackPlugin({ 
+            new CleanWebpackPlugin({
               cleanOnceBeforeBuildPatterns: itemsToClean,
               verbose: !!verbose
             }),
