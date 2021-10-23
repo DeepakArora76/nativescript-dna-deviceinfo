@@ -9,7 +9,7 @@ The plugin offers cross-platform, utility, APIs to retrieve or query device-rela
 
 Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
-The [Changelogs](#Changelogs) selection is located towards the end of the document.
+The [Changelogs](#Changelogs) section is located towards the end of the document.
 
 I welcome an appreciation email with suggestions and feedback. It will encourage me to provide new APIs and support.
 My email-id is [Deepak Arora](mailto:deepak.arora76@gmail.com?subject=nativescript-dna-deviceinfo). Enjoy and I will be looking forward to your valuable feedback.
@@ -566,6 +566,7 @@ async PrintBluetoothStatus() {
 
 
 ## Changelogs:
+- 3.7.2: Bumped up various packages version. Updated Apple mobile device types.
 - 3.7.1: Reduced the package size.
 - 3.7.0: Bumped up various packages version. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
 - 3.6.1: Switched to webpack 3.0.0 version due to some security warnings.

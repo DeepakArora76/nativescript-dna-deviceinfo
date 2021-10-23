@@ -158,7 +158,8 @@ export class DeviceInfo {
     "iPad13,9": "iPad Pro 12.9 inch 5th Gen",
     "iPad13,10": "iPad Pro 12.9 inch 5th Gen",
     "iPad13,11": "iPad Pro 12.9 inch 5th Gen",
-    "iPad14,2": "iPad mini 6th Gen",
+    "iPad14,1" : "iPad mini 6th Gen (WiFi)",
+    "iPad14,2" : "iPad mini 6th Gen (WiFi+Cellular)",
 
     "AppleTV2,1": "Apple TV", // Apple TV (2nd Generation)
     "AppleTV3,1": "Apple TV", // Apple TV (3rd Generation)
@@ -190,7 +191,11 @@ export class DeviceInfo {
     "Watch6,1": "Apple Watch Series 6 40mm case (GPS)",
     "Watch6,2": "Apple Watch Series 6 44mm case (GPS)",
     "Watch6,3": "Apple Watch Series 6 40mm case (GPS+Cellular)",
-    "Watch6,4": "Apple Watch Series 6 44mm case (GPS+Cellular)"
+    "Watch6,4": "Apple Watch Series 6 44mm case (GPS+Cellular)",
+    "Watch6,6" : "Apple Watch Series 7 41mm case (GPS)",
+    "Watch6,7" : "Apple Watch Series 7 45mm case (GPS)",
+    "Watch6,8" : "Apple Watch Series 7 41mm case (GPS+Cellular)",
+    "Watch6,9" : "Apple Watch Series 7 45mm case (GPS+Cellular)"
   };
 
   static totalMemory(): number {
