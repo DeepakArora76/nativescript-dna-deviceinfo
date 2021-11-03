@@ -568,7 +568,7 @@ async PrintBluetoothStatus() {
 ## Changelogs:
 - 3.7.2: Bumped up various packages versions. Updated Apple mobile device types.
 - 3.7.1: Reduced the package size.
-- 3.7.0: Bumped up various packages versions. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
+- 3.7.0: Bumped up various packages versions. Added APIs to set and get screen brightness levels. Updated Apple mobile device types with iPad Pro 11 inches and 12.9 inches.
 - 3.6.1: Switched to the webpack 3.0.0 version due to some security warnings.
 - 3.6.0: Introducing basic audio management APIs for Android and iOS. For Andriod, memory-related APIs are updated to use non-depreciated system APIs.
 - 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.
@@ -576,7 +576,7 @@ async PrintBluetoothStatus() {
 - 3.3.1: Fixed a crash related to the retrieval of wifi SSID on iOS 13.0 version and above.
 - 3.3.0: Added "wifiIpv4Address" and "cellularIpv4Address" APIs for iOS and Android. Fixed issues related to Bluetooth detection for Android.
 - 3.2.1: Updated Apple's mobile device codes types a.k.a. machine ids (e.g. `iPhone1,1`, `Watch1,1`, etc.) and their matching product names.
-- 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation of it uses WKWebView.
+- 3.2.0: The API "userAgent" is modified to return Promise. iOS implementation uses WKWebView.
 - 3.1.0: Tested on iOS devices, software version 14.2.1. Fixed issues around the API "deviceId" on iOS.
 - 3.0.0: Upgraded to NativeScript 7.0 version. **Note**: The plugin is not tested on iOS and Android devices.
 - 2.4.3: For iOS, extended the list of devices with Watch-5, iPhone 11(Pro and Max), iPad mini 5th Gen, and Apple Watch Series 5. For Android, support for AndroidX is added. Bumped up version of various packages.
