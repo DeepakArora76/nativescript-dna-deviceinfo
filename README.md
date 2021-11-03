@@ -566,10 +566,10 @@ async PrintBluetoothStatus() {
 
 
 ## Changelogs:
-- 3.7.2: Bumped up various packages version. Updated Apple mobile device types.
+- 3.7.2: Bumped up various packages versions. Updated Apple mobile device types.
 - 3.7.1: Reduced the package size.
-- 3.7.0: Bumped up various packages version. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
-- 3.6.1: Switched to webpack 3.0.0 version due to some security warnings.
+- 3.7.0: Bumped up various packages versions. Added APIs to set and get screen brightness level. Updated Apple mobile device types with iPad Pro 11 inch and 12.9 inch.
+- 3.6.1: Switched to the webpack 3.0.0 version due to some security warnings.
 - 3.6.0: Introducing basic audio management APIs for Android and iOS. For Andriod, memory-related APIs are updated to use non-depreciated system APIs.
 - 3.5.0: Fixed runtime errors related to "NativeClass is not defined" observed on NativeScript Version 7 apps. The fix will likely benefit iOS apps.
 - 3.4.0: Added "dumpIpAddresses" API. Changed "wifiIpv4Address" and "cellularIpv4Address" to return an IPv4 address string, and their Android implementation is revised.
