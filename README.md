@@ -5,9 +5,9 @@
 
 NativeScript plugin to acquire device info.
 
-The plugin offers cross-platform, utility, APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms.
+The plugin offers cross-platform utility APIs to retrieve or query device-related information. The utility APIs are available for iOS and Android platforms.
 
-Kindly visit [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
+Kindly visit the [typescript demo](https://github.com/DeepakArora76/nativescript-dna-deviceinfo/tree/master/demo) or [js demo](https://github.com/DeepakArora76/JSDeviceInfoDemo.git) repository for practical implementation guidance and hints.
 
 The [Changelogs](#Changelogs) section is located towards the end of the document.
 
