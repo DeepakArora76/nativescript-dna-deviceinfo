@@ -501,11 +501,21 @@ export class DeviceInfo {
 
   static isEmulator(): boolean {
     const Build = android.os.Build;
-    return Build.FINGERPRINT.startsWith("generic") || Build.FINGERPRINT.startsWith("unknown")
-      || Build.MODEL.includes("google_sdk") || Build.MODEL.includes("Emulator")
-      || Build.MODEL.includes("Android SDK built for x86") || Build.MANUFACTURER.includes("Genymotion")
-      || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
-      || "google_sdk" === Build.PRODUCT;
+    return (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+      || Build.FINGERPRINT.startsWith("generic")
+      || Build.FINGERPRINT.startsWith("unknown")
+      || Build.HARDWARE.includes("goldfish")
+      || Build.HARDWARE.includes("ranchu")
+      || Build.MODEL.includes("google_sdk")
+      || Build.MODEL.includes("Emulator")
+      || Build.MODEL.includes("Android SDK built for x86")
+      || Build.MANUFACTURER.includes("Genymotion")
+      || Build.PRODUCT.includes("sdk_google")
+      || Build.PRODUCT.includes("google_sdk")
+      || Build.PRODUCT.includes("sdk")
+      || Build.PRODUCT.includes("sdk_x86")
+      || Build.PRODUCT.includes("vbox86p")
+      || Build.PRODUCT.includes("emulator");
   }
 
   static isBatteryCharging(): boolean {

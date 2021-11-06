@@ -1,6 +1,6 @@
 {
   "name": "nativescript-dna-deviceinfo",
-  "version": "3.7.2",
+  "version": "3.7.3",
   "description": "NativeScript plugin to acquire device information.",
   "main": "deviceinfo",
   "typings": "index.d.ts",

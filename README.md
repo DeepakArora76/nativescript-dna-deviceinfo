@@ -566,6 +566,7 @@ async PrintBluetoothStatus() {
 
 
 ## Changelogs:
+- 3.7.3: Updated Mobile Country Codes (MCC) and Mobile Network Codes (MNC) table. Improved the test for an emulator for the Android OS.
 - 3.7.2: Bumped up various packages versions. Updated Apple mobile device types.
 - 3.7.1: Reduced the package size.
 - 3.7.0: Bumped up various packages versions. Added APIs to set and get screen brightness levels. Updated Apple mobile device types with iPad Pro 11 inches and 12.9 inches.
