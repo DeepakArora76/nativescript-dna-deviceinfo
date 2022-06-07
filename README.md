@@ -137,7 +137,8 @@ DeviceInfo.deviceName();
 ```
 
 - Notes for Android users:
-  * Permission BLUETOOTH is needed.
+  * Permission BLUETOOTH is needed for API level < 31.
+  * Permission BLUETOOTH_CONNECT is needed for API level >= 31.
 
 ### deviceLocale
 
