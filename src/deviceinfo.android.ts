@@ -109,7 +109,7 @@ export class DeviceInfo {
     return android.os.Build.SERIAL;
   }
 
-  static deviceName() {
+  static deviceName(): string {
     let deviceName = "Unknown";
     const ctx = application.android.context;
     if (android.os.Build.VERSION.SDK_INT < 31) {
