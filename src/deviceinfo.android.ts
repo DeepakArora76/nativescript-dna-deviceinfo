@@ -109,21 +109,37 @@ export class DeviceInfo {
     return android.os.Build.SERIAL;
   }
 
-  static deviceName(): string {
+  static deviceName() {
     let deviceName = "Unknown";
-    const ctx = <ContextType>application.android.context;
-    const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH");
-    if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
-      try {
-        const adptr = android.bluetooth.BluetoothAdapter.getDefaultAdapter();
-        if (adptr) {
-          deviceName = adptr.getName();
+    const ctx = application.android.context;
+    if (android.os.Build.VERSION.SDK_INT < 31) {
+        const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH");
+        if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            try {
+                const adptr = android.bluetooth.BluetoothAdapter.getDefaultAdapter();
+                if (adptr) {
+                    deviceName = adptr.getName();
+                }
+            }
+            catch (exception) {
+            }
         }
-      } catch (exception) {
-      }
     }
+    else {
+        const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH_CONNECT");
+        if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            try {
+                const adptr = ctx.getSystemService(android.content.Context.BLUETOOTH_SERVICE).getAdapter();
+                if (adptr) {
+                    deviceName = adptr.getName();
+                }
+            }
+            catch (exception) {
+            }
+        }  
+    }      
     return deviceName;
-  }
+}
 
   static deviceLocale(): string {
     const ctx = <ContextType>application.android.context;
