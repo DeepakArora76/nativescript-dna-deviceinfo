@@ -111,7 +111,7 @@ export class DeviceInfo {
 
   static deviceName(): string {
     let deviceName = "Unknown";
-    const ctx = application.android.context;
+    const ctx = <ContextType>application.android.context;
     if (android.os.Build.VERSION.SDK_INT < 31) {
         const res = ctx.checkCallingOrSelfPermission("android.permission.BLUETOOTH");
         if (res === android.content.pm.PackageManager.PERMISSION_GRANTED) {
