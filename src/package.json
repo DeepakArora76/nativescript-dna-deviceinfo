@@ -98,7 +98,7 @@
     "@nativescript/core": "~8.1.4",
     "@nativescript/ios": "~8.1.0",
     "@nativescript/types": "~8.1.1",
-    "@nativescript/webpack": "^3.0.0",
+    "@nativescript/webpack": "^5.0.12",
     "prompt": "^1.2.0",
     "rimraf": "^3.0.2",
     "semver": "^7.3.5",
