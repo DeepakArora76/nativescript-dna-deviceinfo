@@ -5,7 +5,7 @@
   "dependencies": {
     "@nativescript/core": "8.1.4",
     "@nativescript/theme": "~3.0.2",
-    "@nativescript/webpack": "3.0.0",
+    "@nativescript/webpack": "5.0.12",
     "nativescript-dna-deviceinfo": "file:../src",
     "nativescript-permissions": "^1.3.11"
   },
